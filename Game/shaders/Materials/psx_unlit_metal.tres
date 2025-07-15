@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cmc7gatc4wm0m"]
+
+[ext_resource type="Shader" uid="uid://cmusu5sfnyqsb" path="res://shaders/psx_unlit_metal.gdshader" id="1_rlrtl"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rlrtl")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwwch08u1fki0"]
+
+[ext_resource type="Material" uid="uid://dpcniuq4o6a3f" path="res://Level/Materials/asphalt.tres" id="1_o6mkr"]
+[ext_resource type="PackedScene" uid="uid://21jb7alymoth" path="res://Player/Player.tscn" id="2_qmtf6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qmtf6"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yfk6w"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qmtf6"]
+material = ExtResource("1_o6mkr")
+size = Vector2(300, 300)
+subdivide_width = 150
+subdivide_depth = 150
+
+[node name="Level" type="Node3D"]
+
+[node name="TempGround" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_qmtf6")
+
+[node name="TempGroundShape" type="CollisionShape3D" parent="TempGround"]
+shape = SubResource("WorldBoundaryShape3D_yfk6w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TempGround"]
+mesh = SubResource("PlaneMesh_qmtf6")
+
+[node name="Player" parent="." instance=ExtResource("2_qmtf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414904, 0)

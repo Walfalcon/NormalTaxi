@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dpcniuq4o6a3f"]
+
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_npwti"]
+[ext_resource type="Texture2D" uid="uid://bnbw18fomlbdx" path="res://Level/Materials/Textures/asphalt.png" id="2_sqwag"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_npwti")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_sqwag")
+shader_parameter/uv_scale = Vector2(14, 14)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

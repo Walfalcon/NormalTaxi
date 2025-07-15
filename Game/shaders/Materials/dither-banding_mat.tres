@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://q8ofqqk5nj5j"]
+
+[ext_resource type="Shader" uid="uid://c0bhglnpoeguq" path="res://shaders/pp_band-dither.gdshader" id="1_h3sjh"]
+[ext_resource type="Texture2D" uid="uid://b0ub3tqjyw46f" path="res://shaders/psxdither.png" id="2_a44k0"]
+
+[resource]
+shader = ExtResource("1_h3sjh")
+shader_parameter/dither_tex = ExtResource("2_a44k0")
+shader_parameter/col_depth = 15.0
+shader_parameter/dither_banding = true

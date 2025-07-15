@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://21jb7alymoth"]
+
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://drxn24kou4oyf" path="res://Player/player.gd" id="1_q3lat"]
+[ext_resource type="Material" uid="uid://bcs6swq7army4" path="res://shaders/Materials/psx_unlit_mat.tres" id="3_tok1r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2ndj"]
+size = Vector3(1.2, 0.6, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3lat"]
+render_priority = 0
+shader = ExtResource("1_3qydi")
+shader_parameter/modulate_color = Color(0.609725, 0.324016, 0.494789, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3qydi"]
+material = SubResource("ShaderMaterial_q3lat")
+size = Vector3(1.2, 0.6, 2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ddoul"]
+material = ExtResource("3_tok1r")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.14
+radial_segments = 7
+
+[node name="Player" type="VehicleBody3D"]
+mass = 700.0
+center_of_mass_mode = 1
+script = ExtResource("1_q3lat")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.283118, 0)
+shape = SubResource("BoxShape3D_l2ndj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_3qydi")
+skeleton = NodePath("../..")
+
+[node name="LeftFrontWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.154839, 0.7)
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 100.0
+suspension_max_force = 4000.0
+damping_compression = 0.4
+damping_relaxation = 0.45
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftFrontWheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ddoul")
+
+[node name="RightFrontWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.154839, 0.7)
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 100.0
+suspension_max_force = 4000.0
+damping_compression = 0.4
+damping_relaxation = 0.45
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="RightFrontWheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ddoul")
+skeleton = NodePath("../../LeftFrontWheel")
+
+[node name="LeftBackWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.154839, -0.7)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 100.0
+suspension_max_force = 4000.0
+damping_compression = 0.4
+damping_relaxation = 0.45
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LeftBackWheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ddoul")
+skeleton = NodePath("../../LeftFrontWheel")
+
+[node name="RightBackWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.154839, -0.7)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.3
+wheel_rest_length = 0.3
+wheel_friction_slip = 1.0
+suspension_travel = 0.1
+suspension_stiffness = 100.0
+suspension_max_force = 4000.0
+damping_compression = 0.4
+damping_relaxation = 0.45
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="RightBackWheel"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ddoul")
+skeleton = NodePath("../../LeftFrontWheel")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 1.60815e-08, -8.5931e-08, 0, 0.982935, 0.183951, 8.74228e-08, 0.183951, -0.982935, 0, 1.69412, -3.277)

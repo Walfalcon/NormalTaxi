@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bl82bl3wg40ml"]
+
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_6y716"]
+[ext_resource type="Texture2D" uid="uid://cx50tn3jmqk4v" path="res://Level/Materials/Textures/Cement Tile 32.png" id="2_q51ru"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6y716")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_q51ru")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
