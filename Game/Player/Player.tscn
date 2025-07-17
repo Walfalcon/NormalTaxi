@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://21jb7alymoth"]
+[gd_scene load_steps=9 format=3 uid="uid://21jb7alymoth"]
 
 [ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_3qydi"]
 [ext_resource type="Script" uid="uid://drxn24kou4oyf" path="res://Player/player.gd" id="1_q3lat"]
 [ext_resource type="Material" uid="uid://bcs6swq7army4" path="res://shaders/Materials/psx_unlit_mat.tres" id="3_tok1r"]
+[ext_resource type="Script" uid="uid://8egfxur2my7h" path="res://Player/player_camera.gd" id="4_ddoul"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l2ndj"]
 size = Vector3(1.2, 0.6, 2)
@@ -105,5 +106,9 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 mesh = SubResource("CylinderMesh_ddoul")
 skeleton = NodePath("../../LeftFrontWheel")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 1.60815e-08, -8.5931e-08, 0, 0.982935, 0.183951, 8.74228e-08, 0.183951, -0.982935, 0, 2.05108, -3.277)
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(0.292372, 0, 0.956305, 0, 1, 0, -0.956305, 0, 0.292372, 0, 0, 0)
+script = ExtResource("4_ddoul")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(-1, 1.60815e-08, -8.5931e-08, 0, 0.982935, 0.183951, 8.74228e-08, 0.183951, -0.982935, 0, 2, -4)

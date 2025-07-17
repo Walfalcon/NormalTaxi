@@ -16,7 +16,7 @@ extends RayCast3D
 var force: Vector3 = Vector3()
 
 func _ready() -> void:
-	target_position.y = -target_offset * 2
+	target_position.y = -target_offset
 	tire_model.position.y = -target_offset + tire_radius
 
 func _physics_process(delta: float) -> void:
