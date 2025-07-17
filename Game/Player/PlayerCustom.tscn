@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://ctbwpsdaaii1i"]
+
+[ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="2_utgh1"]
+[ext_resource type="Script" uid="uid://8egfxur2my7h" path="res://Player/player_camera.gd" id="3_53tn2"]
+[ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
+[ext_resource type="Material" uid="uid://bcs6swq7army4" path="res://shaders/Materials/psx_unlit_mat.tres" id="4_utgh1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53tn2"]
+size = Vector3(1.2, 0.6, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3lat"]
+render_priority = 0
+shader = ExtResource("2_utgh1")
+shader_parameter/modulate_color = Color(0.609725, 0.324016, 0.494789, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q1h0l"]
+material = SubResource("ShaderMaterial_q3lat")
+size = Vector3(1.2, 0.6, 2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rg7h5"]
+material = ExtResource("4_utgh1")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.14
+radial_segments = 7
+
+[node name="PlayerCustom" type="RigidBody3D"]
+mass = 100.0
+center_of_mass_mode = 1
+script = ExtResource("1_7i5uh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098, 0.1)
+shape = SubResource("BoxShape3D_53tn2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_q1h0l")
+skeleton = NodePath("../..")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0, 1.694, 4.12762)
+script = ExtResource("3_53tn2")
+
+[node name="TireFrontLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677499, 0.05, -0.5)
+target_position = Vector3(0, -0.4, 0)
+script = ExtResource("3_rg7h5")
+tire_model = NodePath("TireMesh")
+
+[node name="TireMesh" type="MeshInstance3D" parent="TireFrontLeft"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rg7h5")
+
+[node name="TireFrontRight" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, -0.5)
+target_position = Vector3(0, -0.4, 0)
+script = ExtResource("3_rg7h5")
+tire_model = NodePath("TireMesh")
+
+[node name="TireMesh" type="MeshInstance3D" parent="TireFrontRight"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rg7h5")
+
+[node name="TireBackLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677, 0.05, 0.7)
+target_position = Vector3(0, -0.4, 0)
+script = ExtResource("3_rg7h5")
+tire_model = NodePath("TireMesh")
+
+[node name="TireMesh" type="MeshInstance3D" parent="TireBackLeft"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rg7h5")
+
+[node name="TireBackRight" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, 0.7)
+target_position = Vector3(0, -0.4, 0)
+script = ExtResource("3_rg7h5")
+tire_model = NodePath("TireMesh")
+
+[node name="TireMesh" type="MeshInstance3D" parent="TireBackRight"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_rg7h5")
