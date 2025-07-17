@@ -32,9 +32,11 @@ radial_segments = 7
 mass = 100.0
 center_of_mass_mode = 1
 script = ExtResource("1_7i5uh")
+gas_force = 120.0
+brake_force = 120.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098, 0)
 shape = SubResource("BoxShape3D_53tn2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
@@ -43,7 +45,7 @@ skeleton = NodePath("../..")
 
 [node name="TireFrontLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677499, 0.05, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677499, 0.05, -0.7)
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
 tire_model = NodePath("TireMesh")
@@ -54,7 +56,7 @@ mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="TireFrontRight" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, -0.7)
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
 tire_model = NodePath("TireMesh")
@@ -69,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677, 0.05, 0.7)
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
 tire_model = NodePath("TireMesh")
+debug = true
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireBackLeft"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -89,4 +92,4 @@ mesh = SubResource("CylinderMesh_rg7h5")
 script = ExtResource("5_rg7h5")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(-1, 1.60815e-08, -8.5931e-08, 0, 0.982935, 0.183951, 8.74228e-08, 0.183951, -0.982935, 0, 2, -4)
+transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0, 2, 4)
