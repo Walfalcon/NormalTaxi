@@ -16,9 +16,8 @@ func _process(delta: float) -> void:
 		if abs(angle) <= (angle * rotation_speed)* delta:
 			look_at(global_position + body_forward)
 		elif angle > max_angle:
-			look_at(global_position + (-global_basis.z).rotated(Vector3.UP, angle - max_angle))
+			look_at(global_position + body_forward.rotated(Vector3.UP, -max_angle + max_angle * rotation_speed * delta))
 		elif angle < -max_angle:
-			look_at(global_position + (-global_basis.z).rotated(Vector3.UP, angle + max_angle))
+			look_at(global_position + body_forward.rotated(Vector3.UP, max_angle - max_angle * rotation_speed * delta))
 		else:
-			look_at(global_position + (-global_basis.z).rotated(Vector3.UP, (angle * rotation_speed)* delta))
-			#look_at(global_position - global_basis.z.slerp(body_forward, rotation_speed * delta))
+			look_at(global_position + (-global_basis.z).rotated(Vector3.UP, angle * rotation_speed * delta))

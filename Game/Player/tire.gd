@@ -19,6 +19,7 @@ extends RayCast3D
 
 var gas: float = 0.0
 var brake: float = 0.0
+var last_compression: float = 0.0
 
 func _ready() -> void:
 	target_position.y = -target_offset
@@ -27,49 +28,12 @@ func _ready() -> void:
 func drive(delta: float) -> void:
 	var force: Vector3 = Vector3.ZERO
 	if is_colliding():
-		var velocity: Vector3 = (global_position - last_position) / delta
 		var current_offset: float = (global_position - get_collision_point()).length()
 		var compression: float = (target_offset - current_offset) / target_offset ## How compressed the suspension is. 1.0 is fully compressed.
-		force += global_basis.y * ((compression * spring_strength) - global_basis.tdoty(velocity) * damping)
+		var compression_velocity: float = (compression - last_compression) * target_offset / delta
+		last_compression = compression
+		force += global_basis.y * ((compression * spring_strength) + compression_velocity * damping)
 		tire_model.position.y = -current_offset + tire_radius
-	else:
-		tire_model.position.y = -target_offset + tire_radius
-	last_position = global_position
-	body.apply_force(force, position)
-
-func _drive(delta: float) -> void:
-	var force: Vector3 = Vector3.ZERO
-	if is_colliding():
-		var velocity: Vector3 = (global_position - last_position) / delta
-		## Steering
-		var slide_speed: float = global_basis.tdotx(velocity) ## How fast the wheel is sliding left/right
-		if slide_speed > 0.05:
-			force += global_basis.x * (-slide_speed * tire_grip / delta) * (body.mass / 4.0)
-		## Suspension
-		var current_offset: float = (global_position - get_collision_point()).length()
-		var compression: float = (target_offset - current_offset) / target_offset ## How compressed the suspension is. 1.0 is fully compressed.
-		force += global_basis.y * ((compression * spring_strength) - global_basis.tdoty(velocity) * damping)
-		tire_model.position.y = -current_offset + tire_radius
-		## Gas/Brake
-		var drive_speed: float = -global_basis.tdotz(velocity) ## How fast the wheel is moving forward/back
-		if gas > 0.0:
-			if drive_speed < 0.0:
-				force -= global_basis.z * gas
-			else:
-				var normalized_speed: float = drive_speed / body.max_speed
-				if normalized_speed < 1.0:
-					var torque: float = (sin(normalized_speed * PI) / 2.0) + 0.5
-					force -= global_basis.z * torque * gas
-		if brake > 0.0:
-			if drive_speed > 0.0:
-				force += global_basis.z * brake
-			else:
-				var normalized_reverse_speed: float = -drive_speed / body.max_reverse_speed
-				if normalized_reverse_speed < 1.0:
-					var torque: float = (sin(normalized_reverse_speed * PI) / 2.0) + 0.5
-					force += global_basis.z * torque * gas
-		if gas == 0.0 and brake == 0.0:
-			force -= global_basis.z * drive_speed * roll_friction
 	else:
 		tire_model.position.y = -target_offset + tire_radius
 	last_position = global_position
