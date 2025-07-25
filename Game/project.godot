@@ -20,6 +20,10 @@ window/size/viewport_width=960
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/hyper/Documents/GitHub/Ridesharing/Movies/recording.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray()

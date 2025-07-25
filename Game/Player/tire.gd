@@ -28,6 +28,19 @@ func drive(delta: float) -> void:
 	var force: Vector3 = Vector3.ZERO
 	if is_colliding():
 		var velocity: Vector3 = (global_position - last_position) / delta
+		var current_offset: float = (global_position - get_collision_point()).length()
+		var compression: float = (target_offset - current_offset) / target_offset ## How compressed the suspension is. 1.0 is fully compressed.
+		force += global_basis.y * ((compression * spring_strength) - global_basis.tdoty(velocity) * damping)
+		tire_model.position.y = -current_offset + tire_radius
+	else:
+		tire_model.position.y = -target_offset + tire_radius
+	last_position = global_position
+	body.apply_force(force, position)
+
+func _drive(delta: float) -> void:
+	var force: Vector3 = Vector3.ZERO
+	if is_colliding():
+		var velocity: Vector3 = (global_position - last_position) / delta
 		## Steering
 		var slide_speed: float = global_basis.tdotx(velocity) ## How fast the wheel is sliding left/right
 		if slide_speed > 0.05:
@@ -61,4 +74,3 @@ func drive(delta: float) -> void:
 		tire_model.position.y = -target_offset + tire_radius
 	last_position = global_position
 	body.apply_force(force, position)
-	if debug: print(global_basis.tdotz(force))
