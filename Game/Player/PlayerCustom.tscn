@@ -29,7 +29,7 @@ height = 0.14
 radial_segments = 7
 
 [node name="PlayerCustom" type="RigidBody3D"]
-mass = 100.0
+mass = 50.0
 center_of_mass_mode = 1
 script = ExtResource("1_7i5uh")
 

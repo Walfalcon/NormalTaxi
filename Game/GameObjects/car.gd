@@ -4,10 +4,10 @@ extends RigidBody3D
 @export_category("Gas/Brake")
 @export var gas_force: float = 900.0
 @export var brake_force: float = 1200.0
-@export var max_speed: float = 60.0
-@export var max_reverse_speed: float = 50.0
+@export var max_speed: float = 60.0 ## Positive number
+@export var max_reverse_speed: float = -50.0 ## Negative number
 @export_category("Steering")
-@export var max_steering_angle: float = 0.4
+@export var max_steering_angle: float = 0.25
 @export var stopping_speed: float = 0.15 ## If idling at less than this speed, just stop moving
 @export var tire_grip: float = 0.9 ## How much the car slides left/right
 @export var roll_friction: float = 0.05 ## Drag force on the car when not accelerating/braking
@@ -50,8 +50,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			apply_central_force(-linear_velocity * mass / delta)
 		## Steering
-		if steering != 0.0:
-			apply_torque(global_basis.y * steering * drive_speed * mass)
+		var target_angular_velocity: Vector3 = global_basis.y * steering * drive_speed
+		var flat_angular_velocity: Vector3 = angular_velocity.project(global_basis.y)
+		apply_torque((target_angular_velocity - flat_angular_velocity) * mass)
 	## Prevent slipping
 	var slip_speed: float = -global_basis.tdotx(linear_velocity)
 	apply_central_force(global_basis.x * slip_speed * tire_grip * mass / delta)
