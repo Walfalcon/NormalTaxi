@@ -22,7 +22,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/hyper/Documents/GitHub/Ridesharing/Movies/recording.avi"
+movie_writer/movie_file="Z:/My Documents/GitHub/Ridesharing/Movies/recording.avi"
 
 [editor_plugins]
 
@@ -72,11 +72,6 @@ Down={
 disable_update_check=false
 disable_install_wizard=true
 copy_path="res://"
-
-[physics]
-
-3d/default_linear_damp=0.0
-3d/default_angular_damp=0.0
 
 [rendering]
 

@@ -7,7 +7,7 @@ extends RayCast3D
 @export var damping: float = 10.0
 @export var ray_overextend: float = 0.1
 @export_category("Wheel Settings")
-@export var tire_grip: float = 0.5
+@export var tire_grip: float = 1.0
 @export var roll_friction: float = 15.0 ## Slows the car when not braking
 @export var steering: bool = false
 @export var driven: bool = true
@@ -18,6 +18,7 @@ extends RayCast3D
 @export var debug: bool = false
 
 @onready var body: Car = get_parent()
+@onready var tire_mass: float = body.mass / body.tires.size()
 
 var gas: float = 0.0
 var brake: float = 0.0
@@ -27,7 +28,16 @@ func _ready() -> void:
 	target_position.y = -(target_offset + tire_radius + ray_overextend)
 	tire_model.position.y = -target_offset
 
-## Apply suspension and prevent slipping
+## Prevent tire slipping
+func traction() -> void:
+	if is_colliding():
+		var tire_velocity: Vector3 = body.get_point_velocity(tire_model.global_position) ##How fast the wheel is moving forwards
+		var side_velocity: float = global_basis.tdotx(tire_velocity)
+		var side_force: Vector3 = -global_basis.x * side_velocity * tire_grip * tire_mass * ProjectSettings.get_setting("physics/3d/default_gravity")
+		body.apply_force(side_force, tire_model.global_position - body.global_position)
+		
+
+## Apply suspension
 func suspension() -> void:
 	if is_colliding():
 		var wheel_point: Vector3 = get_collision_point()
@@ -41,15 +51,17 @@ func suspension() -> void:
 	else:
 		tire_model.position.y = -target_offset
 
+## Rotate tires, if steering is true
 func steer(angle: float) -> void:
 	rotation.y = angle
 
+## Apply gas/brake, if drive is true
 func drive(gas_brake: float) -> void:
 	if is_colliding():
 		var wheel_point: Vector3 = tire_model.global_position
 		var projected_forward: Vector3 = (-global_basis.z).slide(get_collision_normal()).normalized()
 		var drive_speed: float = projected_forward.dot(body.linear_velocity) ##How fast the wheel is moving forwards
-		tire_model.rotate_x(-drive_speed * get_process_delta_time() * 2 * PI * tire_radius)
+		tire_model.rotate_x(-drive_speed * get_process_delta_time() / tire_radius)
 		
 		## Gas/Brake
 		if gas_brake > 0.0:
@@ -57,16 +69,14 @@ func drive(gas_brake: float) -> void:
 				body.apply_force(projected_forward * gas_brake * body.brake_force, wheel_point - body.global_position)
 			else:
 				var normalized_speed: float = drive_speed / body.max_speed
-				if normalized_speed < 1.0:
-					var torque: float = (sin(normalized_speed * PI) / 2.0) + 0.5
-					body.apply_force(projected_forward * torque * gas_brake * body.gas_force, wheel_point - body.global_position)
+				var torque: float = body.accel_curve.sample_baked(normalized_speed)
+				body.apply_force(projected_forward * torque * gas_brake * body.gas_force, wheel_point - body.global_position)
 		elif gas_brake < 0.0:
 			if drive_speed > 0.0:
 				body.apply_force(projected_forward * gas_brake * body.brake_force, wheel_point - body.global_position)
 			else:
 				var normalized_reverse_speed: float = drive_speed / body.max_reverse_speed
-				if normalized_reverse_speed < 1.0:
-					var torque: float = (sin(normalized_reverse_speed * PI) / 2.0) + 0.5
-					body.apply_force(projected_forward * torque * gas_brake * body.gas_force, wheel_point - body.global_position)
+				var torque: float = body.accel_curve.sample_baked(normalized_reverse_speed)
+				body.apply_force(projected_forward * torque * gas_brake * body.gas_force, wheel_point - body.global_position)
 		else:
 			body.apply_force(-projected_forward * drive_speed * roll_friction)

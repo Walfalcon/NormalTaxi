@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=11 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="2_utgh1"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
 [ext_resource type="Material" uid="uid://bcs6swq7army4" path="res://shaders/Materials/psx_unlit_mat.tres" id="4_utgh1"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
+
+[sub_resource type="Curve" id="Curve_rg7h5"]
+_data = [Vector2(0, 0.460674), 0.0, 0.0, 0, 0, Vector2(0.362319, 0.889865), 0.0, 0.0, 0, 0, Vector2(0.630435, 0.777691), 0.0, 0.0, 0, 0, Vector2(0.991037, 0.272677), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53tn2"]
 size = Vector3(1.2, 0.6, 2)
@@ -29,13 +33,18 @@ height = 0.14
 radial_segments = 7
 
 [node name="PlayerCustom" type="RigidBody3D" node_paths=PackedStringArray("tires")]
-mass = 50.0
+mass = 25.0
 center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.5, -1)
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_7i5uh")
-gas_force = 500.0
-brake_force = 700.0
-max_speed = 24.0
+gas_force = 250.0
+brake_force = 350.0
+max_speed = 40.0
 max_reverse_speed = -15.0
+accel_curve = SubResource("Curve_rg7h5")
+max_steering_angle = 0.35
 tires = [NodePath("TireFrontLeft"), NodePath("TireFrontRight"), NodePath("TireBackLeft"), NodePath("TireBackRight")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -48,12 +57,15 @@ skeleton = NodePath("../..")
 
 [node name="TireFrontLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677499, 0.05, -0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677, 0.05, -0.75)
+enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
-target_offset = 0.5
-spring_strength = 4000.0
-damping = 130.0
+target_offset = 0.45
+spring_strength = 2800.0
+damping = 90.0
+ray_overextend = 0.25
+tire_grip = 1.2
 steering = true
 driven = false
 tire_model = NodePath("TireMesh")
@@ -64,12 +76,15 @@ mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="TireFrontRight" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, -0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, -0.75)
+enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
-target_offset = 0.5
-spring_strength = 4000.0
-damping = 130.0
+target_offset = 0.45
+spring_strength = 2800.0
+damping = 90.0
+ray_overextend = 0.25
+tire_grip = 1.2
 steering = true
 driven = false
 tire_model = NodePath("TireMesh")
@@ -80,12 +95,15 @@ mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="TireBackLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677, 0.05, 0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677, 0.05, 0.75)
+enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
-target_offset = 0.5
-spring_strength = 4000.0
-damping = 130.0
+target_offset = 0.45
+spring_strength = 2800.0
+damping = 90.0
+ray_overextend = 0.25
+tire_grip = 1.2
 tire_model = NodePath("TireMesh")
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireBackLeft"]
@@ -94,12 +112,15 @@ mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="TireBackRight" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, 0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, 0.75)
+enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
-target_offset = 0.5
-spring_strength = 4000.0
-damping = 130.0
+target_offset = 0.45
+spring_strength = 2800.0
+damping = 90.0
+ray_overextend = 0.25
+tire_grip = 1.2
 tire_model = NodePath("TireMesh")
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireBackRight"]
