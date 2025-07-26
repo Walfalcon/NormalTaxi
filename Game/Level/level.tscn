@@ -26,5 +26,3 @@ mesh = SubResource("PlaneMesh_qmtf6")
 
 [node name="PlayerCustom" parent="." instance=ExtResource("2_qmtf6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47676, 0)
-gas_force = 900.0
-brake_force = 1200.0

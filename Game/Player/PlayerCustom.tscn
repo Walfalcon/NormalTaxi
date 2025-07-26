@@ -28,10 +28,15 @@ bottom_radius = 0.3
 height = 0.14
 radial_segments = 7
 
-[node name="PlayerCustom" type="RigidBody3D"]
+[node name="PlayerCustom" type="RigidBody3D" node_paths=PackedStringArray("tires")]
 mass = 50.0
 center_of_mass_mode = 1
 script = ExtResource("1_7i5uh")
+gas_force = 500.0
+brake_force = 700.0
+max_speed = 24.0
+max_reverse_speed = -15.0
+tires = [NodePath("TireFrontLeft"), NodePath("TireFrontRight"), NodePath("TireBackLeft"), NodePath("TireBackRight")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098, 0)
@@ -46,6 +51,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677499, 0.05, -0.7)
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
+target_offset = 0.5
+spring_strength = 4000.0
+damping = 130.0
+steering = true
+driven = false
 tire_model = NodePath("TireMesh")
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireFrontLeft"]
@@ -57,6 +67,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, -0.7)
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
+target_offset = 0.5
+spring_strength = 4000.0
+damping = 130.0
+steering = true
+driven = false
 tire_model = NodePath("TireMesh")
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireFrontRight"]
@@ -68,6 +83,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.677, 0.05, 0.7)
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
+target_offset = 0.5
+spring_strength = 4000.0
+damping = 130.0
 tire_model = NodePath("TireMesh")
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireBackLeft"]
@@ -79,6 +97,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677, 0.05, 0.7)
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
+target_offset = 0.5
+spring_strength = 4000.0
+damping = 130.0
 tire_model = NodePath("TireMesh")
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireBackRight"]
