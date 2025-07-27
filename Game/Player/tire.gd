@@ -79,4 +79,4 @@ func drive(gas_brake: float) -> void:
 				var torque: float = body.accel_curve.sample_baked(normalized_reverse_speed)
 				body.apply_force(projected_forward * torque * gas_brake * body.gas_force, wheel_point - body.global_position)
 		else:
-			body.apply_force(-projected_forward * drive_speed * roll_friction)
+			body.apply_force(-projected_forward * drive_speed * roll_friction, wheel_point - body.global_position)

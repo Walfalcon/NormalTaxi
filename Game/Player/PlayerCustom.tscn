@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=10 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
-[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="2_utgh1"]
+[ext_resource type="Material" uid="uid://d2xstfoyw5c5t" path="res://Player/Materials/car pink metal.tres" id="2_rg7h5"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
 [ext_resource type="Material" uid="uid://bcs6swq7army4" path="res://shaders/Materials/psx_unlit_mat.tres" id="4_utgh1"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
@@ -13,16 +13,8 @@ point_count = 5
 [sub_resource type="BoxShape3D" id="BoxShape3D_53tn2"]
 size = Vector3(1.2, 0.6, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3lat"]
-render_priority = 0
-shader = ExtResource("2_utgh1")
-shader_parameter/modulate_color = Color(0.609725, 0.324016, 0.494789, 1)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/uv_pan_velocity = Vector2(0, 0)
-
 [sub_resource type="BoxMesh" id="BoxMesh_q1h0l"]
-material = SubResource("ShaderMaterial_q3lat")
+material = ExtResource("2_rg7h5")
 size = Vector3(1.2, 0.6, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rg7h5"]

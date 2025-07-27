@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://d12lflx4x6ehn"]
+[gd_scene load_steps=7 format=3 uid="uid://d12lflx4x6ehn"]
 
 [ext_resource type="Material" uid="uid://bxadek7ymxxlr" path="res://shaders/Materials/blur-post-process_mat.tres" id="1_2vdtb"]
+[ext_resource type="Shader" uid="uid://c0bhglnpoeguq" path="res://shaders/pp_band-dither.gdshader" id="2_bf40q"]
 [ext_resource type="Script" uid="uid://be1ck073dtq1p" path="res://shaders/scene_loader.gd" id="2_dt8i1"]
+[ext_resource type="Texture2D" uid="uid://b0ub3tqjyw46f" path="res://shaders/psxdither.png" id="3_747aq"]
 [ext_resource type="PackedScene" uid="uid://bwwch08u1fki0" path="res://Level/level.tscn" id="3_mhg1c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tfw45"]
+shader = ExtResource("2_bf40q")
+shader_parameter/dither_tex = ExtResource("3_747aq")
+shader_parameter/col_depth = 15.0
+shader_parameter/dither_banding = true
 
 [node name="PostProcessing" type="Node"]
 
@@ -24,6 +32,7 @@ size = Vector2i(960, 720)
 render_target_update_mode = 4
 
 [node name="DitherBanding" type="SubViewportContainer" parent="RetroLayer/Blur/SubViewport"]
+material = SubResource("ShaderMaterial_tfw45")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

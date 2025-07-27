@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d2xstfoyw5c5t"]
+
+[ext_resource type="Shader" uid="uid://cmusu5sfnyqsb" path="res://shaders/psx_unlit_metal.gdshader" id="1_00wo4"]
+[ext_resource type="Texture2D" uid="uid://coi648c53ra08" path="res://Player/Materials/Textures/metal.png" id="2_hhlte"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_00wo4")
+shader_parameter/modulate_color = Color(0.795539, 0.551972, 0.725273, 1)
+shader_parameter/albedoTex = ExtResource("2_hhlte")
