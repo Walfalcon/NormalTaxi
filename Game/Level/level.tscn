@@ -1,9 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=15 format=3 uid="uid://bwwch08u1fki0"]
 
+[ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="Material" uid="uid://dpcniuq4o6a3f" path="res://Level/Materials/asphalt.tres" id="1_o6mkr"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
 [ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="3_52x1o"]
 [ext_resource type="Texture2D" uid="uid://cx50tn3jmqk4v" path="res://Level/Materials/Textures/Cement Tile 32.png" id="4_iincs"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nk1il"]
+panorama = ExtResource("1_iincs")
+filter = false
+
+[sub_resource type="Sky" id="Sky_d6qko"]
+sky_material = SubResource("PanoramaSkyMaterial_nk1il")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_52x1o"]
+background_mode = 2
+background_canvas_max_layer = -1
+sky = SubResource("Sky_d6qko")
+ambient_light_source = 1
+reflected_light_source = 1
+glow_intensity = 1.05
+glow_bloom = 0.23
+fog_mode = 1
+fog_density = 1.0
+fog_sky_affect = 0.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qmtf6"]
 
@@ -35,6 +56,9 @@ subdivide_height = 4
 subdivide_depth = 4
 
 [node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_52x1o")
 
 [node name="TempGround" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_qmtf6")

@@ -6,5 +6,5 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_00wo4")
-shader_parameter/modulate_color = Color(0.795539, 0.551972, 0.725273, 1)
+shader_parameter/modulate_color = Color(1, 0.580392, 1, 1)
 shader_parameter/albedoTex = ExtResource("2_hhlte")
