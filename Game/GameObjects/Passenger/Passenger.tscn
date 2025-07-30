@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmmlolxoi3a7r"]
+
+[ext_resource type="Script" uid="uid://dphgarfx4g01u" path="res://GameObjects/Passenger/passenger.gd" id="1_yg7tl"]
+[ext_resource type="Shader" uid="uid://b7ihdy2gexmxd" path="res://shaders/psx_light-volume.gdshader" id="2_kmk17"]
+[ext_resource type="Texture2D" uid="uid://dkd0tgb2pix0g" path="res://GameObjects/Passenger/Sprites/wave transparent.png" id="3_6obno"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6obno"]
+render_priority = 0
+shader = ExtResource("2_kmk17")
+shader_parameter/modulate_color = Color(1, 0.489236, 0.989469, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jo4ia"]
+material = SubResource("ShaderMaterial_6obno")
+top_radius = 4.0
+bottom_radius = 4.0
+height = 0.5
+radial_segments = 16
+rings = 0
+
+[node name="Passenger" type="Node3D"]
+script = ExtResource("1_yg7tl")
+
+[node name="PlacementRaycast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+enabled = false
+target_position = Vector3(0, -10, 0)
+hit_back_faces = false
+
+[node name="TargetModel" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("CylinderMesh_jo4ia")
+
+[node name="PassengerBase" type="Node3D" parent="TargetModel"]
+unique_name_in_owner = true
+
+[node name="PassengerSprite" type="Sprite3D" parent="TargetModel/PassengerBase"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+billboard = 2
+double_sided = false
+alpha_cut = 1
+texture = ExtResource("3_6obno")

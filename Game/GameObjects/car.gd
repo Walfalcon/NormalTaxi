@@ -15,8 +15,10 @@ extends RigidBody3D
 
 var gas_brake: float = 0.0 ## Should be from -1 to +1
 var steering: float = 0.0 ## Should be from -max_steering_angle to +max_steering_angle
+var speed: float = 0.0
 
 func _physics_process(delta: float) -> void:
+	speed = linear_velocity.length()
 	for tire in tires:
 		tire.force_raycast_update()
 		if tire.steering:
@@ -25,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		if tire.driven:
 			tire.drive(gas_brake)
 		tire.traction()
-	if linear_velocity.length() < stopping_speed:
+	if speed < stopping_speed:
 		apply_central_force(-linear_velocity * mass / delta)
 	#	## Steering
 	#	var target_angular_velocity: Vector3 = global_basis.y * steering * drive_speed

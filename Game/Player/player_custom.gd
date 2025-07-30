@@ -1,6 +1,9 @@
 class_name Player
 extends Car
 
+func _ready() -> void:
+	GameVariables.current_player = self
+
 func _physics_process(delta: float) -> void:
 	## Get inputs
 	steering = Input.get_axis("Right", "Left") * max_steering_angle

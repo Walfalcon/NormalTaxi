@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=16 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="Material" uid="uid://dpcniuq4o6a3f" path="res://Level/Materials/asphalt.tres" id="1_o6mkr"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
 [ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="3_52x1o"]
 [ext_resource type="Texture2D" uid="uid://cx50tn3jmqk4v" path="res://Level/Materials/Textures/Cement Tile 32.png" id="4_iincs"]
+[ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_nk1il"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nk1il"]
 panorama = ExtResource("1_iincs")
@@ -70,7 +71,8 @@ shape = SubResource("WorldBoundaryShape3D_yfk6w")
 mesh = SubResource("PlaneMesh_qmtf6")
 
 [node name="PlayerCustom" parent="." instance=ExtResource("2_qmtf6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47676, 0)
+unique_name_in_owner = true
+transform = Transform3D(-0.75108, 0, -0.660211, 0, 1, 0, 0.660211, 0, -0.75108, 0, 2.47676, 0)
 
 [node name="Ramp" type="StaticBody3D" parent="."]
 transform = Transform3D(0.551937, 0.7185, 0.423229, 0, 0.507538, -0.861629, -0.833886, 0.475565, 0.280129, 41.114, -4.78506, 34.177)
@@ -80,3 +82,14 @@ shape = SubResource("BoxShape3D_qmtf6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ramp"]
 mesh = SubResource("BoxMesh_uawph")
+
+[node name="Passengers" type="Node" parent="."]
+
+[node name="Passenger" parent="Passengers" instance=ExtResource("6_nk1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5155, 2.85626, 33.4607)
+
+[node name="Passenger2" parent="Passengers" instance=ExtResource("6_nk1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5155, 1.59775, 12.8619)
+
+[node name="Passenger3" parent="Passengers" instance=ExtResource("6_nk1il")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7735, 1.59775, 12.8619)

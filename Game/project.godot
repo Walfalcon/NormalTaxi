@@ -14,6 +14,10 @@ config/name="Ridesharing"
 run/main_scene="uid://d12lflx4x6ehn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
+[autoload]
+
+GameVariables="*res://game_variables.gd"
+
 [display]
 
 window/size/viewport_width=960
