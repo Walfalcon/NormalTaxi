@@ -42,12 +42,14 @@ func _physics_process(delta: float) -> void:
 	if dodging or (distance_to_player < 3.0 and GameVariables.current_player.speed > 8.0):
 		if not dodging:
 			var dodge_direction: Vector3 = passenger_base.position - to_local(GameVariables.current_player.global_position)
-			dodge_direction = dodge_direction.slide(normal).normalized()
-			dodge_target = passenger_base.position + dodge_direction * dodge_distance
+			dodge_direction.y = 0.0 ## Flatten the dodge_direction vector
+			dodge_direction = dodge_direction.normalized() * dodge_distance ## and set it to the proper length
+			dodge_target = passenger_base.position + dodge_direction
 			if dodge_target.length() > radius:
-				dodge_target = dodge_target.normalized() * radius
-				if passenger_base.position.distance_to(dodge_target) < 3.0:
-					dodge_target = -dodge_target
+				if dodge_target.length() > radius + 4.0:
+					dodge_target = - dodge_target
+				else:
+					dodge_target = dodge_target.normalized() * radius
 			dodging = true
 		passenger_base.position = passenger_base.position.move_toward(dodge_target, dodge_speed * delta)
 		if passenger_base.position == dodge_target:
