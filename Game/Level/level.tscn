@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=21 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="Material" uid="uid://dpcniuq4o6a3f" path="res://Level/Materials/asphalt.tres" id="1_o6mkr"]
@@ -6,6 +6,8 @@
 [ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="3_52x1o"]
 [ext_resource type="Texture2D" uid="uid://cx50tn3jmqk4v" path="res://Level/Materials/Textures/Cement Tile 32.png" id="4_iincs"]
 [ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_nk1il"]
+[ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
+[ext_resource type="Shader" uid="uid://b7ihdy2gexmxd" path="res://shaders/psx_light-volume.gdshader" id="8_wqlfs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nk1il"]
 panorama = ExtResource("1_iincs")
@@ -56,6 +58,18 @@ subdivide_width = 4
 subdivide_height = 4
 subdivide_depth = 4
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_py82k"]
+render_priority = 0
+shader = ExtResource("8_wqlfs")
+shader_parameter/modulate_color = Color(0.14902, 1, 0.666667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1teg4"]
+material = SubResource("ShaderMaterial_py82k")
+size = Vector3(15, 0.5, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5g78"]
+size = Vector3(15, 3, 15)
+
 [node name="Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -87,9 +101,24 @@ mesh = SubResource("BoxMesh_uawph")
 
 [node name="Passenger" parent="Passengers" instance=ExtResource("6_nk1il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5155, 2.85626, 33.4607)
+take_me_to = "TestDest"
 
 [node name="Passenger2" parent="Passengers" instance=ExtResource("6_nk1il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.5155, 1.59775, 12.8619)
+take_me_to = "TestDest"
 
 [node name="Passenger3" parent="Passengers" instance=ExtResource("6_nk1il")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7735, 1.59775, 12.8619)
+take_me_to = "TestDest"
+
+[node name="Destinations" type="Node" parent="."]
+
+[node name="TestDest" parent="Destinations" instance=ExtResource("7_22cqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0147, 0, 37.8626)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destinations/TestDest"]
+mesh = SubResource("BoxMesh_1teg4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/TestDest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_i5g78")

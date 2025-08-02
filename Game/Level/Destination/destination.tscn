@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxaiw6np38ld7"]
+
+[ext_resource type="Script" uid="uid://dlh1uxh1w060y" path="res://Level/Destination/destination.gd" id="1_fft7u"]
+
+[node name="Destination" type="Area3D"]
+script = ExtResource("1_fft7u")

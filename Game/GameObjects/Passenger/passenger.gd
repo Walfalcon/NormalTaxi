@@ -2,15 +2,20 @@ class_name Passenger
 extends Node3D
 
 @export var radius: float = 6.0
-@export var walk_speed: float = 2.0
-@export var run_speed: float = 3.0
-@export var dodge_speed: float = 14.0
-@export var dodge_distance: float = 5.0
+@export var clue: String = "i dunno"
+@export var take_me_to: String = "" ## Index destinations by the name of the object
 
 @onready var placement_raycast: RayCast3D = %PlacementRaycast
 @onready var target_model: MeshInstance3D = %TargetModel
 @onready var passenger_sprite: Sprite3D = %PassengerSprite
 @onready var passenger_base: Node3D = %PassengerBase
+@onready var area: Area3D = %Area
+
+
+const walk_speed: float = 2.0
+const run_speed: float = 3.0
+const dodge_speed: float = 14.0
+const dodge_distance: float = 5.0
 
 var passenger_ready: bool = true
 var dodging: bool = false
@@ -22,6 +27,8 @@ func _ready() -> void:
 	if placement_raycast.is_colliding():
 		target_model.mesh.top_radius = radius
 		target_model.mesh.bottom_radius = radius
+		var area_shape = area.find_child("CollisionShape3D")
+		area_shape.shape.radius = radius
 		position = placement_raycast.get_collision_point()
 		normal = placement_raycast.get_collision_normal()
 		target_model.look_at(position + normal)
@@ -56,3 +63,5 @@ func _physics_process(delta: float) -> void:
 			dodging = false
 	elif distance_to_player > 15.0:
 		passenger_base.position = passenger_base.position.move_toward(Vector3.ZERO, walk_speed * delta)
+	elif GameVariables.current_player.speed < 0.1 and area.overlaps_body(GameVariables.current_player):
+		GameVariables.current_player.passenger_enter(self)

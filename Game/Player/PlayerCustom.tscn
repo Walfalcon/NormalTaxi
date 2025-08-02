@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=11 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Material" uid="uid://d2xstfoyw5c5t" path="res://Player/Materials/car pink metal.tres" id="2_rg7h5"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
 
 [sub_resource type="Curve" id="Curve_rg7h5"]
-_data = [Vector2(0, 0.460674), 0.0, 0.0, 0, 0, Vector2(0.362319, 0.889865), 0.0, 0.0, 0, 0, Vector2(0.630435, 0.777691), 0.0, 0.0, 0, 0, Vector2(0.991037, 0.272677), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.0, -1.0, 1.0]
+_data = [Vector2(-0.0106382, 0.629214), 0.0, 0.0, 0, 0, Vector2(0.362319, 0.889865), 0.0, 0.0, 0, 0, Vector2(0.630435, 0.777691), 0.0, 0.0, 0, 0, Vector2(0.991037, 0.272677), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53tn2"]
@@ -23,6 +24,9 @@ top_radius = 0.3
 bottom_radius = 0.3
 height = 0.14
 radial_segments = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_rg7h5"]
+font_size = 12
 
 [node name="PlayerCustom" type="RigidBody3D" node_paths=PackedStringArray("tires")]
 mass = 25.0
@@ -120,3 +124,15 @@ script = ExtResource("5_rg7h5")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.982935, 0.183951, 0, -0.183951, 0.982935, 0, 2, 4)
+
+[node name="Clue" type="Label" parent="."]
+unique_name_in_owner = true
+offset_top = 10.0
+offset_right = 320.0
+offset_bottom = 60.0
+label_settings = SubResource("LabelSettings_rg7h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+text_overrun_behavior = 1

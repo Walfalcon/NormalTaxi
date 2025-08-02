@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmmlolxoi3a7r"]
+[gd_scene load_steps=7 format=3 uid="uid://bmmlolxoi3a7r"]
 
 [ext_resource type="Script" uid="uid://dphgarfx4g01u" path="res://GameObjects/Passenger/passenger.gd" id="1_yg7tl"]
 [ext_resource type="Shader" uid="uid://b7ihdy2gexmxd" path="res://shaders/psx_light-volume.gdshader" id="2_kmk17"]
@@ -16,6 +16,9 @@ bottom_radius = 4.0
 height = 0.5
 radial_segments = 16
 rings = 0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6obno"]
+height = 3.0
 
 [node name="Passenger" type="Node3D"]
 script = ExtResource("1_yg7tl")
@@ -41,3 +44,9 @@ billboard = 2
 double_sided = false
 alpha_cut = 1
 texture = ExtResource("3_6obno")
+
+[node name="Area" type="Area3D" parent="TargetModel"]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TargetModel/Area"]
+shape = SubResource("CylinderShape3D_6obno")

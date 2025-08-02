@@ -56,7 +56,7 @@ func steer(angle: float) -> void:
 	rotation.y = angle
 
 ## Apply gas/brake, if drive is true
-func drive(gas_brake: float) -> void:
+func drive(gas: float, brake: float, gear_forward: bool) -> void:
 	if is_colliding():
 		var wheel_point: Vector3 = tire_model.global_position
 		var projected_forward: Vector3 = (-global_basis.z).slide(get_collision_normal()).normalized()
@@ -64,19 +64,18 @@ func drive(gas_brake: float) -> void:
 		tire_model.rotate_x(-drive_speed * get_process_delta_time() / tire_radius)
 		
 		## Gas/Brake
-		if gas_brake > 0.0:
-			if drive_speed < 0.0:
-				body.apply_force(projected_forward * gas_brake * body.brake_force, wheel_point - body.global_position)
-			else:
+		if drive_speed:
+			body.apply_force(-projected_forward * brake * body.brake_force * drive_speed / abs(drive_speed), wheel_point - body.global_position)
+		if gas > 0.0:
+			if gear_forward:
 				var normalized_speed: float = drive_speed / body.max_speed
 				var torque: float = body.accel_curve.sample_baked(normalized_speed)
-				body.apply_force(projected_forward * torque * gas_brake * body.gas_force, wheel_point - body.global_position)
-		elif gas_brake < 0.0:
-			if drive_speed > 0.0:
-				body.apply_force(projected_forward * gas_brake * body.brake_force, wheel_point - body.global_position)
+				print(torque)
+				body.apply_force(projected_forward * torque * gas * body.gas_force, wheel_point - body.global_position)
 			else:
 				var normalized_reverse_speed: float = drive_speed / body.max_reverse_speed
 				var torque: float = body.accel_curve.sample_baked(normalized_reverse_speed)
-				body.apply_force(projected_forward * torque * gas_brake * body.gas_force, wheel_point - body.global_position)
+				print(torque)
+				body.apply_force(-projected_forward * torque * gas * body.gas_force, wheel_point - body.global_position)
 		else:
 			body.apply_force(-projected_forward * drive_speed * roll_friction, wheel_point - body.global_position)
