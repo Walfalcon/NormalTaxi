@@ -2,8 +2,8 @@ class_name Car
 extends RigidBody3D
 
 @export_category("Gas/Brake")
-@export var gas_force: float = 900.0
-@export var brake_force: float = 1.0
+@export var gas_force: float = 300.0
+@export var brake_force: float = 200
 @export var max_speed: float = 60.0 ## Positive number
 @export var max_reverse_speed: float = -50.0 ## Negative number
 @export var accel_curve: Curve
