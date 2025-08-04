@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d2xstfoyw5c5t"]
 
-[ext_resource type="Shader" uid="uid://cmusu5sfnyqsb" path="res://shaders/psx_unlit_metal.gdshader" id="1_00wo4"]
-[ext_resource type="Texture2D" uid="uid://b4o33ugak78yp" path="res://Level/Materials/Textures/skyline image.png" id="2_hhlte"]
+[ext_resource type="Shader" uid="uid://cmusu5sfnyqsb" path="res://shaders/psx_unlit_metal.gdshader" id="1_hhlte"]
+[ext_resource type="Texture2D" uid="uid://dwdevkn885co8" path="res://Level/Materials/Textures/sky sphere.png" id="2_hhlte"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_00wo4")
-shader_parameter/modulate_color = Color(0.47351, 0.856028, 0.638063, 1)
+shader = ExtResource("1_hhlte")
+shader_parameter/modulate_color = Color(0.109804, 0.894118, 0.470588, 1)
 shader_parameter/albedoTex = ExtResource("2_hhlte")

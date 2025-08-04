@@ -4,8 +4,8 @@
 [ext_resource type="Material" uid="uid://d2xstfoyw5c5t" path="res://Player/Materials/car pink metal.tres" id="2_rg7h5"]
 [ext_resource type="Shader" uid="uid://cmusu5sfnyqsb" path="res://shaders/psx_unlit_metal.gdshader" id="3_qympc"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
-[ext_resource type="Texture2D" uid="uid://b4o33ugak78yp" path="res://Level/Materials/Textures/skyline image.png" id="4_qympc"]
 [ext_resource type="Material" uid="uid://bcs6swq7army4" path="res://shaders/Materials/psx_unlit_mat.tres" id="4_utgh1"]
+[ext_resource type="Texture2D" uid="uid://dwdevkn885co8" path="res://Level/Materials/Textures/sky sphere.png" id="4_xfvo5"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
 [ext_resource type="Texture2D" uid="uid://dkd0tgb2pix0g" path="res://GameObjects/Passenger/Sprites/wave transparent.png" id="6_53tn2"]
 
@@ -20,16 +20,21 @@ size = Vector3(1.3, 1.2, 2.7)
 [sub_resource type="BoxMesh" id="BoxMesh_q1h0l"]
 material = ExtResource("2_rg7h5")
 size = Vector3(1.3, 0.7, 2.7)
+subdivide_width = 1
+subdivide_height = 1
+subdivide_depth = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d8ik7"]
 render_priority = 0
 shader = ExtResource("3_qympc")
-shader_parameter/modulate_color = Color(0.286275, 0.698039, 0.286275, 1)
-shader_parameter/albedoTex = ExtResource("4_qympc")
+shader_parameter/modulate_color = Color(0.482353, 0.219608, 0.635294, 1)
+shader_parameter/albedoTex = ExtResource("4_xfvo5")
 
 [sub_resource type="BoxMesh" id="BoxMesh_qt6rh"]
 material = SubResource("ShaderMaterial_d8ik7")
 size = Vector3(1.2, 0.5, 1.7)
+subdivide_width = 1
+subdivide_depth = 2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rg7h5"]
 material = ExtResource("4_utgh1")
@@ -159,7 +164,7 @@ text_overrun_behavior = 1
 
 [node name="Shotgun" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326705, 0.330527, -0.124401)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196764, 0.330527, 0.319734)
 visible = false
 
 [node name="PassengerSprite" type="Sprite3D" parent="Shotgun"]
