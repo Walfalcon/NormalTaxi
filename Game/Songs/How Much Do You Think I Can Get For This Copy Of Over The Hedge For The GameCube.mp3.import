@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://e1dhxxoqpfrt"
+path="res://.godot/imported/How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube.mp3-1eab50c52690223c7d526203b9bd425e.mp3str"
+
+[deps]
+
+source_file="res://Songs/How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube.mp3"
+dest_files=["res://.godot/imported/How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube.mp3-1eab50c52690223c7d526203b9bd425e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

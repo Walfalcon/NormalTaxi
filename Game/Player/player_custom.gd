@@ -2,6 +2,7 @@ class_name Player
 extends Car
 
 @export var engine_pitch_scale: float = 1.0
+@export var engine_pitch_base: float = 1.2
 @export var airborne_engine_pitch_scale: float = 3.0
 @export var engine_pitch_delta: float = 2.5
 
@@ -14,10 +15,12 @@ var has_passenger: bool = false
 
 func _ready() -> void:
 	GameVariables.current_player = self
+	freeze = true
+	GameVariables.start_music.connect(start)
 
 func _physics_process(delta: float) -> void:
 	if freeze:
-		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, 1.0, engine_pitch_delta * delta)
+		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, engine_pitch_base, engine_pitch_delta * delta)
 		return
 	## Get inputs
 	steering = Input.get_axis("Right", "Left") * max_steering_angle
@@ -31,11 +34,11 @@ func _physics_process(delta: float) -> void:
 	
 	if airborne:
 		center_of_mass.y = -1.0
-		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, 1.0 + gas * airborne_engine_pitch_scale, engine_pitch_delta * delta)
+		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, engine_pitch_base + gas * airborne_engine_pitch_scale, engine_pitch_delta * delta)
 	else:
 		var normalized_speed: float = speed / max_speed
 		center_of_mass.y = -0.2
-		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, 1.0 + normalized_speed * engine_pitch_scale, engine_pitch_delta * delta)
+		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, engine_pitch_base + normalized_speed * engine_pitch_scale, engine_pitch_delta * delta)
 
 func stop() -> void:
 	freeze = true
