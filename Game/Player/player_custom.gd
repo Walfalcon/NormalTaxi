@@ -1,8 +1,13 @@
 class_name Player
 extends Car
 
+@export var engine_pitch_scale: float = 1.0
+@export var airborne_engine_pitch_scale: float = 3.0
+@export var engine_pitch_delta: float = 2.5
+
 @onready var clue_label: Label = %Clue
 @onready var shotgun_seat: Node3D = %Shotgun
+@onready var engine_sound: AudioStreamPlayer = %EngineSound
 
 var current_destination: Destination = null
 var has_passenger: bool = false
@@ -12,6 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if freeze:
+		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, 1.0, engine_pitch_delta * delta)
 		return
 	## Get inputs
 	steering = Input.get_axis("Right", "Left") * max_steering_angle
@@ -22,6 +28,14 @@ func _physics_process(delta: float) -> void:
 		gear_forward = !gear_forward
 	
 	super(delta)
+	
+	if airborne:
+		center_of_mass.y = -1.0
+		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, 1.0 + gas * airborne_engine_pitch_scale, engine_pitch_delta * delta)
+	else:
+		var normalized_speed: float = speed / max_speed
+		center_of_mass.y = -0.2
+		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, 1.0 + normalized_speed * engine_pitch_scale, engine_pitch_delta * delta)
 
 func stop() -> void:
 	freeze = true
