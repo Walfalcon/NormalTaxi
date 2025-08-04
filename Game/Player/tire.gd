@@ -70,12 +70,10 @@ func drive(gas: float, brake: float, gear_forward: bool) -> void:
 			if gear_forward:
 				var normalized_speed: float = drive_speed / body.max_speed
 				var torque: float = body.accel_curve.sample_baked(normalized_speed)
-				print(torque)
 				body.apply_force(projected_forward * torque * gas * body.gas_force, wheel_point - body.global_position)
 			else:
 				var normalized_reverse_speed: float = drive_speed / body.max_reverse_speed
 				var torque: float = body.accel_curve.sample_baked(normalized_reverse_speed)
-				print(torque)
 				body.apply_force(-projected_forward * torque * gas * body.gas_force, wheel_point - body.global_position)
 		else:
 			body.apply_force(-projected_forward * drive_speed * roll_friction, wheel_point - body.global_position)

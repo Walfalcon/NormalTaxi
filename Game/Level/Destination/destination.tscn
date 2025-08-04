@@ -3,4 +3,7 @@
 [ext_resource type="Script" uid="uid://dlh1uxh1w060y" path="res://Level/Destination/destination.gd" id="1_fft7u"]
 
 [node name="Destination" type="Area3D"]
+collision_layer = 0
+collision_mask = 3
+monitorable = false
 script = ExtResource("1_fft7u")

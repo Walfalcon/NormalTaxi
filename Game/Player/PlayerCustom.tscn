@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=16 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Material" uid="uid://d2xstfoyw5c5t" path="res://Player/Materials/car pink metal.tres" id="2_rg7h5"]
+[ext_resource type="Shader" uid="uid://cmusu5sfnyqsb" path="res://shaders/psx_unlit_metal.gdshader" id="3_qympc"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
+[ext_resource type="Texture2D" uid="uid://b4o33ugak78yp" path="res://Level/Materials/Textures/skyline image.png" id="4_qympc"]
 [ext_resource type="Material" uid="uid://bcs6swq7army4" path="res://shaders/Materials/psx_unlit_mat.tres" id="4_utgh1"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
+[ext_resource type="Texture2D" uid="uid://dkd0tgb2pix0g" path="res://GameObjects/Passenger/Sprites/wave transparent.png" id="6_53tn2"]
 
 [sub_resource type="Curve" id="Curve_rg7h5"]
 _limits = [0.0, 1.0, -1.0, 1.0]
@@ -12,26 +15,36 @@ _data = [Vector2(-0.0106382, 0.629214), 0.0, 0.0, 0, 0, Vector2(0.362319, 0.8898
 point_count = 5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_53tn2"]
-size = Vector3(1.2, 0.6, 1.5)
+size = Vector3(1.3, 1.2, 2.7)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q1h0l"]
 material = ExtResource("2_rg7h5")
-size = Vector3(1.2, 0.6, 1.5)
+size = Vector3(1.3, 0.7, 2.7)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8ik7"]
+render_priority = 0
+shader = ExtResource("3_qympc")
+shader_parameter/modulate_color = Color(0.286275, 0.698039, 0.286275, 1)
+shader_parameter/albedoTex = ExtResource("4_qympc")
+
+[sub_resource type="BoxMesh" id="BoxMesh_qt6rh"]
+material = SubResource("ShaderMaterial_d8ik7")
+size = Vector3(1.2, 0.5, 1.7)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_rg7h5"]
 material = ExtResource("4_utgh1")
-top_radius = 0.3
-bottom_radius = 0.3
-height = 0.14
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.4
 radial_segments = 7
 
 [sub_resource type="LabelSettings" id="LabelSettings_rg7h5"]
 font_size = 12
 
 [node name="PlayerCustom" type="RigidBody3D" node_paths=PackedStringArray("tires")]
+collision_layer = 3
 mass = 25.0
 center_of_mass_mode = 1
-center_of_mass = Vector3(0, 0, -0.2)
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("1_7i5uh")
@@ -40,16 +53,22 @@ max_steering_angle = 0.35
 tires = [NodePath("TireFrontLeft"), NodePath("TireFrontRight"), NodePath("TireBackLeft"), NodePath("TireBackRight")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261026, 0.198748)
 shape = SubResource("BoxShape3D_53tn2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("BoxMesh_q1h0l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.5)
+mesh = SubResource("BoxMesh_qt6rh")
 skeleton = NodePath("../..")
 
 [node name="TireFrontLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.05, -0.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.000445172, -0.566804)
 enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
@@ -60,6 +79,7 @@ ray_overextend = 0.25
 steering = true
 driven = false
 tire_model = NodePath("TireMesh")
+tire_radius = 0.4
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireFrontLeft"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -67,7 +87,7 @@ mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="TireFrontRight" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.05, -0.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.000445172, -0.566804)
 enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
@@ -78,6 +98,7 @@ ray_overextend = 0.25
 steering = true
 driven = false
 tire_model = NodePath("TireMesh")
+tire_radius = 0.4
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireFrontRight"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -85,7 +106,7 @@ mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="TireBackLeft" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.05, 0.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.000445172, 0.993954)
 enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
@@ -94,6 +115,7 @@ spring_strength = 2800.0
 damping = 90.0
 ray_overextend = 0.25
 tire_model = NodePath("TireMesh")
+tire_radius = 0.4
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireBackLeft"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -101,7 +123,7 @@ mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="TireBackRight" type="RayCast3D" parent="." node_paths=PackedStringArray("tire_model")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.05, 0.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.000445172, 0.993954)
 enabled = false
 target_position = Vector3(0, -0.4, 0)
 script = ExtResource("3_rg7h5")
@@ -110,12 +132,14 @@ spring_strength = 2800.0
 damping = 90.0
 ray_overextend = 0.25
 tire_model = NodePath("TireMesh")
+tire_radius = 0.4
 
 [node name="TireMesh" type="MeshInstance3D" parent="TireBackRight"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_rg7h5")
 
 [node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163026, 0.16504)
 script = ExtResource("5_rg7h5")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
@@ -132,3 +156,15 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 0
 text_overrun_behavior = 1
+
+[node name="Shotgun" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326705, 0.330527, -0.124401)
+visible = false
+
+[node name="PassengerSprite" type="Sprite3D" parent="Shotgun"]
+pixel_size = 0.015
+billboard = 2
+double_sided = false
+alpha_cut = 1
+texture = ExtResource("6_53tn2")
