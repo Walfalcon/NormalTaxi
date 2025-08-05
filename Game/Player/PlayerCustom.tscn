@@ -28,7 +28,7 @@ subdivide_depth = 3
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d8ik7"]
 render_priority = 0
 shader = ExtResource("3_qympc")
-shader_parameter/modulate_color = Color(0.482353, 0.219608, 0.635294, 1)
+shader_parameter/modulate_color = Color(0.823529, 0.219608, 0.286275, 1)
 shader_parameter/albedoTex = ExtResource("4_xfvo5")
 
 [sub_resource type="BoxMesh" id="BoxMesh_qt6rh"]
