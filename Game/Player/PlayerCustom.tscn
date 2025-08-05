@@ -164,13 +164,17 @@ autowrap_mode = 2
 justification_flags = 0
 text_overrun_behavior = 1
 
+[node name="GetInPoint" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950482, -0.389581, 0.319734)
+
 [node name="Shotgun" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196764, 0.330527, 0.319734)
 visible = false
 
 [node name="PassengerSprite" type="Sprite3D" parent="Shotgun"]
-pixel_size = 0.015
+pixel_size = 0.0125
 billboard = 2
 double_sided = false
 alpha_cut = 1

@@ -11,9 +11,9 @@ extends Node3D
 @onready var area: Area3D = %Area
 
 
-const walk_speed: float = 4.0
-const run_speed: float = 8.0
-const dodge_speed: float = 14.0
+const walk_speed: float = 6.0
+const run_speed: float = 10.0
+const dodge_speed: float = 20.0
 const dodge_distance: float = 5.0
 
 var passenger_ready: bool = true ## Is the passenger ready to be picked up
@@ -50,8 +50,9 @@ func _disable_passenger_ready() -> void:
 func _physics_process(delta: float) -> void:
 	var distance_to_player: float = GameVariables.current_player.global_position.distance_to(passenger_base.global_position)
 	if boarding:
-		passenger_base.global_position = passenger_base.global_position.move_toward(GameVariables.current_player.shotgun_seat.global_position, run_speed * delta)
-		if (passenger_base.global_position - GameVariables.current_player.shotgun_seat.global_position).length() < 0.1:
+		var target_position = to_local(GameVariables.current_player.get_in_point.global_position).slide(normal)
+		passenger_base.position = passenger_base.position.move_toward(target_position, run_speed * delta)
+		if (passenger_base.position -target_position).length() < 0.1:
 			passenger_base.visible = false
 			GameVariables.current_player.passenger_enter(self)
 			boarding = false

@@ -8,6 +8,7 @@ extends Car
 
 @onready var clue_label: Label = %Clue
 @onready var shotgun_seat: Node3D = %Shotgun
+@onready var get_in_point: Node3D = %GetInPoint
 @onready var engine_sound: AudioStreamPlayer = %EngineSound
 
 var current_destination: Destination = null
