@@ -5,6 +5,7 @@ extends Car
 @export var engine_pitch_base: float = 1.2
 @export var airborne_engine_pitch_scale: float = 3.0
 @export var engine_pitch_delta: float = 2.5
+@export var restart_node: Node3D
 
 @onready var clue_label: Label = %Clue
 @onready var shotgun_seat: Node3D = %Shotgun
@@ -20,6 +21,11 @@ func _ready() -> void:
 	GameVariables.start_music.connect(start)
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("Restart"):
+		global_transform = restart_node.global_transform
+		angular_velocity = Vector3.ZERO
+		linear_velocity = Vector3.ZERO
+		return
 	if freeze:
 		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, engine_pitch_base, engine_pitch_delta * delta)
 		return

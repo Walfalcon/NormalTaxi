@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3rgmpfs8xp2e"]
+
+[ext_resource type="Script" uid="uid://crid18n6bckca" path="res://Level/RestartPoints/restart_point.gd" id="1_mjhr5"]
+
+[node name="RestartPoint" type="Area3D"]
+script = ExtResource("1_mjhr5")
