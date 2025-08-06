@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bq1leflpin3fm"]
 
-[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_6rrnj"]
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_6rrnj"]
 [ext_resource type="Texture2D" uid="uid://dvtd2xgsbjr3y" path="res://Player/models/TheCar_CarTextures.png" id="2_4nvca"]
 
 [resource]

@@ -1,10 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c0w18tavho2l6"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c0w18tavho2l6"]
 
-[ext_resource type="Shader" uid="uid://cmusu5sfnyqsb" path="res://shaders/psx_unlit_metal.gdshader" id="1_dgkp6"]
-[ext_resource type="Texture2D" uid="uid://dwdevkn885co8" path="res://Level/Materials/Textures/sky sphere.png" id="2_kthrf"]
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_m0gis"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_dgkp6")
+shader = ExtResource("1_m0gis")
 shader_parameter/modulate_color = Color(0.521569, 0.905882, 0.670588, 1)
-shader_parameter/albedoTex = ExtResource("2_kthrf")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

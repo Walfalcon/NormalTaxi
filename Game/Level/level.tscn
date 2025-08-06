@@ -22,7 +22,8 @@ radiance_size = 0
 background_mode = 2
 background_canvas_max_layer = -1
 sky = SubResource("Sky_d6qko")
-ambient_light_source = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.393086, 0.393086, 0.393085, 1)
 reflected_light_source = 1
 glow_intensity = 1.05
 glow_bloom = 0.23
@@ -75,6 +76,12 @@ size = Vector3(15, 3, 15)
 size = Vector3(25, 10, 25)
 
 [node name="Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_bake_mode = 1
+directional_shadow_mode = 0
+sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_52x1o")

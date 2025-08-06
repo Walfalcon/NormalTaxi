@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d2xstfoyw5c5t"]
+
+[ext_resource type="Shader" uid="uid://gabf7m051pb1" path="res://shaders/psx_lit_metal.gdshader" id="1_h4vv0"]
+[ext_resource type="Texture2D" uid="uid://dwdevkn885co8" path="res://Level/Materials/Textures/sky sphere.png" id="2_g35a4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_h4vv0")
+shader_parameter/modulate_color = Color(1, 0.313726, 0.741176, 1)
+shader_parameter/albedoTex = ExtResource("2_g35a4")

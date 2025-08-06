@@ -42,6 +42,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://bdryaru8wihmv"
 },
+"Pink Cube": {
+"use_external/enabled": true,
+"use_external/path": "uid://d2xstfoyw5c5t"
+},
 "Seat": {
 "use_external/enabled": true,
 "use_external/path": "uid://clsmklctk77wy"
@@ -53,21 +57,6 @@ _subresources={
 "Tire": {
 "use_external/enabled": true,
 "use_external/path": "uid://bnfk4ioj2q4uj"
-}
-},
-"meshes": {
-"TheCar_Cube_036": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": false,
-"save_to_file/path": "res://Player/models/Hitbox.res"
-}
-},
-"nodes": {
-"PATH:Hitbox": {
-"physics/body_type": 1
 }
 }
 }
