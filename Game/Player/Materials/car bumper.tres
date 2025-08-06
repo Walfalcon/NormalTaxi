@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bdryaru8wihmv"]
+
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_2nsnx"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2nsnx")
+shader_parameter/modulate_color = Color(0.121569, 0.0823529, 0.054902, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

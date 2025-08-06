@@ -11,6 +11,7 @@ extends Car
 @onready var shotgun_seat: Node3D = %Shotgun
 @onready var get_in_point: Node3D = %GetInPoint
 @onready var engine_sound: AudioStreamPlayer = %EngineSound
+@onready var car_model: Node3D = %TheCar
 
 var current_destination: Destination = null
 var has_passenger: bool = false
@@ -19,6 +20,10 @@ func _ready() -> void:
 	GameVariables.current_player = self
 	freeze = true
 	GameVariables.start_music.connect(start)
+	%TireFrontLeft.tire_model = car_model.find_child("Tire-FL")
+	%TireFrontRight.tire_model = car_model.find_child("Tire-FR")
+	%TireBackLeft.tire_model = car_model.find_child("Tire-RL")
+	%TireBackRight.tire_model = car_model.find_child("Tire-RR")
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Restart"):

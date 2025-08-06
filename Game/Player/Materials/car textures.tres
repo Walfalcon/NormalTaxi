@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bq1leflpin3fm"]
+
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_6rrnj"]
+[ext_resource type="Texture2D" uid="uid://dvtd2xgsbjr3y" path="res://Player/models/TheCar_CarTextures.png" id="2_4nvca"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6rrnj")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_4nvca")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

@@ -12,29 +12,30 @@ extends RayCast3D
 @export var steering: bool = false
 @export var driven: bool = true
 @export_category("Model")
-@export var tire_model: Node3D
 @export var tire_radius: float = 0.3
 
 @export var debug: bool = false
 
 @onready var body: Car = get_parent()
 @onready var tire_mass: float = body.mass / body.tires.size()
+@onready var tire_position: Vector3 = position
 
+var tire_model: Node3D
 var gas: float = 0.0
 var brake: float = 0.0
 var last_compression: float = 0.0
 
 func _ready() -> void:
 	target_position.y = -(target_offset + tire_radius + ray_overextend)
-	tire_model.position.y = -target_offset
+	tire_position.y -= target_offset
 
 ## Prevent tire slipping
 func traction() -> void:
 	if is_colliding():
-		var tire_velocity: Vector3 = body.get_point_velocity(tire_model.global_position) ##How fast the wheel is moving forwards
+		var tire_velocity: Vector3 = body.get_point_velocity(to_global(tire_position)) ##How fast the wheel is moving forwards
 		var side_velocity: float = global_basis.tdotx(tire_velocity)
 		var side_force: Vector3 = -global_basis.x * side_velocity * tire_grip * tire_mass * ProjectSettings.get_setting("physics/3d/default_gravity")
-		body.apply_force(side_force, tire_model.global_position - body.global_position)
+		body.apply_force(side_force, to_global(tire_position) - body.global_position)
 		
 
 ## Apply suspension
@@ -46,10 +47,11 @@ func suspension() -> void:
 		var spring_force: float = offset * spring_strength
 		
 		var damp_force: float = global_basis.tdoty(body.get_point_velocity(wheel_point)) * damping
-		tire_model.position.y = -spring_length
-		body.apply_force((spring_force - damp_force) * global_basis.y, tire_model.global_position - body.global_position)
+		tire_position.y = -spring_length
+		tire_model.position = tire_position
+		body.apply_force((spring_force - damp_force) * global_basis.y, to_global(tire_position) - body.global_position)
 	else:
-		tire_model.position.y = -target_offset
+		tire_position.y = -target_offset
 
 ## Rotate tires, if steering is true
 func steer(angle: float) -> void:
@@ -58,7 +60,7 @@ func steer(angle: float) -> void:
 ## Apply gas/brake, if drive is true
 func drive(gas: float, brake: float, gear_forward: bool) -> void:
 	if is_colliding():
-		var wheel_point: Vector3 = tire_model.global_position
+		var wheel_point: Vector3 = to_global(tire_position)
 		var projected_forward: Vector3 = (-global_basis.z).slide(get_collision_normal()).normalized()
 		var drive_speed: float = projected_forward.dot(body.linear_velocity) ##How fast the wheel is moving forwards
 		tire_model.rotate_x(-drive_speed * get_process_delta_time() / tire_radius)
