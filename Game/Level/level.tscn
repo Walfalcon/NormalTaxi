@@ -1,10 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=13 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
-[ext_resource type="Material" uid="uid://dpcniuq4o6a3f" path="res://Level/Materials/asphalt.tres" id="1_o6mkr"]
+[ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
 [ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
-[ext_resource type="Material" uid="uid://chf5u5dkc1k7k" path="res://Level/Materials/testmaterial.tres" id="7_d6qko"]
 [ext_resource type="Material" uid="uid://d0ieckpgvor2h" path="res://Level/Materials/destination.tres" id="8_wqlfs"]
 [ext_resource type="Script" uid="uid://crid18n6bckca" path="res://Level/RestartPoints/restart_point.gd" id="9_wqlfs"]
 
@@ -29,16 +28,6 @@ fog_mode = 1
 fog_density = 1.0
 fog_sky_affect = 0.0
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qmtf6"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yfk6w"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qmtf6"]
-material = ExtResource("1_o6mkr")
-size = Vector2(1000, 1000)
-subdivide_width = 450
-subdivide_depth = 450
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_py82k"]
 material = ExtResource("8_wqlfs")
 top_radius = 20.0
@@ -52,93 +41,12 @@ cap_bottom = false
 height = 6.0
 radius = 20.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_d6qko"]
-material = ExtResource("8_wqlfs")
-size = Vector3(15, 1, 10)
-subdivide_width = 5
-subdivide_height = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d6qko"]
-size = Vector3(15, 3, 10)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5g78"]
-size = Vector3(50, 10, 50)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wqlfs"]
-size = Vector3(30, 10, 90)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_wqlfs"]
-material = ExtResource("7_d6qko")
-top_radius = 3.0
-bottom_radius = 7.0
-height = 50.0
-radial_segments = 10
-rings = 15
-cap_top = false
-cap_bottom = false
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_py82k"]
-height = 20.0
-radius = 7.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q47le"]
-size = Vector3(20, 12, 20)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dx36h"]
-material = ExtResource("7_d6qko")
-size = Vector3(10, 12, 50)
-subdivide_width = 2
-subdivide_height = 2
-subdivide_depth = 5
-
-[sub_resource type="BoxMesh" id="BoxMesh_1p6h5"]
-material = ExtResource("7_d6qko")
-size = Vector3(20, 12, 20)
-subdivide_width = 2
-subdivide_height = 2
-subdivide_depth = 5
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_uqeto"]
-size = Vector3(10, 12, 40)
-
-[sub_resource type="BoxMesh" id="BoxMesh_luomk"]
-material = ExtResource("7_d6qko")
-size = Vector3(10, 12, 40)
-subdivide_width = 2
-subdivide_height = 2
-subdivide_depth = 5
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_22cqp"]
-size = Vector3(20, 6, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wqlfs"]
-material = ExtResource("7_d6qko")
-size = Vector3(20, 6, 10)
-subdivide_width = 2
-subdivide_height = 2
-subdivide_depth = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_py82k"]
-size = Vector3(10, 8, 190)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1teg4"]
-material = ExtResource("7_d6qko")
-size = Vector3(10, 8, 190)
-subdivide_width = 2
-subdivide_height = 2
-subdivide_depth = 90
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1teg4"]
-size = Vector3(10, 8, 90)
-
-[sub_resource type="BoxMesh" id="BoxMesh_i5g78"]
-material = ExtResource("7_d6qko")
-size = Vector3(10, 8, 90)
-subdivide_width = 2
-subdivide_height = 2
-subdivide_depth = 45
+size = Vector3(60, 10, 60)
 
 [node name="Level" type="Node3D"]
+
+[node name="Map" parent="." instance=ExtResource("1_nk1il")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -149,18 +57,9 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_52x1o")
 
-[node name="TempGround" type="StaticBody3D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_qmtf6")
-
-[node name="TempGroundShape" type="CollisionShape3D" parent="TempGround"]
-shape = SubResource("WorldBoundaryShape3D_yfk6w")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TempGround"]
-mesh = SubResource("PlaneMesh_qmtf6")
-
 [node name="PlayerCustom" parent="." node_paths=PackedStringArray("restart_node") groups=["Player"] instance=ExtResource("2_qmtf6")]
 unique_name_in_owner = true
-transform = Transform3D(-0.77088, 0, -0.63698, 0, 1, 0, 0.63698, 0, -0.77088, 0, 1.25, 12.2099)
+transform = Transform3D(0.899703, 0, -0.436503, 0, 1, 0, 0.436503, 0, 0.899703, 0, 1.25, -17.8407)
 restart_node = NodePath("../RestartPoints/RestartPoint1/Node3D")
 
 [node name="Passengers" type="Node" parent="."]
@@ -168,6 +67,7 @@ restart_node = NodePath("../RestartPoints/RestartPoint1/Node3D")
 [node name="Destinations" type="Node" parent="."]
 
 [node name="Tower" parent="Destinations" instance=ExtResource("7_22cqp")]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Destinations/Tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -177,21 +77,9 @@ mesh = SubResource("CylinderMesh_py82k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_1teg4")
 
-[node name="Pizza" parent="Destinations" instance=ExtResource("7_22cqp")]
-transform = Transform3D(0.97005, 0, -0.242904, 0, 1, 0, 0.242904, 0, 0.97005, 0, 0, 248.674)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Destinations/Pizza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_d6qko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/Pizza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("BoxShape3D_d6qko")
-
 [node name="RestartPoints" type="Node" parent="."]
 
 [node name="RestartPoint1" type="Area3D" parent="RestartPoints"]
-visible = false
 collision_layer = 0
 collision_mask = 2
 monitorable = false
@@ -199,108 +87,8 @@ script = ExtResource("9_wqlfs")
 metadata/_custom_type_script = "uid://crid18n6bckca"
 
 [node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.81949e-08, 1.25, 11.6105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81949e-08, 1.25, -17.0525)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_i5g78")
-
-[node name="RestartPoint2" type="Area3D" parent="RestartPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 70.936)
-visible = false
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-script = ExtResource("9_wqlfs")
-metadata/_custom_type_script = "uid://crid18n6bckca"
-
-[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.81949e-08, 1.25, 11.6105)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-shape = SubResource("BoxShape3D_wqlfs")
-
-[node name="LevelObjects" type="Node" parent="."]
-
-[node name="Tower" type="StaticBody3D" parent="LevelObjects"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/Tower"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
-mesh = SubResource("CylinderMesh_wqlfs")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObjects/Tower"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-shape = SubResource("CylinderShape3D_py82k")
-
-[node name="TowerCourtyard" type="StaticBody3D" parent="LevelObjects"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObjects/TowerCourtyard"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 6, 0)
-shape = SubResource("BoxShape3D_q47le")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerCourtyard/CollisionShape3D"]
-mesh = SubResource("BoxMesh_dx36h")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="LevelObjects/TowerCourtyard"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 6, 35)
-shape = SubResource("BoxShape3D_q47le")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerCourtyard/CollisionShape3D4"]
-mesh = SubResource("BoxMesh_1p6h5")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="LevelObjects/TowerCourtyard"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 6, 35)
-shape = SubResource("BoxShape3D_q47le")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerCourtyard/CollisionShape3D5"]
-mesh = SubResource("BoxMesh_1p6h5")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="LevelObjects/TowerCourtyard"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.1413, 6, -28.6203)
-shape = SubResource("BoxShape3D_q47le")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerCourtyard/CollisionShape3D3"]
-mesh = SubResource("BoxMesh_dx36h")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="LevelObjects/TowerCourtyard"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 6, 5)
-shape = SubResource("BoxShape3D_uqeto")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerCourtyard/CollisionShape3D2"]
-mesh = SubResource("BoxMesh_luomk")
-
-[node name="Pizza" type="StaticBody3D" parent="LevelObjects"]
-transform = Transform3D(0.97005, 0, -0.242904, 0, 1, 0, 0.242904, 0, 0.97005, -2.11273, 0, 257.111)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObjects/Pizza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.483)
-shape = SubResource("BoxShape3D_22cqp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/Pizza"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-mesh = SubResource("BoxMesh_wqlfs")
-
-[node name="TowerPizzaStreet" type="StaticBody3D" parent="LevelObjects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 120.251)
-
-[node name="XMinusSide" type="CollisionShape3D" parent="LevelObjects/TowerPizzaStreet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 4, 0)
-shape = SubResource("BoxShape3D_py82k")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerPizzaStreet/XMinusSide"]
-mesh = SubResource("BoxMesh_1teg4")
-
-[node name="XPlusSide" type="CollisionShape3D" parent="LevelObjects/TowerPizzaStreet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 4, 50)
-shape = SubResource("BoxShape3D_1teg4")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerPizzaStreet/XPlusSide"]
-mesh = SubResource("BoxMesh_i5g78")
-
-[node name="XPlusSide2" type="CollisionShape3D" parent="LevelObjects/TowerPizzaStreet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 4, -50)
-shape = SubResource("BoxShape3D_1teg4")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObjects/TowerPizzaStreet/XPlusSide2"]
-mesh = SubResource("BoxMesh_i5g78")
