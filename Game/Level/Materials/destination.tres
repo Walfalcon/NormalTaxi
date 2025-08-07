@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d0ieckpgvor2h"]
+
+[ext_resource type="Shader" uid="uid://b7ihdy2gexmxd" path="res://shaders/psx_light-volume.gdshader" id="1_km3dk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_km3dk")
+shader_parameter/modulate_color = Color(0.289105, 0.78024, 0.548374, 1)

@@ -8,6 +8,6 @@ render_priority = 0
 shader = ExtResource("1_npwti")
 shader_parameter/modulate_color = Color(1, 1, 1, 1)
 shader_parameter/albedoTex = ExtResource("2_sqwag")
-shader_parameter/uv_scale = Vector2(14, 14)
+shader_parameter/uv_scale = Vector2(300, 300)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)

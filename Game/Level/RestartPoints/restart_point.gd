@@ -8,5 +8,4 @@ func _ready() -> void:
 
 func _on_player_left(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		print("player left")
 		body.restart_node = point

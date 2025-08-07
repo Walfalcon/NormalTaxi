@@ -64,6 +64,7 @@ func passenger_enter(new_passenger: Passenger) -> void:
 		if i.name == new_passenger.take_me_to:
 			current_destination = i
 			current_destination.is_active = true
+			current_destination.visible = true
 			break
 	assert(current_destination != null, "Picked up passenger did not have a valid destination")
 	clue_label.text = new_passenger.clue
@@ -72,6 +73,8 @@ func passenger_enter(new_passenger: Passenger) -> void:
 	start()
 
 func passenger_exit() -> void:
+	current_destination.is_active = false
+	current_destination.visible = false
 	has_passenger = false
 	current_destination = null
 	clue_label.text = ""

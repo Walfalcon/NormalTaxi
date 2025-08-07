@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_e6x8x")
-shader_parameter/modulate_color = Color(0.0927642, 0.101824, 0.0588997, 1)
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)

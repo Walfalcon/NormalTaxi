@@ -17,8 +17,9 @@ material = SubResource("ShaderMaterial_6obno")
 top_radius = 4.0
 bottom_radius = 4.0
 height = 0.5
-radial_segments = 16
+radial_segments = 12
 rings = 0
+cap_bottom = false
 
 [node name="Passenger" type="Node3D"]
 script = ExtResource("1_yg7tl")
