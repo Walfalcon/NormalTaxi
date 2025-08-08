@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=21 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_d6qko"]
 [ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
 [ext_resource type="Texture2D" uid="uid://cb5sgy0go2roc" path="res://Level/Stuff/bear.png" id="8_22cqp"]
+[ext_resource type="Texture2D" uid="uid://i6d64apk4u2y" path="res://Level/Stuff/pizza.png" id="8_py82k"]
 [ext_resource type="Material" uid="uid://d0ieckpgvor2h" path="res://Level/Materials/destination.tres" id="8_wqlfs"]
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="9_1teg4"]
 [ext_resource type="Script" uid="uid://crid18n6bckca" path="res://Level/RestartPoints/restart_point.gd" id="9_wqlfs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nk1il"]
@@ -52,6 +54,18 @@ size = Vector3(15, 6, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5g78"]
 size = Vector3(60, 10, 60)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5g78"]
+render_priority = 0
+shader = ExtResource("9_1teg4")
+shader_parameter/modulate_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_q47le"]
+material = SubResource("ShaderMaterial_i5g78")
+size = Vector2(0.5, 10)
 
 [node name="Level" type="Node3D"]
 
@@ -247,6 +261,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81949e-08, 1.25, -17.0525)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_i5g78")
+
+[node name="PizzaSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.957102, 0, -0.28975, 0, 1, 0, 0.28975, 0, 0.957102, -12.873, 1.88539, -220.314)
+pixel_size = 0.14
+texture = ExtResource("8_py82k")
+
+[node name="Pole" type="MeshInstance3D" parent="PizzaSprite"]
+transform = Transform3D(0.783693, 0, 0.621148, 0, 1, 0, -0.621148, 0, 0.783693, 0, -6.36281, 0)
+mesh = SubResource("QuadMesh_q47le")
 
 [node name="BearSprite" type="Sprite3D" parent="."]
 transform = Transform3D(0.999599, 0, -0.0283052, 0, 1, 0, 0.0283052, 0, 0.999599, 33.4936, -5.00348, -105.421)
