@@ -1,12 +1,15 @@
 class_name Player
 extends Car
 
-@export var engine_pitch_scale: float = 1.0
-@export var engine_pitch_base: float = 1.2
-@export var airborne_engine_pitch_scale: float = 3.0
-@export var engine_pitch_delta: float = 2.5
+const boost_force: float = 500.0
+const boost_wait_time: float = 0.2
+const engine_pitch_scale: float = 1.0
+const engine_pitch_base: float = 1.2
+const airborne_engine_pitch_scale: float = 3.0
+const engine_pitch_delta: float = 2.5
+
 @export var restart_node: Node3D
-@export var change_direction_force: float = 300.0
+
 
 @onready var clue_label: Label = %Clue
 @onready var passenger_model: Node3D = %Passenger
@@ -14,9 +17,11 @@ extends Car
 @onready var get_in_point: Node3D = %GetInPoint
 @onready var engine_sound: AudioStreamPlayer = %EngineSound
 @onready var car_model: Node3D = %TheCar
+@onready var boost_timer: Timer = %NormalBoostTimer
 
 var current_destination: Destination = null
 var has_passenger: bool = false
+
 
 func _ready() -> void:
 	passenger_animator.play("Sit")
@@ -42,14 +47,13 @@ func _physics_process(delta: float) -> void:
 	gas = Input.get_action_strength("Gas")
 	brake = Input.get_action_strength("Brake")
 	
+	if (not airborne) and (not boost_timer.is_stopped()) and Input.is_action_just_pressed("Gas"):
+		apply_central_impulse(basis.z * (-boost_force if gear_forward else boost_force))
+	
 	if Input.is_action_just_pressed("Shift"):
 		gear_forward = !gear_forward
-	
-	if not airborne:
-		if gear_forward and Input.is_action_just_pressed("Gas") and basis.tdotz(linear_velocity) > 1.0:
-			apply_central_impulse(basis.z * (-change_direction_force))
-		elif (not gear_forward) and Input.is_action_just_pressed("Gas") and basis.tdotz(linear_velocity) < -1.0:
-			apply_central_impulse(basis.z * change_direction_force)
+		if not Input.is_action_pressed("Gas"):
+			boost_timer.start(boost_wait_time)
 	
 	super(delta)
 	

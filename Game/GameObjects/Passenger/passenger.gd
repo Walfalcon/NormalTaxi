@@ -35,8 +35,8 @@ func _ready() -> void:
 		area_shape.shape.radius = radius
 		position = placement_raycast.get_collision_point()
 		normal = placement_raycast.get_collision_normal()
-		area.look_at(position + normal)
-		area.transform = area.transform.rotated_local(Vector3.RIGHT, -PI/2)
+		var look_at_vector = Vector3.BACK.slide(normal)
+		area.look_at(look_at_vector + position, normal)
 	else:
 		print("WHOOPS the passenger couldn't find solid ground")
 	anim_player.play("Idle")

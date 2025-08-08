@@ -21,8 +21,6 @@ extends RayCast3D
 @onready var tire_position: Vector3 = position
 
 var tire_model: Node3D
-var gas: float = 0.0
-var brake: float = 0.0
 var last_compression: float = 0.0
 
 func _ready() -> void:

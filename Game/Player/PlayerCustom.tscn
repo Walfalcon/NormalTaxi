@@ -35,8 +35,8 @@ angular_damp_mode = 1
 script = ExtResource("1_7i5uh")
 gas_force = 150.0
 brake_force = 150.0
-max_speed = 40.0
-max_reverse_speed = -30.0
+max_speed = 30.0
+max_reverse_speed = -20.0
 accel_curve = SubResource("Curve_rg7h5")
 max_steering_angle = 0.35
 tires = [NodePath("TireFrontLeft"), NodePath("TireFrontRight"), NodePath("TireBackLeft"), NodePath("TireBackRight")]
@@ -149,3 +149,7 @@ shape = SubResource("BoxShape3D_q1h0l")
 [node name="CollisionBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.177083)
 shape = SubResource("BoxShape3D_qympc")
+
+[node name="NormalBoostTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
