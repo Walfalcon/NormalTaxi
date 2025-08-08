@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 			if passenger_model.position == dodge_target:
 				dodging = false
 		elif distance_to_player > 15.0:
-			if passenger_model.position != Vector3.ZERO:
+			if passenger_model.position.length() > 0.01:
 				passenger_model.look_at(global_position)
 				passenger_model.position = passenger_model.position.move_toward(Vector3.ZERO, walk_speed * delta)
 				anim_player.play("Walk")

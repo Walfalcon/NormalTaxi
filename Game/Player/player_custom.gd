@@ -7,6 +7,7 @@ const engine_pitch_scale: float = 1.0
 const engine_pitch_base: float = 1.2
 const airborne_engine_pitch_scale: float = 3.0
 const engine_pitch_delta: float = 2.5
+const passenger_leave_speed: float = 15.0
 
 @export var restart_node: Node3D
 
@@ -19,10 +20,12 @@ const engine_pitch_delta: float = 2.5
 @onready var car_model: Node3D = %TheCar
 @onready var boost_timer: Timer = %NormalBoostTimer
 @onready var gearshift_icon: Sprite2D = %GearshiftIcon
+@onready var passenger_timer: Timer = %PassengerTimer
+@onready var seated_position: Transform3D = passenger_model.transform
 
 var current_destination: Destination = null
 var has_passenger: bool = false
-
+var passenger_leaving: bool = false
 
 func _ready() -> void:
 	passenger_animator.play("Sit")
@@ -66,6 +69,9 @@ func _physics_process(delta: float) -> void:
 		var normalized_speed: float = speed / max_speed
 		center_of_mass.y = -0.2
 		engine_sound.pitch_scale = move_toward(engine_sound.pitch_scale, engine_pitch_base + normalized_speed * engine_pitch_scale, engine_pitch_delta * delta)
+	
+	if passenger_leaving:
+		passenger_model.position.y += passenger_leave_speed * delta
 
 func stop() -> void:
 	freeze = true
@@ -75,6 +81,11 @@ func start() -> void:
 
 ## Called when the player stops to pick up a passenger. Add a thing to wait until the passenger is on board.
 func passenger_enter(new_passenger: Passenger) -> void:
+	passenger_timer.stop()
+	passenger_leaving = false
+	passenger_model.top_level = false
+	passenger_model.transform = seated_position
+	passenger_animator.play("Sit")
 	for i in GameVariables.destinations:
 		if i.name == new_passenger.take_me_to:
 			current_destination = i
@@ -93,5 +104,14 @@ func passenger_exit() -> void:
 	has_passenger = false
 	current_destination = null
 	clue_label.text = ""
-	passenger_model.visible = false
+	passenger_animator.play("Dive")
+	passenger_model.top_level = true
+	passenger_model.look_at(passenger_model.position + Vector3.UP)
+	passenger_leaving = true
+	passenger_timer.start()
 	GameVariables.drop_off_passenger.emit()
+
+
+func _on_passenger_timer_timeout() -> void:
+	passenger_leaving = false
+	passenger_model.visible = false

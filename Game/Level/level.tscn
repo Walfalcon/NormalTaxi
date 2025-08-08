@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=17 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
 [ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_d6qko"]
 [ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
+[ext_resource type="Texture2D" uid="uid://cb5sgy0go2roc" path="res://Level/Stuff/bear.png" id="8_22cqp"]
 [ext_resource type="Material" uid="uid://d0ieckpgvor2h" path="res://Level/Materials/destination.tres" id="8_wqlfs"]
 [ext_resource type="Script" uid="uid://crid18n6bckca" path="res://Level/RestartPoints/restart_point.gd" id="9_wqlfs"]
 
@@ -246,3 +247,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81949e-08, 1.25, -17.0525)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_i5g78")
+
+[node name="BearSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.999599, 0, -0.0283052, 0, 1, 0, 0.0283052, 0, 0.999599, 33.4936, -5.00348, -105.421)
+offset = Vector2(0, 43.5)
+pixel_size = 0.2
+billboard = 2
+double_sided = false
+alpha_cut = 1
+texture_filter = 2
+texture = ExtResource("8_22cqp")

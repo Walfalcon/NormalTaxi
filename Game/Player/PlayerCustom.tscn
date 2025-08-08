@@ -160,3 +160,9 @@ shape = SubResource("BoxShape3D_qympc")
 [node name="NormalBoostTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="PassengerTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="PassengerTimer" to="." method="_on_passenger_timer_timeout"]
