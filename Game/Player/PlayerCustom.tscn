@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=13 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
 [ext_resource type="PackedScene" uid="uid://cdc8o6t3xl1ic" path="res://GameObjects/Passenger/Passenger.glb" id="4_53tn2"]
 [ext_resource type="FontFile" uid="uid://iq7ddevcbf0d" path="res://Fonts/Roboto-Medium.ttf" id="4_q1h0l"]
+[ext_resource type="Texture2D" uid="uid://cocoiqjv1bj3g" path="res://Player/gearshift icon.png" id="5_qympc"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
 [ext_resource type="AudioStream" uid="uid://bqbfilaegltks" path="res://Player/Sounds/Engine.wav" id="9_xfvo5"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="10_d8ik7"]
@@ -123,6 +124,12 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 0
 text_overrun_behavior = 1
+
+[node name="GearshiftIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(260, 200)
+texture = ExtResource("5_qympc")
+hframes = 2
 
 [node name="GetInPoint" type="Node3D" parent="."]
 unique_name_in_owner = true

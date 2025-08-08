@@ -130,7 +130,7 @@ take_me_to = "Pizza"
 transform = Transform3D(-0.157624, 0, 0.987499, 0, 1, 0, -0.987499, 0, -0.157624, 8.04307, -4.69428, -130.994)
 points = 3
 clue = "Apparently other towns have more than one animal at their zoos."
-take_me_to = "Pizza"
+take_me_to = "Zoo"
 
 [node name="Passenger4" parent="Passengers" instance=ExtResource("6_d6qko")]
 transform = Transform3D(-0.989759, 0, 0.14275, 0, 1, 0, -0.14275, 0, -0.989759, -10.8141, -7.84845, -216.264)

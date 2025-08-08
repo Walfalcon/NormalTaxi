@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkd0tgb2pix0g"
-path.s3tc="res://.godot/imported/wave transparent.png-e9b615199283bc23bfa12c66c56c3083.s3tc.ctex"
+uid="uid://cocoiqjv1bj3g"
+path="res://.godot/imported/gearshift icon.png-701ec58d778180de218d27bdb84660f2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameObjects/Passenger/Sprites/wave transparent.png"
-dest_files=["res://.godot/imported/wave transparent.png-e9b615199283bc23bfa12c66c56c3083.s3tc.ctex"]
+source_file="res://Player/gearshift icon.png"
+dest_files=["res://.godot/imported/gearshift icon.png-701ec58d778180de218d27bdb84660f2.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

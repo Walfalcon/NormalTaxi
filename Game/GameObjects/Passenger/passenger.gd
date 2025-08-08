@@ -82,11 +82,10 @@ func _physics_process(delta: float) -> void:
 					else:
 						dodge_target = dodge_target.normalized() * radius
 				dodging = true
+				passenger_model.look_at(to_global(dodge_target))
 			passenger_model.position = passenger_model.position.move_toward(dodge_target, dodge_speed * delta)
 			if passenger_model.position == dodge_target:
 				dodging = false
-			else:
-				passenger_model.look_at(to_global(dodge_target))
 		elif distance_to_player > 15.0:
 			if passenger_model.position != Vector3.ZERO:
 				passenger_model.look_at(global_position)

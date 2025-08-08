@@ -18,6 +18,7 @@ const engine_pitch_delta: float = 2.5
 @onready var engine_sound: AudioStreamPlayer = %EngineSound
 @onready var car_model: Node3D = %TheCar
 @onready var boost_timer: Timer = %NormalBoostTimer
+@onready var gearshift_icon: Sprite2D = %GearshiftIcon
 
 var current_destination: Destination = null
 var has_passenger: bool = false
@@ -52,6 +53,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Shift"):
 		gear_forward = !gear_forward
+		gearshift_icon.frame = 0 if gear_forward else 1
 		if not Input.is_action_pressed("Gas"):
 			boost_timer.start(boost_wait_time)
 	
