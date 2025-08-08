@@ -65,6 +65,10 @@ restart_node = NodePath("../RestartPoints/RestartPoint1/Node3D")
 
 [node name="Passengers" type="Node" parent="."]
 
+[node name="Passenger" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.891284, 0, 0.453446, 0, 1, 0, -0.453446, 0, -0.891284, 4.16342, 0.0305746, -48.1141)
+take_me_to = "Tower"
+
 [node name="Destinations" type="Node" parent="."]
 
 [node name="Tower" parent="Destinations" instance=ExtResource("7_22cqp")]
@@ -77,10 +81,6 @@ mesh = SubResource("CylinderMesh_py82k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/Tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_1teg4")
-
-[node name="Passenger" parent="Destinations" instance=ExtResource("6_d6qko")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16342, 0.0305746, -48.1141)
-take_me_to = "Tower"
 
 [node name="RestartPoints" type="Node" parent="."]
 

@@ -59,13 +59,14 @@ func start_random_anim_timer() -> void:
 func _physics_process(delta: float) -> void:
 	var distance_to_player: float = GameVariables.current_player.global_position.distance_to(passenger_model.global_position)
 	if boarding:
-		anim_player.play("Dive")
 		var target_position = to_local(GameVariables.current_player.get_in_point.global_position).slide(normal)
 		passenger_model.position = passenger_model.position.move_toward(target_position, dodge_speed * delta)
+		passenger_model.look_at(GameVariables.current_player.get_in_point.global_position)
 		if (passenger_model.position -target_position).length() < 0.1:
 			passenger_model.visible = false
 			GameVariables.current_player.passenger_enter(self)
 			boarding = false
+			anim_player.play("Idle")
 	else:
 		if dodging or (distance_to_player < 3.0 and GameVariables.current_player.speed > 8.0):
 			anim_player.play("Dive")
@@ -83,14 +84,21 @@ func _physics_process(delta: float) -> void:
 			passenger_model.position = passenger_model.position.move_toward(dodge_target, dodge_speed * delta)
 			if passenger_model.position == dodge_target:
 				dodging = false
+			else:
+				passenger_model.look_at(to_global(dodge_target))
 		elif distance_to_player > 15.0:
 			if passenger_model.position != Vector3.ZERO:
 				passenger_model.position = passenger_model.position.move_toward(Vector3.ZERO, walk_speed * delta)
-				anim_player.play("Dive")
+				anim_player.play("Walk")
+				passenger_model.look_at(global_position)
 		elif passenger_ready and GameVariables.current_player.speed < 0.1 and area.overlaps_body(GameVariables.current_player):
 			GameVariables.pick_up_passenger.emit()
 			GameVariables.current_player.stop()
 			boarding = true
+			anim_player.play("Dive")
+		else:
+			passenger_model.look_at(Vector3.FORWARD)
+			anim_player.play("Idle")
 
 
 func _on_anim_timer_timeout() -> void:
