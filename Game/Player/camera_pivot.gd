@@ -1,9 +1,13 @@
 extends Node3D
 
-@onready var body: Player = get_parent()
 @export var rotation_speed: float = 5.0 ##How quickly the pivot follows the car's rotation
 @export var max_angle_yaw: float = 0.2 * PI
 @export var max_angle_pitch: float = 0.4 * PI
+
+
+@onready var body: Player = get_parent()
+@onready var camera: Camera3D = %MainCamera
+@onready var camera_ray: RayCast3D = %CameraRaycast
 
 func _ready() -> void:
 	top_level = true
@@ -40,3 +44,8 @@ func _process(delta: float) -> void:
 	else:
 		look_target = (-global_basis.z)
 	look_at(global_position + look_target)
+	camera_ray.force_raycast_update()
+	if camera_ray.is_colliding():
+		camera.position = to_local(camera_ray.get_collision_point())
+	else:
+		camera.position = camera_ray.target_position

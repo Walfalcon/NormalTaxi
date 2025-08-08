@@ -7,8 +7,9 @@ extends Node3D
 
 @onready var placement_raycast: RayCast3D = %PlacementRaycast
 @onready var target_model: MeshInstance3D = %TargetModel
-@onready var passenger_base: Node3D = %PassengerBase
+@onready var passenger_model: Node3D = %PassengerModel
 @onready var area: Area3D = %Area
+@onready var anim_player: AnimationPlayer = passenger_model.find_child("AnimationPlayer")
 
 
 const walk_speed: float = 6.0
@@ -37,44 +38,62 @@ func _ready() -> void:
 		area.transform = area.transform.rotated_local(Vector3.RIGHT, -PI/2)
 	else:
 		print("WHOOPS the passenger couldn't find solid ground")
+	anim_player.play("Idle")
+	start_random_anim_timer()
 
 func _enable_passenger_ready() -> void:
 	passenger_ready = true
 	target_model.visible = true
-	passenger_base.visible = true
+	passenger_model.visible = true
+	start_random_anim_timer()
 
 func _disable_passenger_ready() -> void:
 	passenger_ready = false
 	target_model.visible = false
 
+func start_random_anim_timer() -> void:
+	%AnimTimer.start(randf_range(1.0, 10.0))
+
+
+
 func _physics_process(delta: float) -> void:
-	var distance_to_player: float = GameVariables.current_player.global_position.distance_to(passenger_base.global_position)
+	var distance_to_player: float = GameVariables.current_player.global_position.distance_to(passenger_model.global_position)
 	if boarding:
+		anim_player.play("Dive")
 		var target_position = to_local(GameVariables.current_player.get_in_point.global_position).slide(normal)
-		passenger_base.position = passenger_base.position.move_toward(target_position, run_speed * delta)
-		if (passenger_base.position -target_position).length() < 0.1:
-			passenger_base.visible = false
+		passenger_model.position = passenger_model.position.move_toward(target_position, dodge_speed * delta)
+		if (passenger_model.position -target_position).length() < 0.1:
+			passenger_model.visible = false
 			GameVariables.current_player.passenger_enter(self)
 			boarding = false
 	else:
 		if dodging or (distance_to_player < 3.0 and GameVariables.current_player.speed > 8.0):
+			anim_player.play("Dive")
 			if not dodging:
-				var dodge_direction: Vector3 = passenger_base.position - to_local(GameVariables.current_player.global_position)
+				var dodge_direction: Vector3 = passenger_model.position - to_local(GameVariables.current_player.global_position)
 				dodge_direction = dodge_direction.slide(normal) ## Flatten the dodge_direction vector
 				dodge_direction = dodge_direction.normalized() * dodge_distance ## and set it to the proper length
-				dodge_target = passenger_base.position + dodge_direction
+				dodge_target = passenger_model.position + dodge_direction
 				if dodge_target.length() > radius:
 					if dodge_target.length() > radius + 4.0:
 						dodge_target = - dodge_target
 					else:
 						dodge_target = dodge_target.normalized() * radius
 				dodging = true
-			passenger_base.position = passenger_base.position.move_toward(dodge_target, dodge_speed * delta)
-			if passenger_base.position == dodge_target:
+			passenger_model.position = passenger_model.position.move_toward(dodge_target, dodge_speed * delta)
+			if passenger_model.position == dodge_target:
 				dodging = false
 		elif distance_to_player > 15.0:
-			passenger_base.position = passenger_base.position.move_toward(Vector3.ZERO, walk_speed * delta)
+			if passenger_model.position != Vector3.ZERO:
+				passenger_model.position = passenger_model.position.move_toward(Vector3.ZERO, walk_speed * delta)
+				anim_player.play("Dive")
 		elif passenger_ready and GameVariables.current_player.speed < 0.1 and area.overlaps_body(GameVariables.current_player):
 			GameVariables.pick_up_passenger.emit()
 			GameVariables.current_player.stop()
 			boarding = true
+
+
+func _on_anim_timer_timeout() -> void:
+	if passenger_ready:
+		anim_player.play("Hail")
+		anim_player.queue("Idle")

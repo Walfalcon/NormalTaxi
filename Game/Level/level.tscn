@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=14 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
+[ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_d6qko"]
 [ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
 [ext_resource type="Material" uid="uid://d0ieckpgvor2h" path="res://Level/Materials/destination.tres" id="8_wqlfs"]
 [ext_resource type="Script" uid="uid://crid18n6bckca" path="res://Level/RestartPoints/restart_point.gd" id="9_wqlfs"]
@@ -76,6 +77,10 @@ mesh = SubResource("CylinderMesh_py82k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/Tower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_1teg4")
+
+[node name="Passenger" parent="Destinations" instance=ExtResource("6_d6qko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16342, 0.0305746, -48.1141)
+take_me_to = "Tower"
 
 [node name="RestartPoints" type="Node" parent="."]
 

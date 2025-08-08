@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
+[ext_resource type="PackedScene" uid="uid://cdc8o6t3xl1ic" path="res://GameObjects/Passenger/Passenger.glb" id="4_53tn2"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
-[ext_resource type="Texture2D" uid="uid://dkd0tgb2pix0g" path="res://GameObjects/Passenger/Sprites/wave transparent.png" id="6_53tn2"]
 [ext_resource type="AudioStream" uid="uid://bqbfilaegltks" path="res://Player/Sounds/Engine.wav" id="9_xfvo5"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="10_d8ik7"]
 
@@ -97,8 +97,15 @@ tire_radius = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163026, 0.16504)
 script = ExtResource("5_rg7h5")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.942017, 0.335566, 0, -0.335566, 0.942017, 0, 3.56618, 6.10021)
+[node name="MainCamera" type="Camera3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.942017, 0.335566, 0, -0.335566, 0.942017, 0, 3.55, 6.1)
+
+[node name="CameraRaycast" type="RayCast3D" parent="CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478131, 0.666104)
+enabled = false
+target_position = Vector3(0, 3.55, 6.1)
 
 [node name="Clue" type="Label" parent="."]
 unique_name_in_owner = true
@@ -116,17 +123,10 @@ text_overrun_behavior = 1
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950482, -0.389581, 0.319734)
 
-[node name="Shotgun" type="Node3D" parent="."]
+[node name="Passenger" parent="." instance=ExtResource("4_53tn2")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196764, 0.330527, 0.319734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.315762, -0.0403612, 0.319734)
 visible = false
-
-[node name="PassengerSprite" type="Sprite3D" parent="Shotgun"]
-pixel_size = 0.0125
-billboard = 2
-double_sided = false
-alpha_cut = 1
-texture = ExtResource("6_53tn2")
 
 [node name="EngineSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

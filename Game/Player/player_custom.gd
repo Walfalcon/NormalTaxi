@@ -8,7 +8,8 @@ extends Car
 @export var restart_node: Node3D
 
 @onready var clue_label: Label = %Clue
-@onready var shotgun_seat: Node3D = %Shotgun
+@onready var passenger_model: Node3D = %Passenger
+@onready var passenger_animator: AnimationPlayer = passenger_model.find_child("AnimationPlayer")
 @onready var get_in_point: Node3D = %GetInPoint
 @onready var engine_sound: AudioStreamPlayer = %EngineSound
 @onready var car_model: Node3D = %TheCar
@@ -17,6 +18,7 @@ var current_destination: Destination = null
 var has_passenger: bool = false
 
 func _ready() -> void:
+	passenger_animator.play("Sit")
 	GameVariables.current_player = self
 	freeze = true
 	GameVariables.start_music.connect(start)
@@ -69,7 +71,7 @@ func passenger_enter(new_passenger: Passenger) -> void:
 	assert(current_destination != null, "Picked up passenger did not have a valid destination")
 	clue_label.text = new_passenger.clue
 	has_passenger = true
-	shotgun_seat.visible = true
+	passenger_model.visible = true
 	start()
 
 func passenger_exit() -> void:
@@ -78,5 +80,5 @@ func passenger_exit() -> void:
 	has_passenger = false
 	current_destination = null
 	clue_label.text = ""
-	shotgun_seat.visible = false
+	passenger_model.visible = false
 	GameVariables.drop_off_passenger.emit()
