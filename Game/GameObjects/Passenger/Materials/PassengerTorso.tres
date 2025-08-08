@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://rp8r3jf870q"]
 
-[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_rxaml"]
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_rxaml"]
 [ext_resource type="Texture2D" uid="uid://bgo7usy6s1foh" path="res://GameObjects/Passenger/Passenger_Torso.png" id="2_3tr8v"]
 
 [resource]

@@ -6,6 +6,7 @@ extends Car
 @export var airborne_engine_pitch_scale: float = 3.0
 @export var engine_pitch_delta: float = 2.5
 @export var restart_node: Node3D
+@export var change_direction_force: float = 300.0
 
 @onready var clue_label: Label = %Clue
 @onready var passenger_model: Node3D = %Passenger
@@ -43,6 +44,12 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Shift"):
 		gear_forward = !gear_forward
+	
+	if not airborne:
+		if gear_forward and Input.is_action_just_pressed("Gas") and basis.tdotz(linear_velocity) > 1.0:
+			apply_central_impulse(basis.z * (-change_direction_force))
+		elif (not gear_forward) and Input.is_action_just_pressed("Gas") and basis.tdotz(linear_velocity) < -1.0:
+			apply_central_impulse(basis.z * change_direction_force)
 	
 	super(delta)
 	

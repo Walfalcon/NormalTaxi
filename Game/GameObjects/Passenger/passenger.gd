@@ -2,6 +2,7 @@ class_name Passenger
 extends Node3D
 
 @export var radius: float = 6.0
+@export var points: int = 0
 @export var clue: String = "i dunno"
 @export var take_me_to: String = "" ## Index destinations by the name of the object
 
@@ -88,9 +89,9 @@ func _physics_process(delta: float) -> void:
 				passenger_model.look_at(to_global(dodge_target))
 		elif distance_to_player > 15.0:
 			if passenger_model.position != Vector3.ZERO:
+				passenger_model.look_at(global_position)
 				passenger_model.position = passenger_model.position.move_toward(Vector3.ZERO, walk_speed * delta)
 				anim_player.play("Walk")
-				passenger_model.look_at(global_position)
 		elif passenger_ready and GameVariables.current_player.speed < 0.1 and area.overlaps_body(GameVariables.current_player):
 			GameVariables.pick_up_passenger.emit()
 			GameVariables.current_player.stop()

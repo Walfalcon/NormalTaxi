@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=16 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
@@ -42,6 +42,13 @@ cap_bottom = false
 height = 6.0
 radius = 20.0
 
+[sub_resource type="BoxMesh" id="BoxMesh_d6qko"]
+material = ExtResource("8_wqlfs")
+size = Vector3(15, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22cqp"]
+size = Vector3(15, 6, 25)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5g78"]
 size = Vector3(60, 10, 60)
 
@@ -60,14 +67,107 @@ environment = SubResource("Environment_52x1o")
 
 [node name="PlayerCustom" parent="." node_paths=PackedStringArray("restart_node") groups=["Player"] instance=ExtResource("2_qmtf6")]
 unique_name_in_owner = true
-transform = Transform3D(0.899703, 0, -0.436503, 0, 1, 0, 0.436503, 0, 0.899703, 0, 1.25, -17.8407)
+transform = Transform3D(0.899703, 0, -0.436503, 0, 1, 0, 0.436503, 0, 0.899703, 0, 1.5, -17.841)
 restart_node = NodePath("../RestartPoints/RestartPoint1/Node3D")
 
 [node name="Passengers" type="Node" parent="."]
 
-[node name="Passenger" parent="Passengers" instance=ExtResource("6_d6qko")]
-transform = Transform3D(-0.891284, 0, 0.453446, 0, 1, 0, -0.453446, 0, -0.891284, 4.16342, 0.0305746, -48.1141)
+[node name="Passenger15" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.52467, 0, -0.851306, 0, 1, 0, 0.851306, 0, -0.52467, 53.1099, -4.44072, -78.7381)
+points = 3
+clue = "The animal selection here is lacking, I'm gonna binge some documentaries."
+take_me_to = "TV"
+
+[node name="Passenger14" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(0.486122, 0, 0.873891, 0, 1, 0, -0.873891, 0, 0.486122, -12.4895, 0, 0)
+points = 3
+clue = "There's something majestic about wild animals in their natural enclosures..."
+take_me_to = "Zoo"
+
+[node name="Passenger13" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.0620414, 0, 0.998074, 0, 1, 0, -0.998074, 0, -0.0620414, -45.0414, 0.0891812, 10.5564)
+points = 3
+clue = "I want to know who would win: 100 bears, or me with my arms tied?"
+take_me_to = "Zoo"
+
+[node name="Passenger12" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.0620414, 0, 0.998074, 0, 1, 0, -0.998074, 0, -0.0620414, -45.4601, 0.888627, -13.1526)
+points = 3
+clue = "It's good, but it's not the real deal like they make back home in Arlington."
+take_me_to = "Pizza"
+
+[node name="Passenger11" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.0620414, 0, 0.998074, 0, 1, 0, -0.998074, 0, -0.0620414, -31.8521, 0.338681, -64.8227)
+points = 3
+clue = "Honestly, it's a bit much..."
 take_me_to = "Tower"
+
+[node name="Passenger9" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.897543, 0, -0.440926, 0, 1, 0, 0.440926, 0, -0.897543, -95.3091, -3.45018, -119.485)
+points = 3
+clue = "I'm hoping one of these days I'll get to meet Piglet!"
+take_me_to = "Zoo"
+
+[node name="Passenger8" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(0.99881, 0, 0.0487626, 0, 1, 0, -0.0487626, 0, 0.99881, -88.1543, -1.07453, -133.764)
+points = 3
+clue = "I like mine with garlic, giardiniera, and garlic."
+take_me_to = "Pizza"
+
+[node name="Passenger" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(0.046165, 0, -0.998934, 0, 1, 0, 0.998934, 0, 0.046165, 11.5343, 0, 0)
+points = 3
+clue = "They're doing a Ran/Running Man double screening."
+take_me_to = "Theater"
+
+[node name="Passenger2" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.483909, 0, -0.875119, 0, 1, 0, 0.875119, 0, -0.483909, -6.67204, 0, -35.7375)
+points = 3
+clue = "I hunger..."
+take_me_to = "Pizza"
+
+[node name="Passenger3" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.157624, 0, 0.987499, 0, 1, 0, -0.987499, 0, -0.157624, 8.04307, -4.69428, -130.994)
+points = 3
+clue = "Apparently other towns have more than one animal at their zoos."
+take_me_to = "Pizza"
+
+[node name="Passenger4" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.989759, 0, 0.14275, 0, 1, 0, -0.14275, 0, -0.989759, -10.8141, -7.84845, -216.264)
+points = 3
+clue = "I'm gonna miss the next episode of Radical Knight Casin-O!"
+take_me_to = "TV"
+
+[node name="Passenger5" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.610256, 0, 0.792204, 0, 1, 0, -0.792204, 0, -0.610256, -2.6142, -7.9413, -204.721)
+points = 3
+clue = "I'm here from Chicago to see a football game."
+take_me_to = "Zoo"
+
+[node name="Passenger6" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.471905, 0, -0.88165, 0, 1, 0, 0.88165, 0, -0.471905, -76.9761, -5.20925, -210.248)
+radius = 7.0
+points = 3
+clue = "I'm hungry... for popcorn!"
+take_me_to = "Theater"
+
+[node name="Passenger7" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(0.450348, 0, 0.892853, 0, 1, 0, -0.892853, 0, 0.450348, -31.0738, -5.20925, -137.782)
+points = 3
+clue = "I haven't felt vertigo in a while..."
+take_me_to = "Tower"
+
+[node name="Passenger10" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(-0.534898, 0, 0.844917, 0, 1, 0, -0.844917, 0, -0.534898, -31.8521, -1.225, -90.623)
+points = 3
+clue = "Give me the cheese."
+take_me_to = "Pizza"
+
+[node name="Passenger16" parent="Passengers" instance=ExtResource("6_d6qko")]
+transform = Transform3D(0.999599, 0, -0.0283052, 0, 1, 0, 0.0283052, 0, 0.999599, 53.1099, -1.70844, -33.9748)
+points = 3
+clue = "Yeah I just like, buy tickets at random. It's fun. Sometimes I get something for children, but whatever."
+take_me_to = "Theater"
 
 [node name="Destinations" type="Node" parent="."]
 
@@ -82,9 +182,58 @@ mesh = SubResource("CylinderMesh_py82k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_1teg4")
 
+[node name="TV" parent="Destinations" instance=ExtResource("7_22cqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.2391, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destinations/TV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_d6qko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/TV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_22cqp")
+
+[node name="Zoo" parent="Destinations" instance=ExtResource("7_22cqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.0701, -5.10843, -58.9375)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destinations/Zoo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_d6qko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/Zoo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_22cqp")
+
+[node name="Theater" parent="Destinations" instance=ExtResource("7_22cqp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -88.4505, -4.06173, -111.408)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destinations/Theater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_d6qko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/Theater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_22cqp")
+
+[node name="Pizza" parent="Destinations" instance=ExtResource("7_22cqp")]
+transform = Transform3D(0.987827, 0, -0.155555, 0, 1, 0, 0.155555, 0, 0.987827, -28.9078, -8.0414, -229.161)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destinations/Pizza"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_d6qko")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Destinations/Pizza"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_22cqp")
+
 [node name="RestartPoints" type="Node" parent="."]
 
 [node name="RestartPoint1" type="Area3D" parent="RestartPoints"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 monitorable = false
