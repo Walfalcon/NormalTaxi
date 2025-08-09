@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
-[ext_resource type="PackedScene" uid="uid://cdc8o6t3xl1ic" path="res://GameObjects/Passenger/Passenger.glb" id="4_53tn2"]
 [ext_resource type="FontFile" uid="uid://iq7ddevcbf0d" path="res://Fonts/Roboto-Medium.ttf" id="4_q1h0l"]
 [ext_resource type="Texture2D" uid="uid://cocoiqjv1bj3g" path="res://Player/gearshift icon.png" id="5_qympc"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
+[ext_resource type="PackedScene" uid="uid://dkiu76pv8ty4m" path="res://Player/car_passenger.tscn" id="6_qympc"]
 [ext_resource type="AudioStream" uid="uid://bqbfilaegltks" path="res://Player/Sounds/Engine.wav" id="9_xfvo5"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="10_d8ik7"]
 
@@ -105,6 +105,7 @@ script = ExtResource("5_rg7h5")
 [node name="MainCamera" type="Camera3D" parent="CameraPivot"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.942017, 0.335566, 0, -0.335566, 0.942017, 0, 3.55, 6.1)
+current = true
 
 [node name="CameraRaycast" type="RayCast3D" parent="CameraPivot"]
 unique_name_in_owner = true
@@ -135,7 +136,12 @@ hframes = 2
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950482, -0.389581, 0.319734)
 
-[node name="Passenger" parent="." instance=ExtResource("4_53tn2")]
+[node name="PassengerVisibilityParent" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.315762, -0.0403612, 0.319734)
+layers = 2
+skeleton = NodePath("")
+
+[node name="Passenger" parent="." instance=ExtResource("6_qympc")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.315762, -0.0403612, 0.319734)
 visible = false
@@ -164,5 +170,10 @@ one_shot = true
 [node name="PassengerTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="Camera2" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.326389, 0.625349, 0.223648)
+cull_mask = 1048573
 
 [connection signal="timeout" from="PassengerTimer" to="." method="_on_passenger_timer_timeout"]

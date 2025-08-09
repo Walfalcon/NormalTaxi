@@ -38,6 +38,11 @@ func _ready() -> void:
 	%TireBackRight.tire_model = car_model.find_child("Tire-RR")
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("Camera"):
+		if %MainCamera.current:
+			%Camera2.current = true
+		else:
+			%MainCamera.current = true
 	if Input.is_action_just_pressed("Restart"):
 		global_transform = restart_node.global_transform
 		angular_velocity = Vector3.ZERO
