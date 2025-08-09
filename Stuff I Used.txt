@@ -1,2 +1,3 @@
 "I Wanna Do A Kickflip (Yeah Yeah)" originally by Dimetap (https://soundcloud.com/dimetap/i-wanna-do-a-kickflip-yeah-yeah)
 "I Feel Fantastic" originally by Jonathan Coulton
+Godot PSX shaders by MenacingMecha (https://github.com/MenacingMecha/godot-psx-style-demo/tree/master)

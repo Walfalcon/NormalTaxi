@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d12lflx4x6ehn"]
+[gd_scene load_steps=18 format=3 uid="uid://d12lflx4x6ehn"]
 
 [ext_resource type="Material" uid="uid://bxadek7ymxxlr" path="res://shaders/Materials/blur-post-process_mat.tres" id="1_2vdtb"]
 [ext_resource type="Shader" uid="uid://c0bhglnpoeguq" path="res://shaders/pp_band-dither.gdshader" id="2_bf40q"]
@@ -18,9 +18,38 @@ shader_parameter/dither_tex = ExtResource("3_747aq")
 shader_parameter/col_depth = 15.0
 shader_parameter/dither_banding = true
 
-[sub_resource type="LabelSettings" id="LabelSettings_rjnl7"]
+[sub_resource type="Animation" id="Animation_ac03j"]
+resource_name = "Show"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RetroLayer/Blur/SubViewport/DitherBanding/SubViewport/NowPlayingLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 4.3, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_enrgn"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07c7w"]
+_data = {
+&"RESET": SubResource("Animation_enrgn"),
+&"Show": SubResource("Animation_ac03j")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ac03j"]
 font = ExtResource("6_ac03j")
 font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_rjnl7"]
+font = ExtResource("6_ac03j")
+font_size = 13
 
 [node name="PostProcessing" type="Node"]
 
@@ -60,14 +89,29 @@ render_target_update_mode = 4
 script = ExtResource("2_dt8i1")
 level = ExtResource("3_mhg1c")
 
-[node name="SongLabel" type="Label" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport"]
+[node name="SongLabelAnimation" type="AnimationPlayer" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport"]
 unique_name_in_owner = true
+root_node = NodePath("../../../../../../SoundtrackPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_07c7w")
+}
+
+[node name="NowPlayingLabel" type="Label" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport"]
+modulate = Color(0, 0, 0, 0)
 offset_left = 5.0
-offset_top = 170.0
-offset_right = 205.0
-offset_bottom = 230.0
+offset_top = 158.0
+offset_right = 105.0
+offset_bottom = 178.0
+text = "Now Playing:"
+label_settings = SubResource("LabelSettings_ac03j")
+autowrap_mode = 2
+
+[node name="SongLabel" type="Label" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport/NowPlayingLabel"]
+unique_name_in_owner = true
+offset_top = 12.0
+offset_right = 200.0
+offset_bottom = 72.0
 label_settings = SubResource("LabelSettings_rjnl7")
-vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SoundtrackPlayer" type="Node" parent="."]

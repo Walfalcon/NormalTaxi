@@ -4,6 +4,7 @@ extends Node
 var songs: Array[AudioStreamPlayer]
 
 @onready var song_label: Label = %SongLabel
+@onready var song_label_animation: AnimationPlayer = %SongLabelAnimation
 
 var song_counter: int = 0
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 func _on_start_music() -> void:
 	song_label.text = songs[song_counter].name ## Not working, need to assign names to songs. Custom resources?
 	songs[song_counter].play()
+	song_label_animation.play("Show")
 	song_counter += 1
 	song_counter %= songs.size()
 
