@@ -35,16 +35,52 @@ import_script/path=""
 _subresources={
 "materials": {
 "Asphalt": {
-"use_external/enabled": false,
+"use_external/enabled": true,
 "use_external/path": "uid://dpcniuq4o6a3f"
 },
+"Building1": {
+"use_external/enabled": true,
+"use_external/path": "uid://bk5ajippoa4xg"
+},
+"Cage": {
+"use_external/enabled": true,
+"use_external/path": "uid://bbysvsw6p67t8"
+},
 "Dirt": {
-"use_external/enabled": false,
+"use_external/enabled": true,
 "use_external/path": "uid://bmgeg7oe2quuj"
 },
+"Monkey": {
+"use_external/enabled": true,
+"use_external/path": "uid://pfwj2tfd76s1"
+},
+"PetStore": {
+"use_external/enabled": true,
+"use_external/path": "uid://b24igrhokldfj"
+},
+"PizzaBuilding": {
+"use_external/enabled": true,
+"use_external/path": "uid://wilmh4jigokf"
+},
+"Roof1": {
+"use_external/enabled": true,
+"use_external/path": "uid://lpisi574uvy4"
+},
 "Sidewalk": {
-"use_external/enabled": false,
+"use_external/enabled": true,
 "use_external/path": "uid://bl82bl3wg40ml"
+},
+"TV": {
+"use_external/enabled": true,
+"use_external/path": "uid://dwgr65kyeq4i3"
+},
+"TVScreen": {
+"use_external/enabled": true,
+"use_external/path": "uid://bsbt1wmekg2nu"
+},
+"Tower": {
+"use_external/enabled": true,
+"use_external/path": "uid://dt8jmkr8m342d"
 }
 }
 }

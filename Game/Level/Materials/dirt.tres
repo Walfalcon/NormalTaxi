@@ -1,11 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bmgeg7oe2quuj"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bmgeg7oe2quuj"]
 
-[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_n16fb"]
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_my8x7"]
+[ext_resource type="Texture2D" uid="uid://fdoe2wn1u1xw" path="res://Level/Materials/Textures/dirt.png" id="2_n16fb"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_n16fb")
-shader_parameter/modulate_color = Color(0.494707, 0.305558, 0.119912, 1)
+shader = ExtResource("1_my8x7")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_n16fb")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)

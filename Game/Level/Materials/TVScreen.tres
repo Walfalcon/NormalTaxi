@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bsbt1wmekg2nu"]
+
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_mr1kp"]
+[ext_resource type="Texture2D" uid="uid://du1u3te1h05bd" path="res://Level/Map/Map_tv screen.png" id="2_mr1kp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mr1kp")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_mr1kp")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

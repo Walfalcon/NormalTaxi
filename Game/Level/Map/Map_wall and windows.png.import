@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cklstj5341my4"
-path="res://.godot/imported/Map_Cement Tile 32.png-1974497e873dd11acc5e6e1975141abf.ctex"
+uid="uid://c866pu37ha1w2"
+path="res://.godot/imported/Map_wall and windows.png-7b8123e58aa73b8b5077e0367bc2dd67.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "c091bf7ef5a04a03c1d6783ecc464198"
+"md5": "82e79cc8860ed024d5814d6113525b08"
 }
 
 [deps]
 
-source_file="res://Level/Map/Map_Cement Tile 32.png"
-dest_files=["res://.godot/imported/Map_Cement Tile 32.png-1974497e873dd11acc5e6e1975141abf.ctex"]
+source_file="res://Level/Map/Map_wall and windows.png"
+dest_files=["res://.godot/imported/Map_wall and windows.png-7b8123e58aa73b8b5077e0367bc2dd67.ctex"]
 
 [params]
 

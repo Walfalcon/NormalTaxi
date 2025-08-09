@@ -2,27 +2,29 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnbw18fomlbdx"
-path.s3tc="res://.godot/imported/asphalt.png-549c2c8932da415d48d40477947f57e0.s3tc.ctex"
+uid="uid://dx23kmqi55rta"
+path="res://.godot/imported/Map_tv.png-4f5f86048372777e2bbe5cad100d8f7c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "e67f81fa42e8bc6782cdf820e78cb922"
 }
 
 [deps]
 
-source_file="res://Level/Materials/Textures/asphalt.png"
-dest_files=["res://.godot/imported/asphalt.png-549c2c8932da415d48d40477947f57e0.s3tc.ctex"]
+source_file="res://Level/Map/Map_tv.png"
+dest_files=["res://.godot/imported/Map_tv.png-4f5f86048372777e2bbe5cad100d8f7c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

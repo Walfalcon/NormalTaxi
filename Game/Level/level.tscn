@@ -265,6 +265,8 @@ shape = SubResource("BoxShape3D_i5g78")
 [node name="PizzaSprite" type="Sprite3D" parent="."]
 transform = Transform3D(0.957102, 0, -0.28975, 0, 1, 0, 0.28975, 0, 0.957102, -12.873, 1.88539, -220.314)
 pixel_size = 0.14
+alpha_cut = 1
+texture_filter = 2
 texture = ExtResource("8_py82k")
 
 [node name="Pole" type="MeshInstance3D" parent="PizzaSprite"]

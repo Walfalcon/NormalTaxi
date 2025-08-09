@@ -2,21 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx50tn3jmqk4v"
-path.s3tc="res://.godot/imported/Cement Tile 32.png-89eb821d63a55a4c68bac452a7629e5d.s3tc.ctex"
+uid="uid://dl0pvxijqj1ed"
+path="res://.godot/imported/Map_bars.png-bd70ac7e1b02948945fc2504ce6f5145.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "f8422adc8d8845f6f571245afc2b784b"
 }
 
 [deps]
 
-source_file="res://Level/Materials/Textures/Cement Tile 32.png"
-dest_files=["res://.godot/imported/Cement Tile 32.png-89eb821d63a55a4c68bac452a7629e5d.s3tc.ctex"]
+source_file="res://Level/Map/Map_bars.png"
+dest_files=["res://.godot/imported/Map_bars.png-bd70ac7e1b02948945fc2504ce6f5145.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

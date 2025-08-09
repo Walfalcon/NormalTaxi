@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bbysvsw6p67t8"]
+
+[ext_resource type="Shader" uid="uid://biqwfj80g0e4b" path="res://shaders/psx_unlit_alpha-scissor.gdshader" id="1_jgjwm"]
+[ext_resource type="Texture2D" uid="uid://dl0pvxijqj1ed" path="res://Level/Map/Map_bars.png" id="2_0er30"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jgjwm")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_0er30")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+shader_parameter/billboard = false
+shader_parameter/y_billboard = false
+shader_parameter/alpha_scissor = 0.1
