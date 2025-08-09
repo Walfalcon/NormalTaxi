@@ -1,30 +1,28 @@
 class_name SoundtrackPlayer
-extends AudioStreamPlayer
+extends Node
 
-@export var songs: Array[AudioStream]
+var songs: Array[AudioStreamPlayer]
 
 @onready var song_label: Label = %SongLabel
 
 var song_counter: int = 0
 
 func _ready() -> void:
-	
+	for i in get_children():
+		if i is AudioStreamPlayer:
+			songs.push_back(i)
+			i.finished.connect(_on_start_music)
 	songs.shuffle()
 	GameVariables.start_music.connect(_on_start_music)
 	GameVariables.stop_music.connect(_on_stop_music)
 
 func _on_start_music() -> void:
-	stream = songs[song_counter]
-	song_label.text = stream.resource_name ## Not working, need to assign names to songs. Custom resources?
-	play()
-
-func _on_stop_music() -> void:
-	stop()
-	songs.shuffle()
-	song_label.text = ""
-
-
-func _on_finished() -> void:
+	song_label.text = songs[song_counter].name ## Not working, need to assign names to songs. Custom resources?
+	songs[song_counter].play()
 	song_counter += 1
 	song_counter %= songs.size()
-	_on_start_music()
+
+func _on_stop_music() -> void:
+	songs[song_counter].stop()
+	songs.shuffle()
+	song_label.text = ""
