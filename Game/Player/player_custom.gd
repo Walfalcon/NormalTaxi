@@ -3,8 +3,8 @@ extends Car
 
 const boost_force: float = 500.0
 const boost_wait_time: float = 0.2
-const engine_pitch_scale: float = 1.0
-const engine_pitch_base: float = 1.2
+const engine_pitch_scale: float = 1.2
+const engine_pitch_base: float = 1.0
 const airborne_engine_pitch_scale: float = 3.0
 const engine_pitch_delta: float = 2.5
 const passenger_leave_speed: float = 15.0

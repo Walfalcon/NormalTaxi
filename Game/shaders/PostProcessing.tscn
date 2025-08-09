@@ -18,6 +18,9 @@ shader_parameter/dither_tex = ExtResource("3_747aq")
 shader_parameter/col_depth = 15.0
 shader_parameter/dither_banding = true
 
+[sub_resource type="Animation" id="Animation_enrgn"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_ac03j"]
 resource_name = "Show"
 length = 5.0
@@ -33,9 +36,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_enrgn"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07c7w"]
 _data = {
@@ -108,6 +108,7 @@ autowrap_mode = 2
 
 [node name="SongLabel" type="Label" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport/NowPlayingLabel"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_top = 12.0
 offset_right = 200.0
 offset_bottom = 72.0
