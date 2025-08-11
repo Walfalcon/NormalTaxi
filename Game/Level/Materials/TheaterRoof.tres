@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_wf218")
-shader_parameter/modulate_color = Color(0, 0.552941, 0.815686, 1)
+shader_parameter/modulate_color = Color(0.486275, 0.133333, 0.101961, 1)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)

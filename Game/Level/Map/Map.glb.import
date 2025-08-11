@@ -50,13 +50,13 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://bmgeg7oe2quuj"
 },
+"Marquee": {
+"use_external/enabled": true,
+"use_external/path": "uid://bhyf5wlpq2qsf"
+},
 "Monkey": {
 "use_external/enabled": true,
 "use_external/path": "uid://pfwj2tfd76s1"
-},
-"PetStore": {
-"use_external/enabled": true,
-"use_external/path": "uid://b24igrhokldfj"
 },
 "PizzaBuilding": {
 "use_external/enabled": true,
@@ -77,6 +77,14 @@ _subresources={
 "TVScreen": {
 "use_external/enabled": true,
 "use_external/path": "uid://bsbt1wmekg2nu"
+},
+"TheaterRoof": {
+"use_external/enabled": true,
+"use_external/path": "uid://b24igrhokldfj"
+},
+"TheaterWalls": {
+"use_external/enabled": true,
+"use_external/path": "uid://brhwayu5winv1"
 },
 "Tower": {
 "use_external/enabled": true,

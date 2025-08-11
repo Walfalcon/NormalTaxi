@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bhyf5wlpq2qsf"]
+
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_ku4hg"]
+[ext_resource type="Texture2D" uid="uid://dckxq21hspxuw" path="res://Level/Map/Map_marquee.png" id="2_ku4hg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ku4hg")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_ku4hg")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

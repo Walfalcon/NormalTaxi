@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=25 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
@@ -10,6 +10,8 @@
 [ext_resource type="Material" uid="uid://d0ieckpgvor2h" path="res://Level/Materials/destination.tres" id="8_wqlfs"]
 [ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="9_1teg4"]
 [ext_resource type="Script" uid="uid://crid18n6bckca" path="res://Level/RestartPoints/restart_point.gd" id="9_wqlfs"]
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="11_1teg4"]
+[ext_resource type="Texture2D" uid="uid://duuf4bqby6fjg" path="res://Level/Stuff/theater sign.png" id="11_i5g78"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nk1il"]
 panorama = ExtResource("1_iincs")
@@ -66,6 +68,18 @@ shader_parameter/uv_pan_velocity = Vector2(0, 0)
 [sub_resource type="QuadMesh" id="QuadMesh_q47le"]
 material = SubResource("ShaderMaterial_i5g78")
 size = Vector2(0.5, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q47le"]
+render_priority = 0
+shader = ExtResource("11_1teg4")
+shader_parameter/modulate_color = Color(0, 0, 0, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dx36h"]
+material = SubResource("ShaderMaterial_q47le")
+size = Vector2(2.5, 3)
 
 [node name="Level" type="Node3D"]
 
@@ -282,3 +296,15 @@ double_sided = false
 alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("8_22cqp")
+
+[node name="TheaterSign" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -6.55671e-08, 1, 0, -1.5, -4.37114e-08, -92.761, 5.8177, -103.827)
+pixel_size = 0.075
+axis = 0
+alpha_cut = 1
+texture_filter = 0
+texture = ExtResource("11_i5g78")
+
+[node name="TheaterDoor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -92.796, -2.4582, -103.173)
+mesh = SubResource("PlaneMesh_dx36h")
