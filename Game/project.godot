@@ -32,6 +32,10 @@ movie_writer/movie_file="Z:/My Documents/GitHub/Ridesharing/Movies/recording.avi
 
 enabled=PackedStringArray()
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 Player=""

@@ -22,6 +22,7 @@ const passenger_leave_speed: float = 15.0
 @onready var gearshift_icon: Sprite2D = %GearshiftIcon
 @onready var passenger_timer: Timer = %PassengerTimer
 @onready var seated_position: Transform3D = passenger_model.transform
+@onready var gus_animator: AnimationPlayer = car_model.find_child("AnimationPlayer")
 
 var current_destination: Destination = null
 var has_passenger: bool = false
@@ -29,6 +30,7 @@ var passenger_leaving: bool = false
 
 func _ready() -> void:
 	passenger_animator.play("Sit")
+	gus_animator.play("Sit_Idle")
 	GameVariables.current_player = self
 	freeze = true
 	GameVariables.start_music.connect(start)

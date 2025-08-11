@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bbnfjyjvqlv6b"]
+
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_5uc3x"]
+[ext_resource type="Texture2D" uid="uid://7xqcal7oa330" path="res://Player/models/TheCar_Suit.png" id="2_f474n"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5uc3x")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_f474n")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

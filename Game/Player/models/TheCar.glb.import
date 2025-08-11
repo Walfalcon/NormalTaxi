@@ -50,6 +50,14 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://clsmklctk77wy"
 },
+"Suit": {
+"use_external/enabled": true,
+"use_external/path": "uid://bbnfjyjvqlv6b"
+},
+"SuitColor": {
+"use_external/enabled": true,
+"use_external/path": "uid://tyt473rrwd56"
+},
 "Textures": {
 "use_external/enabled": true,
 "use_external/path": "uid://bq1leflpin3fm"
@@ -57,6 +65,20 @@ _subresources={
 "Tire": {
 "use_external/enabled": true,
 "use_external/path": "uid://bnfk4ioj2q4uj"
+}
+},
+"nodes": {
+"PATH:Armature/Skeleton3D/Head_2/Head_2": {
+"mesh_instance/layers": 2
+},
+"PATH:Armature/Skeleton3D/Left Hand": {
+"mesh_instance/layers": 2
+},
+"PATH:Armature/Skeleton3D/Right Hand": {
+"mesh_instance/layers": 2
+},
+"PATH:Armature/Skeleton3D/Suit": {
+"mesh_instance/layers": 2
 }
 }
 }
