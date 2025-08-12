@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m3slpf00ddmv"
-path.s3tc="res://.godot/imported/TheCar_Head.png-9c443b1e6fde8495521fc7a6e38686da.s3tc.ctex"
+uid="uid://d2nfinwbeuc5n"
+path.s3tc="res://.godot/imported/TheCar_GusSmile.png-d07fa072f94604c4547aa46e9e316759.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Player/models/TheCar_Head.png"
-dest_files=["res://.godot/imported/TheCar_Head.png-9c443b1e6fde8495521fc7a6e38686da.s3tc.ctex"]
+source_file="res://Player/models/TheCar_GusSmile.png"
+dest_files=["res://.godot/imported/TheCar_GusSmile.png-d07fa072f94604c4547aa46e9e316759.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7xqcal7oa330"
-path.s3tc="res://.godot/imported/TheCar_Suit.png-0dc6e9cca5fd65fe33fcf151e0569550.s3tc.ctex"
+uid="uid://1e0qin61wkc0"
+path.s3tc="res://.godot/imported/TheCar_GusHat.png-7506f56c6026fcbb9c54b50aa78aa9aa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "61f3811312cb5c2cdde011f6da7d7626"
+"md5": "848713b190e17e18c23e859b57969212"
 }
 
 [deps]
 
-source_file="res://Player/models/TheCar_Suit.png"
-dest_files=["res://.godot/imported/TheCar_Suit.png-0dc6e9cca5fd65fe33fcf151e0569550.s3tc.ctex"]
+source_file="res://Player/models/TheCar_GusHat.png"
+dest_files=["res://.godot/imported/TheCar_GusHat.png-7506f56c6026fcbb9c54b50aa78aa9aa.s3tc.ctex"]
 
 [params]
 

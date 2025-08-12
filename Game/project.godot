@@ -113,5 +113,5 @@ copy_path="res://"
 
 precision_multiplier={
 "type": "float",
-"value": 0.95
+"value": 1.0
 }

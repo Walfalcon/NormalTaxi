@@ -42,6 +42,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://bdryaru8wihmv"
 },
+"Hat": {
+"use_external/enabled": true,
+"use_external/path": "uid://clr0dpks7koal"
+},
 "Pink Cube": {
 "use_external/enabled": true,
 "use_external/path": "uid://d2xstfoyw5c5t"
@@ -49,14 +53,6 @@ _subresources={
 "Seat": {
 "use_external/enabled": true,
 "use_external/path": "uid://clsmklctk77wy"
-},
-"Suit": {
-"use_external/enabled": true,
-"use_external/path": "uid://bbnfjyjvqlv6b"
-},
-"SuitColor": {
-"use_external/enabled": true,
-"use_external/path": "uid://tyt473rrwd56"
 },
 "Textures": {
 "use_external/enabled": true,
@@ -68,6 +64,9 @@ _subresources={
 }
 },
 "nodes": {
+"PATH:Armature/Skeleton3D/Hat_2/Hat_2": {
+"mesh_instance/layers": 2
+},
 "PATH:Armature/Skeleton3D/Head_2/Head_2": {
 "mesh_instance/layers": 2
 },

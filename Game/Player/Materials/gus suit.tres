@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bbnfjyjvqlv6b"]
 
 [ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_5uc3x"]
-[ext_resource type="Texture2D" uid="uid://7xqcal7oa330" path="res://Player/models/TheCar_Suit.png" id="2_f474n"]
+[ext_resource type="Texture2D" uid="uid://cluhf0bkyg63w" path="res://Player/models/TheCar_GusSuit.png" id="2_f474n"]
 
 [resource]
 render_priority = 0
