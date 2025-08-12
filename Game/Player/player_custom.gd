@@ -40,6 +40,8 @@ func _ready() -> void:
 	%TireBackRight.tire_model = car_model.find_child("Tire-RR")
 
 func _physics_process(delta: float) -> void:
+	if clue_label.visible_characters < 100.0:
+		clue_label.visible_characters += 1
 	if Input.is_action_just_pressed("Camera"):
 		if %MainCamera.current:
 			%Camera2.current = true
