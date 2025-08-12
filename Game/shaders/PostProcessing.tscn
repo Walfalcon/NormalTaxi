@@ -115,17 +115,12 @@ offset_bottom = 72.0
 label_settings = SubResource("LabelSettings_rjnl7")
 autowrap_mode = 2
 
-[node name="SoundtrackPlayer" type="Node" parent="."]
+[node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("6_747aq")
-
-[node name="How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube" type="AudioStreamPlayer" parent="SoundtrackPlayer"]
-stream = ExtResource("7_pugex")
-
-[node name="I Feel Fantastic" type="AudioStreamPlayer" parent="SoundtrackPlayer"]
-stream = ExtResource("9_qn8fn")
-
-[node name="I Wanna Do A Kickflip (Yeah Yeah)" type="AudioStreamPlayer" parent="SoundtrackPlayer"]
-stream = ExtResource("8_rjnl7")
-
-[node name="Logan\'s Run" type="AudioStreamPlayer" parent="SoundtrackPlayer"]
-stream = ExtResource("10_ac03j")
+songs = Array[String](["How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube", "I Feel Fantastic", "I Wanna Do A Kickflip (Yeah, Yeah)", "Logan's Run"])
+song_files = Dictionary[String, AudioStream]({
+"How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube": ExtResource("7_pugex"),
+"I Feel Fantastic": ExtResource("9_qn8fn"),
+"I Wanna Do A Kickflip (Yeah, Yeah)": ExtResource("8_rjnl7"),
+"Logan's Run": ExtResource("10_ac03j")
+})

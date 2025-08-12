@@ -7,7 +7,7 @@ const engine_pitch_scale: float = 1.2
 const engine_pitch_base: float = 1.0
 const airborne_engine_pitch_scale: float = 3.0
 const engine_pitch_delta: float = 2.5
-const passenger_leave_speed: float = 15.0
+const passenger_leave_speed: float = 15.
 
 @export var restart_node: Node3D
 
@@ -101,6 +101,7 @@ func passenger_enter(new_passenger: Passenger) -> void:
 			break
 	assert(current_destination != null, "Picked up passenger did not have a valid destination")
 	clue_label.text = new_passenger.clue
+	clue_label.visible_characters = 0
 	has_passenger = true
 	passenger_model.visible = true
 	start()

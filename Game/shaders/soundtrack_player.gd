@@ -1,7 +1,8 @@
 class_name SoundtrackPlayer
-extends Node
+extends AudioStreamPlayer
 
-var songs: Array[AudioStreamPlayer]
+@export var songs: Array[String]
+@export var song_files: Dictionary[String, AudioStream]
 
 @onready var song_label: Label = %SongLabel
 @onready var song_label_animation: AnimationPlayer = %SongLabelAnimation
@@ -18,13 +19,14 @@ func _ready() -> void:
 	GameVariables.stop_music.connect(_on_stop_music)
 
 func _on_start_music() -> void:
-	song_label.text = songs[song_counter].name ## Not working, need to assign names to songs. Custom resources?
-	songs[song_counter].play()
+	song_label.text = songs[song_counter]
+	stream = song_files[song_label.text]
+	play()
 	song_label_animation.play("Show")
 	song_counter += 1
 	song_counter %= songs.size()
 
 func _on_stop_music() -> void:
-	songs[song_counter].stop()
+	stop()
 	songs.shuffle()
 	song_label.text = ""
