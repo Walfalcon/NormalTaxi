@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=26 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
+[ext_resource type="Script" uid="uid://baqoxvhro2ngn" path="res://Level/level.gd" id="1_q47le"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
 [ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_d6qko"]
 [ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
@@ -82,6 +83,7 @@ material = SubResource("ShaderMaterial_q47le")
 size = Vector2(2.5, 3)
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_q47le")
 
 [node name="Map" parent="." instance=ExtResource("1_nk1il")]
 
