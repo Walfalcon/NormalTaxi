@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://c0bhglnpoeguq" path="res://shaders/pp_band-dither.gdshader" id="2_bf40q"]
 [ext_resource type="Script" uid="uid://be1ck073dtq1p" path="res://shaders/scene_loader.gd" id="2_dt8i1"]
 [ext_resource type="Texture2D" uid="uid://b0ub3tqjyw46f" path="res://shaders/psxdither.png" id="3_747aq"]
-[ext_resource type="PackedScene" uid="uid://bwwch08u1fki0" path="res://Level/level.tscn" id="3_mhg1c"]
+[ext_resource type="PackedScene" uid="uid://ex223yycxufa" path="res://Menus/MainMenu.tscn" id="5_ac03j"]
 [ext_resource type="Script" uid="uid://sx8m74ix003n" path="res://shaders/soundtrack_player.gd" id="6_747aq"]
 [ext_resource type="FontFile" uid="uid://c42ab3mj1uvhe" path="res://Fonts/Roboto-Italic.ttf" id="6_ac03j"]
 [ext_resource type="AudioStream" uid="uid://e1dhxxoqpfrt" path="res://Songs/How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube.mp3" id="7_pugex"]
@@ -87,7 +87,7 @@ render_target_update_mode = 4
 
 [node name="SceneLoader" type="Node" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport"]
 script = ExtResource("2_dt8i1")
-level = ExtResource("3_mhg1c")
+level = ExtResource("5_ac03j")
 
 [node name="SongLabelAnimation" type="AnimationPlayer" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport"]
 unique_name_in_owner = true
@@ -116,6 +116,7 @@ label_settings = SubResource("LabelSettings_rjnl7")
 autowrap_mode = 2
 
 [node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
 script = ExtResource("6_747aq")
 songs = Array[String](["How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube", "I Feel Fantastic", "I Wanna Do A Kickflip (Yeah, Yeah)", "Logan's Run"])
 song_files = Dictionary[String, AudioStream]({

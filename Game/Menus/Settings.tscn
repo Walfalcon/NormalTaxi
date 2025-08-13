@@ -1,0 +1,175 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkashjgsuj6rv"]
+
+[ext_resource type="Theme" uid="uid://c7yqk7py056vj" path="res://Menus/MainTheme.tres" id="1_eklo8"]
+[ext_resource type="Script" uid="uid://x8cowyt2yw4b" path="res://Menus/settings.gd" id="2_bktsr"]
+[ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="3_y3pb0"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_eklo8")
+script = ExtResource("2_bktsr")
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.568627)
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="Audio" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 23.0
+theme = ExtResource("1_eklo8")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.729412)
+theme_override_fonts/font = ExtResource("3_y3pb0")
+text = "Audio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Audio"]
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="InputsButton" type="Button" parent="Audio/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 239.0
+offset_top = 15.0
+offset_right = 287.0
+offset_bottom = 34.0
+focus_neighbor_bottom = NodePath("../MainVolumeSlider")
+focus_next = NodePath("../MainVolumeSlider")
+theme = ExtResource("1_eklo8")
+text = "Inputs
+"
+
+[node name="MainVolumeSlider" type="HSlider" parent="Audio/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60.0
+offset_top = 80.0
+offset_right = 260.0
+offset_bottom = 96.0
+focus_neighbor_top = NodePath("../InputsButton")
+focus_neighbor_bottom = NodePath("../MusicVolumeSlider")
+focus_next = NodePath("../MusicVolumeSlider")
+focus_previous = NodePath("../InputsButton")
+theme = ExtResource("1_eklo8")
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="Audio/Control/MainVolumeSlider"]
+layout_mode = 0
+offset_top = -21.0
+offset_right = 108.0
+offset_bottom = -2.0
+theme = ExtResource("1_eklo8")
+text = "Master Volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Audio/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60.0
+offset_top = 120.0
+offset_right = 260.0
+offset_bottom = 136.0
+focus_neighbor_top = NodePath("../MainVolumeSlider")
+focus_neighbor_bottom = NodePath("../OtherVolumeSlider")
+focus_next = NodePath("../OtherVolumeSlider")
+focus_previous = NodePath("../MainVolumeSlider")
+theme = ExtResource("1_eklo8")
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="Audio/Control/MusicVolumeSlider"]
+layout_mode = 0
+offset_top = -21.0
+offset_right = 108.0
+offset_bottom = -2.0
+theme = ExtResource("1_eklo8")
+text = "Music Volume"
+
+[node name="OtherVolumeSlider" type="HSlider" parent="Audio/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60.0
+offset_top = 160.0
+offset_right = 260.0
+offset_bottom = 176.0
+focus_neighbor_top = NodePath("../MusicVolumeSlider")
+focus_neighbor_bottom = NodePath("../BackButtonAudio")
+focus_next = NodePath("../BackButtonAudio")
+focus_previous = NodePath("../MusicVolumeSlider")
+theme = ExtResource("1_eklo8")
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="Audio/Control/OtherVolumeSlider"]
+layout_mode = 0
+offset_top = -21.0
+offset_right = 108.0
+offset_bottom = -2.0
+theme = ExtResource("1_eklo8")
+text = "Other Sounds Volume"
+
+[node name="BackButtonAudio" type="Button" parent="Audio/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 140.0
+offset_top = 200.0
+offset_right = 180.0
+offset_bottom = 219.0
+focus_neighbor_top = NodePath("../OtherVolumeSlider")
+focus_previous = NodePath("../OtherVolumeSlider")
+theme = ExtResource("1_eklo8")
+text = "Back"
+
+[node name="Inputs" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 320.0
+offset_bottom = 23.0
+theme = ExtResource("1_eklo8")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.729412)
+theme_override_fonts/font = ExtResource("3_y3pb0")
+text = "Inputs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Inputs"]
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="BackButtonInputs" type="Button" parent="Inputs/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 140.0
+offset_top = 200.0
+offset_right = 180.0
+offset_bottom = 219.0
+theme = ExtResource("1_eklo8")
+text = "Back"
+
+[node name="AudioButton" type="Button" parent="Inputs"]
+unique_name_in_owner = true
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 73.0
+offset_bottom = 34.0
+focus_neighbor_bottom = NodePath("../MainVolumeSlider")
+focus_next = NodePath("../MainVolumeSlider")
+theme = ExtResource("1_eklo8")
+text = "Audio
+"
+
+[connection signal="pressed" from="Audio/Control/InputsButton" to="." method="_on_inputs_button_pressed"]
+[connection signal="value_changed" from="Audio/Control/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
+[connection signal="value_changed" from="Audio/Control/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="Audio/Control/OtherVolumeSlider" to="." method="_on_other_volume_slider_value_changed"]
+[connection signal="pressed" from="Audio/Control/BackButtonAudio" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Inputs/Control/BackButtonInputs" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Inputs/AudioButton" to="." method="_on_audio_button_pressed"]

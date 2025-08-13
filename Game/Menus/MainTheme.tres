@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c7yqk7py056vj"]
+
+[ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="1_t64k2"]
+[ext_resource type="FontFile" uid="uid://iq7ddevcbf0d" path="res://Fonts/Roboto-Medium.ttf" id="2_3dxgn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dxgn"]
+bg_color = Color(0.854902, 0.152941, 0.152941, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.943732, 0.906361, 0.625138, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lel4p"]
+bg_color = Color(0.433909, 0.04823, 0.0514742, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxn03"]
+bg_color = Color(0.854902, 0.152941, 0.152941, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/fonts/font = ExtResource("1_t64k2")
+Button/styles/focus = SubResource("StyleBoxFlat_3dxgn")
+Button/styles/hover = SubResource("StyleBoxFlat_3dxgn")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_lel4p")
+Button/styles/normal = SubResource("StyleBoxFlat_jxn03")
+Button/styles/pressed = SubResource("StyleBoxFlat_lel4p")
+Label/fonts/font = ExtResource("2_3dxgn")

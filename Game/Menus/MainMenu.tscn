@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://ex223yycxufa"]
+
+[ext_resource type="Script" uid="uid://brd4lwxf7jjc2" path="res://Menus/menu.gd" id="1_7ihqj"]
+[ext_resource type="PackedScene" uid="uid://bwwch08u1fki0" path="res://Level/level.tscn" id="2_0xbyl"]
+[ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="2_n6o36"]
+[ext_resource type="PackedScene" uid="uid://dkashjgsuj6rv" path="res://Menus/Settings.tscn" id="3_1txdl"]
+[ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="3_5ncg0"]
+[ext_resource type="Texture2D" uid="uid://jn8lmaq13ofq" path="res://Level/Map/Map_bricks.png" id="4_n6o36"]
+[ext_resource type="Theme" uid="uid://c7yqk7py056vj" path="res://Menus/MainTheme.tres" id="5_5ncg0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ncg0"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_0xbyl"]
+sky_material = SubResource("ProceduralSkyMaterial_5ncg0")
+
+[sub_resource type="Environment" id="Environment_1txdl"]
+background_mode = 3
+sky = SubResource("Sky_0xbyl")
+ambient_light_source = 1
+reflected_light_source = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_w0hos"]
+font = ExtResource("3_5ncg0")
+shadow_color = Color(0, 0, 0, 0.713726)
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_7ihqj")
+level = ExtResource("2_0xbyl")
+settings_scene = ExtResource("3_1txdl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1txdl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.515367, 0.742157, -0.428485, 0, 0.5, 0.866025, 0.856969, -0.446321, 0.257684, 0, 0, 0)
+sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.957, 1.606)
+
+[node name="TheCar" parent="." instance=ExtResource("2_n6o36")]
+unique_name_in_owner = true
+transform = Transform3D(-0.257032, 0, 0.966403, 0, 1, 0, -0.966403, 0, -0.257032, 2.21, 0, -3.986)
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+modulate = Color(0.671435, 0.545798, 0.54639, 1)
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("4_n6o36")
+stretch_mode = 1
+
+[node name="StartButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 1
+offset_left = 120.0
+offset_top = 48.0
+offset_right = 199.0
+offset_bottom = 86.0
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../ScoresButton")
+focus_next = NodePath("../ScoresButton")
+focus_previous = NodePath("../SettingsButton")
+theme = ExtResource("5_5ncg0")
+theme_override_font_sizes/font_size = 30
+text = "Start"
+icon_alignment = 1
+
+[node name="ScoresButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 1
+offset_left = 133.0
+offset_top = 95.0
+offset_right = 187.0
+offset_bottom = 114.0
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../StartButton")
+theme = ExtResource("5_5ncg0")
+text = "Scores"
+icon_alignment = 1
+
+[node name="SettingsButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 1
+offset_left = 128.0
+offset_top = 123.0
+offset_right = 192.0
+offset_bottom = 142.0
+focus_neighbor_top = NodePath("../ScoresButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../ScoresButton")
+theme = ExtResource("5_5ncg0")
+text = "Settings"
+icon_alignment = 1
+
+[node name="Title" type="Label" parent="MainMenu"]
+offset_right = 320.0
+offset_bottom = 40.0
+text = "Normal Taxi"
+label_settings = SubResource("LabelSettings_w0hos")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="SettingsLayer"]
+modulate = Color(0.671435, 0.545798, 0.54639, 1)
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("4_n6o36")
+stretch_mode = 1
+
+[connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/ScoresButton" to="." method="_on_scores_button_pressed"]
+[connection signal="pressed" from="MainMenu/SettingsButton" to="." method="_on_settings_button_pressed"]

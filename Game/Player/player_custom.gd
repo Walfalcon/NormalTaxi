@@ -32,8 +32,6 @@ func _ready() -> void:
 	passenger_animator.play("Sit")
 	gus_animator.play("Sit_Idle")
 	GameVariables.current_player = self
-	freeze = true
-	GameVariables.start_music.connect(start)
 	%TireFrontLeft.tire_model = car_model.find_child("Tire-FL")
 	%TireFrontRight.tire_model = car_model.find_child("Tire-FR")
 	%TireBackLeft.tire_model = car_model.find_child("Tire-RL")
