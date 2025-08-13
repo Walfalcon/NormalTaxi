@@ -9,13 +9,10 @@ extends MainScene
 @onready var scores_button: Button = %ScoresButton
 @onready var settings_button: Button = %SettingsButton
 @onready var settings_layer: CanvasLayer = %SettingsLayer
-
-var settings_menu: Settings
+@onready var settings_menu: Settings = %Settings
 
 func _ready() -> void:
-	settings_menu = settings_scene.instantiate()
 	settings_button.grab_focus()
-	%SettingsLayer.add_child(settings_menu)
 	settings_menu.close_settings.connect(_on_settings_close)
 	
 

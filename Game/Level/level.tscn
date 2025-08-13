@@ -83,6 +83,7 @@ material = SubResource("ShaderMaterial_q47le")
 size = Vector2(2.5, 3)
 
 [node name="Level" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_q47le")
 
 [node name="Map" parent="." instance=ExtResource("1_nk1il")]

@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="3_y3pb0"]
 
 [node name="Settings" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_eklo8")
@@ -18,14 +19,13 @@ offset_bottom = 240.0
 
 [node name="Audio" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 23.0
 theme = ExtResource("1_eklo8")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.729412)
 theme_override_fonts/font = ExtResource("3_y3pb0")
-text = "Audio"
+text = "Audio Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -34,19 +34,6 @@ anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 240.0
 
-[node name="InputsButton" type="Button" parent="Audio/Control"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 239.0
-offset_top = 15.0
-offset_right = 287.0
-offset_bottom = 34.0
-focus_neighbor_bottom = NodePath("../MainVolumeSlider")
-focus_next = NodePath("../MainVolumeSlider")
-theme = ExtResource("1_eklo8")
-text = "Inputs
-"
-
 [node name="MainVolumeSlider" type="HSlider" parent="Audio/Control"]
 unique_name_in_owner = true
 layout_mode = 0
@@ -54,10 +41,8 @@ offset_left = 60.0
 offset_top = 80.0
 offset_right = 260.0
 offset_bottom = 96.0
-focus_neighbor_top = NodePath("../InputsButton")
 focus_neighbor_bottom = NodePath("../MusicVolumeSlider")
 focus_next = NodePath("../MusicVolumeSlider")
-focus_previous = NodePath("../InputsButton")
 theme = ExtResource("1_eklo8")
 max_value = 1.0
 step = 0.0
@@ -128,48 +113,7 @@ focus_previous = NodePath("../OtherVolumeSlider")
 theme = ExtResource("1_eklo8")
 text = "Back"
 
-[node name="Inputs" type="Label" parent="."]
-unique_name_in_owner = true
-offset_right = 320.0
-offset_bottom = 23.0
-theme = ExtResource("1_eklo8")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.729412)
-theme_override_fonts/font = ExtResource("3_y3pb0")
-text = "Inputs"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="Inputs"]
-anchors_preset = 0
-offset_right = 320.0
-offset_bottom = 240.0
-
-[node name="BackButtonInputs" type="Button" parent="Inputs/Control"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 140.0
-offset_top = 200.0
-offset_right = 180.0
-offset_bottom = 219.0
-theme = ExtResource("1_eklo8")
-text = "Back"
-
-[node name="AudioButton" type="Button" parent="Inputs"]
-unique_name_in_owner = true
-offset_left = 25.0
-offset_top = 15.0
-offset_right = 73.0
-offset_bottom = 34.0
-focus_neighbor_bottom = NodePath("../MainVolumeSlider")
-focus_next = NodePath("../MainVolumeSlider")
-theme = ExtResource("1_eklo8")
-text = "Audio
-"
-
-[connection signal="pressed" from="Audio/Control/InputsButton" to="." method="_on_inputs_button_pressed"]
 [connection signal="value_changed" from="Audio/Control/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
 [connection signal="value_changed" from="Audio/Control/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="Audio/Control/OtherVolumeSlider" to="." method="_on_other_volume_slider_value_changed"]
 [connection signal="pressed" from="Audio/Control/BackButtonAudio" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="Inputs/Control/BackButtonInputs" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="Inputs/AudioButton" to="." method="_on_audio_button_pressed"]

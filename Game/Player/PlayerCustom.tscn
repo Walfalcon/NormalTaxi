@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=14 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cocoiqjv1bj3g" path="res://Player/gearshift icon.png" id="5_qympc"]
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
 [ext_resource type="PackedScene" uid="uid://dkiu76pv8ty4m" path="res://Player/car_passenger.tscn" id="6_qympc"]
+[ext_resource type="PackedScene" uid="uid://dkashjgsuj6rv" path="res://Menus/Settings.tscn" id="9_d8ik7"]
 [ext_resource type="AudioStream" uid="uid://bqbfilaegltks" path="res://Player/Sounds/Engine.wav" id="9_xfvo5"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="10_d8ik7"]
 
@@ -175,5 +176,12 @@ one_shot = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.326389, 0.625349, 0.223648)
 cull_mask = 1048573
+
+[node name="SettingsLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Settings" parent="SettingsLayer" instance=ExtResource("9_d8ik7")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="timeout" from="PassengerTimer" to="." method="_on_passenger_timer_timeout"]

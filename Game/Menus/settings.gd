@@ -6,13 +6,8 @@ const slider_controller_speed: float = 0.5
 @onready var main_volume_slider: Slider = %MainVolumeSlider
 @onready var music_volume_slider: Slider = %MusicVolumeSlider
 @onready var other_volume_slider: Slider = %OtherVolumeSlider
-@onready var inputs_button: Button = %InputsButton
 @onready var back_button_audio: Button = %BackButtonAudio
 @onready var audio_tab: Label = %Audio
-
-@onready var inputs_tab: Label = %Inputs
-@onready var back_button_inputs: Button = %BackButtonInputs
-@onready var audio_button: Button = %AudioButton
 
 signal close_settings
 
@@ -42,7 +37,6 @@ func _on_settings_open() -> void:
 
 func _on_inputs_button_pressed() -> void:
 	audio_tab.visible = false
-	inputs_tab.visible = true
 
 
 func _on_back_button_pressed() -> void:
@@ -63,6 +57,5 @@ func _on_other_volume_slider_value_changed(value: float) -> void:
 
 
 func _on_audio_button_pressed() -> void:
-	inputs_button.grab_focus()
+	back_button_audio.grab_focus()
 	audio_tab.visible = true
-	inputs_tab.visible = false

@@ -9,6 +9,9 @@ var current_player: Player = null
 var destinations: Array[Destination] = []
 var game_started: bool = false
 
+var input_map
+
+
 @onready var game_volume: float = AudioServer.get_bus_volume_linear(0) :
 	set(new_volume):
 		AudioServer.set_bus_volume_linear(0, new_volume)

@@ -23,6 +23,7 @@ const passenger_leave_speed: float = 15.
 @onready var passenger_timer: Timer = %PassengerTimer
 @onready var seated_position: Transform3D = passenger_model.transform
 @onready var gus_animator: AnimationPlayer = car_model.find_child("AnimationPlayer")
+@onready var settings_menu: Settings = %Settings
 
 var current_destination: Destination = null
 var has_passenger: bool = false
@@ -36,6 +37,7 @@ func _ready() -> void:
 	%TireFrontRight.tire_model = car_model.find_child("Tire-FR")
 	%TireBackLeft.tire_model = car_model.find_child("Tire-RL")
 	%TireBackRight.tire_model = car_model.find_child("Tire-RR")
+	settings_menu.close_settings.connect(_on_settings_exit)
 
 func _physics_process(delta: float) -> void:
 	if clue_label.visible_characters < 500.0:
@@ -79,6 +81,11 @@ func _physics_process(delta: float) -> void:
 	
 	if passenger_leaving:
 		passenger_model.position.y += passenger_leave_speed * delta
+	
+	if Input.is_action_just_pressed("Pause"):
+		get_tree().paused = true
+		settings_menu._on_settings_open()
+		settings_menu.visible = true
 
 func stop() -> void:
 	freeze = true
@@ -123,3 +130,8 @@ func passenger_exit() -> void:
 func _on_passenger_timer_timeout() -> void:
 	passenger_leaving = false
 	passenger_model.visible = false
+
+func _on_settings_exit() -> void:
+	get_tree().paused = false
+	settings_menu.visible = false
+	

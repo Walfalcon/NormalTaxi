@@ -52,6 +52,7 @@ font = ExtResource("6_ac03j")
 font_size = 13
 
 [node name="PostProcessing" type="Node"]
+process_mode = 3
 
 [node name="RetroLayer" type="CanvasLayer" parent="."]
 

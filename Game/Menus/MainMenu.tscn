@@ -122,6 +122,9 @@ offset_bottom = 240.0
 texture = ExtResource("4_n6o36")
 stretch_mode = 1
 
+[node name="Settings" parent="SettingsLayer" instance=ExtResource("3_1txdl")]
+unique_name_in_owner = true
+
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/ScoresButton" to="." method="_on_scores_button_pressed"]
 [connection signal="pressed" from="MainMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
