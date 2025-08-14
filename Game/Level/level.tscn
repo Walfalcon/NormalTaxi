@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwwch08u1fki0"]
+[gd_scene load_steps=27 format=3 uid="uid://bwwch08u1fki0"]
 
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
 [ext_resource type="Script" uid="uid://baqoxvhro2ngn" path="res://Level/level.gd" id="1_q47le"]
+[ext_resource type="PackedScene" uid="uid://bpsl66k4kjdkq" path="res://Menus/Scores/Results.tscn" id="2_dx36h"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
 [ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_d6qko"]
 [ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
@@ -85,6 +86,7 @@ size = Vector2(2.5, 3)
 [node name="Level" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_q47le")
+results_screen = ExtResource("2_dx36h")
 
 [node name="Map" parent="." instance=ExtResource("1_nk1il")]
 
@@ -311,3 +313,9 @@ texture = ExtResource("11_i5g78")
 [node name="TheaterDoor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -92.796, -2.4582, -103.173)
 mesh = SubResource("PlaneMesh_dx36h")
+
+[node name="GameTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

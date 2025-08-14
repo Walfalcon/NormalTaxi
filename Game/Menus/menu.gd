@@ -1,7 +1,6 @@
 class_name MainMenu
 extends MainScene
 
-@export var level: PackedScene
 @export var settings_scene: PackedScene
 
 @onready var player_animator: AnimationPlayer = %TheCar.find_child("AnimationPlayer")
@@ -12,22 +11,35 @@ extends MainScene
 @onready var settings_menu: Settings = %Settings
 
 func _ready() -> void:
-	start_button.grab_focus()
+	start_button.grab_focus.call_deferred()
 	settings_menu.close_settings.connect(_on_settings_close)
+	player_animator.play("Stand_Idle")
 	
 
 func _on_start_button_pressed() -> void:
-	change_scene.emit(level)
+	change_scene.emit(1)
 
 
 func _on_scores_button_pressed() -> void:
-	pass # Replace with function body.
+	%Leaderboards.load_scores()
+	%Leaderboards.display_scores()
+	%ScoresLayer.visible = true
+	%MainMenu.visible = false
+	%ExitButton.grab_focus()
 
 
 func _on_settings_button_pressed() -> void:
 	settings_layer.visible = true
+	%MainMenu.visible = false
 	settings_menu._on_settings_open()
 
 func _on_settings_close() -> void:
 	settings_layer.visible = false
-	settings_button.grab_focus()
+	%MainMenu.visible = true
+	start_button.grab_focus()
+
+
+func _on_exit_button_pressed() -> void:
+	%ScoresLayer.visible = false
+	%MainMenu.visible = true
+	start_button.grab_focus()

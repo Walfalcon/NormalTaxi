@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://q2jwuvr5ib46"]
+
+[ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="1_1abbu"]
+[ext_resource type="Script" uid="uid://btr780py36n0u" path="res://Menus/Scores/score_tag.gd" id="2_af7sm"]
+[ext_resource type="FontFile" uid="uid://c42ab3mj1uvhe" path="res://Fonts/Roboto-Italic.ttf" id="3_tbufg"]
+
+[node name="ScoreTag" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 20.0
+script = ExtResource("2_af7sm")
+
+[node name="Rank" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_right = 40.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("1_1abbu")
+text = "#1"
+
+[node name="Name" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 50.0
+offset_right = 90.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("1_1abbu")
+text = "AAA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 90.0
+offset_right = 125.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_tbufg")
+text = "50"
+horizontal_alignment = 2
+vertical_alignment = 1

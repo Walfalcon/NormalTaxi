@@ -1,15 +1,23 @@
 extends Node
 
-@export var level: PackedScene
+@export var scenes: Array[PackedScene]
 var loaded_scene: MainScene = null
 
+@onready var control_animations: AnimationPlayer = %SongLabelAnimation
+
 func _ready() -> void:
-	loaded_scene = level.instantiate()
+	loaded_scene = scenes[0].instantiate()
 	add_child(loaded_scene)
 	loaded_scene.change_scene.connect(_on_change_scene)
 
-func _on_change_scene(new_scene: PackedScene) -> void:
+func _on_change_scene(new_scene: int) -> void:
+	get_tree().paused = true
+	control_animations.play("FadeOut")
+	await control_animations.animation_finished
 	loaded_scene.queue_free()
-	loaded_scene = new_scene.instantiate()
+	loaded_scene = scenes[new_scene].instantiate()
 	add_child(loaded_scene)
 	loaded_scene.change_scene.connect(_on_change_scene)
+	control_animations.play_backwards("FadeOut")
+	await control_animations.animation_finished
+	get_tree().paused = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ex223yycxufa"]
+[gd_scene load_steps=13 format=3 uid="uid://ex223yycxufa"]
 
 [ext_resource type="Script" uid="uid://brd4lwxf7jjc2" path="res://Menus/menu.gd" id="1_7ihqj"]
 [ext_resource type="PackedScene" uid="uid://bwwch08u1fki0" path="res://Level/level.tscn" id="2_0xbyl"]
@@ -7,17 +7,18 @@
 [ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="3_5ncg0"]
 [ext_resource type="Texture2D" uid="uid://jn8lmaq13ofq" path="res://Level/Map/Map_bricks.png" id="4_n6o36"]
 [ext_resource type="Theme" uid="uid://c7yqk7py056vj" path="res://Menus/MainTheme.tres" id="5_5ncg0"]
+[ext_resource type="PackedScene" uid="uid://vdupx1vcodhw" path="res://Menus/Scores/leaderboards.tscn" id="8_m16r1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ncg0"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_0xbyl"]
+[sub_resource type="Sky" id="Sky_1txdl"]
 sky_material = SubResource("ProceduralSkyMaterial_5ncg0")
 
 [sub_resource type="Environment" id="Environment_1txdl"]
 background_mode = 3
-sky = SubResource("Sky_0xbyl")
+sky = SubResource("Sky_1txdl")
 ambient_light_source = 1
 reflected_light_source = 1
 
@@ -28,6 +29,7 @@ shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.713726)
 
 [node name="MainMenu" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_7ihqj")
 level = ExtResource("2_0xbyl")
 settings_scene = ExtResource("3_1txdl")
@@ -36,25 +38,18 @@ settings_scene = ExtResource("3_1txdl")
 environment = SubResource("Environment_1txdl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.515367, 0.742157, -0.428485, 0, 0.5, 0.866025, 0.856969, -0.446321, 0.257684, 0, 0, 0)
+transform = Transform3D(0.911604, -0.355996, 0.205535, 7.59124e-09, 0.5, 0.866025, -0.411069, -0.789473, 0.455802, 0, 0, 0)
 sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.639346, 1.16726, 0.658906)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83317, 0.878409, 0.172316)
 
 [node name="TheCar" parent="." instance=ExtResource("2_n6o36")]
 unique_name_in_owner = true
 transform = Transform3D(-0.257032, 0, 0.966403, 0, 1, 0, -0.966403, 0, -0.257032, 2.21, 0, -3.986)
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="TextureRect" type="TextureRect" parent="MainMenu"]
-modulate = Color(0.671435, 0.545798, 0.54639, 1)
-offset_right = 320.0
-offset_bottom = 240.0
-texture = ExtResource("4_n6o36")
-stretch_mode = 1
+unique_name_in_owner = true
 
 [node name="StartButton" type="Button" parent="MainMenu"]
 unique_name_in_owner = true
@@ -118,16 +113,36 @@ vertical_alignment = 1
 unique_name_in_owner = true
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="SettingsLayer"]
+[node name="Settings" parent="SettingsLayer" instance=ExtResource("3_1txdl")]
+unique_name_in_owner = true
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
 modulate = Color(0.671435, 0.545798, 0.54639, 1)
 offset_right = 320.0
 offset_bottom = 240.0
 texture = ExtResource("4_n6o36")
 stretch_mode = 1
 
-[node name="Settings" parent="SettingsLayer" instance=ExtResource("3_1txdl")]
+[node name="ScoresLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
+
+[node name="Leaderboards" parent="ScoresLayer" instance=ExtResource("8_m16r1")]
+unique_name_in_owner = true
+
+[node name="ExitButton" type="Button" parent="ScoresLayer"]
+unique_name_in_owner = true
+offset_left = 276.0
+offset_top = 15.0
+offset_right = 307.0
+offset_bottom = 34.0
+theme = ExtResource("5_5ncg0")
+text = "Exit"
 
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/ScoresButton" to="." method="_on_scores_button_pressed"]
 [connection signal="pressed" from="MainMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ScoresLayer/ExitButton" to="." method="_on_exit_button_pressed"]

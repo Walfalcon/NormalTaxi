@@ -1,0 +1,177 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpsl66k4kjdkq"]
+
+[ext_resource type="Script" uid="uid://bp5i1h2dra51a" path="res://Menus/Scores/results.gd" id="1_urevl"]
+[ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="2_6h1uq"]
+[ext_resource type="PackedScene" uid="uid://vdupx1vcodhw" path="res://Menus/Scores/leaderboards.tscn" id="3_hfonq"]
+[ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="4_wjio6"]
+[ext_resource type="FontFile" uid="uid://iq7ddevcbf0d" path="res://Fonts/Roboto-Medium.ttf" id="5_gb4jd"]
+[ext_resource type="Texture2D" uid="uid://jn8lmaq13ofq" path="res://Level/Map/Map_bricks.png" id="5_oqu85"]
+[ext_resource type="Texture2D" uid="uid://lailmtvpbmnh" path="res://Menus/Scores/arrow.png" id="6_tvln8"]
+[ext_resource type="Theme" uid="uid://c7yqk7py056vj" path="res://Menus/MainTheme.tres" id="7_by621"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cwom2"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_0xbyl"]
+sky_material = SubResource("ProceduralSkyMaterial_cwom2")
+
+[sub_resource type="Environment" id="Environment_x3lp8"]
+background_mode = 3
+sky = SubResource("Sky_0xbyl")
+ambient_light_source = 1
+reflected_light_source = 1
+
+[node name="Results" type="Node3D" node_paths=PackedStringArray("letter_labels")]
+process_mode = 1
+script = ExtResource("1_urevl")
+letter_labels = [NodePath("NameInputLayer/NameInput/Letter1"), NodePath("NameInputLayer/NameInput/Letter2"), NodePath("NameInputLayer/NameInput/Letter3"), NodePath("NameInputLayer/NameInput/SaveButton")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x3lp8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.840225, 0.469591, -0.271119, 1.02575e-08, 0.5, 0.866025, 0.542236, -0.727657, 0.420114, 0, 0, 0)
+sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.659176, 0.622242, 0.058107)
+
+[node name="TheCar" parent="." instance=ExtResource("2_6h1uq")]
+unique_name_in_owner = true
+transform = Transform3D(0.514469, 0, 0.857509, 0, 1, 0, -0.857509, 0, 0.514469, 2.05136, 0, -2.09165)
+
+[node name="LeaderboardsLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 2
+
+[node name="Control" type="Control" parent="LeaderboardsLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="Leaderboards" parent="LeaderboardsLayer/Control" instance=ExtResource("3_hfonq")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 200.0
+offset_bottom = 220.0
+
+[node name="DoneButton" type="Button" parent="LeaderboardsLayer"]
+unique_name_in_owner = true
+offset_left = 251.0
+offset_top = 15.0
+offset_right = 292.0
+offset_bottom = 34.0
+theme = ExtResource("7_by621")
+text = "Done"
+
+[node name="NameInputLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="NameInput" type="Control" parent="NameInputLayer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 160.0
+offset_top = 120.0
+offset_right = 160.0
+offset_bottom = 120.0
+
+[node name="Tint" type="ColorRect" parent="NameInputLayer/NameInput"]
+layout_mode = 0
+offset_left = -160.0
+offset_top = -120.0
+offset_right = 160.0
+offset_bottom = 120.0
+color = Color(0, 0, 0, 0.564706)
+
+[node name="WhatsYourName" type="Label" parent="NameInputLayer/NameInput"]
+layout_mode = 0
+offset_left = -100.0
+offset_top = -35.0
+offset_right = 100.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("4_wjio6")
+text = "Wow! What's your name!?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Letter1" type="Label" parent="NameInputLayer/NameInput"]
+layout_mode = 0
+offset_left = -30.0
+offset_right = -10.0
+offset_bottom = 20.0
+focus_neighbor_right = NodePath("../Letter2")
+focus_next = NodePath("../Letter2")
+focus_mode = 1
+theme_override_fonts/font = ExtResource("5_gb4jd")
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Letter2" type="Label" parent="NameInputLayer/NameInput"]
+layout_mode = 0
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = 20.0
+focus_neighbor_left = NodePath("../Letter1")
+focus_neighbor_right = NodePath("../Letter3")
+focus_next = NodePath("../Letter3")
+focus_previous = NodePath("../Letter1")
+focus_mode = 1
+theme_override_fonts/font = ExtResource("5_gb4jd")
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Letter3" type="Label" parent="NameInputLayer/NameInput"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 30.0
+offset_bottom = 20.0
+focus_neighbor_left = NodePath("../Letter2")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_next = NodePath("../SaveButton")
+focus_previous = NodePath("../Letter2")
+focus_mode = 1
+theme_override_fonts/font = ExtResource("5_gb4jd")
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Selector" type="Sprite2D" parent="NameInputLayer/NameInput"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-20, 22)
+texture = ExtResource("6_tvln8")
+
+[node name="SaveButton" type="Button" parent="NameInputLayer/NameInput"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 58.0
+offset_top = 7.0
+offset_right = 97.0
+offset_bottom = 26.0
+focus_neighbor_left = NodePath("../Letter3")
+focus_previous = NodePath("../Letter3")
+focus_mode = 1
+theme = ExtResource("7_by621")
+text = "Save"
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(0.671435, 0.545798, 0.54639, 1)
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("5_oqu85")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="LeaderboardsLayer/DoneButton" to="." method="_on_done_button_pressed"]
+[connection signal="pressed" from="NameInputLayer/NameInput/SaveButton" to="." method="_on_save_button_pressed"]

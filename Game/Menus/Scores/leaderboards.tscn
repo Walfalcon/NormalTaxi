@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://vdupx1vcodhw"]
+
+[ext_resource type="Script" uid="uid://cpvawvkiqsv77" path="res://Menus/Scores/leaderboards.gd" id="1_qrhid"]
+[ext_resource type="PackedScene" uid="uid://q2jwuvr5ib46" path="res://Menus/Scores/ScoreTag.tscn" id="2_pkewn"]
+
+[node name="Leaderboards" type="ColorRect"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 230.0
+color = Color(0, 0, 0, 0.584314)
+script = ExtResource("1_qrhid")
+score_tag_scene = ExtResource("2_pkewn")
+
+[node name="Box" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 190.0
+offset_bottom = 210.0

@@ -24,12 +24,14 @@ const passenger_leave_speed: float = 15.
 @onready var seated_position: Transform3D = passenger_model.transform
 @onready var gus_animator: AnimationPlayer = car_model.find_child("AnimationPlayer")
 @onready var settings_menu: Settings = %Settings
+@onready var time_ticker: Label = %TimeTicker
 
 var current_destination: Destination = null
 var has_passenger: bool = false
 var passenger_leaving: bool = false
 
 func _ready() -> void:
+	time_ticker.text = str(int(GameVariables.initial_time))
 	passenger_animator.play("Sit")
 	gus_animator.play("Sit_Idle")
 	GameVariables.current_player = self
@@ -87,6 +89,10 @@ func _physics_process(delta: float) -> void:
 		settings_menu._on_settings_open()
 		settings_menu.visible = true
 
+func _process(delta: float) -> void:
+	if GameVariables.current_timer != null:
+		time_ticker.text = str(int(GameVariables.current_timer.time_left))
+
 func stop() -> void:
 	freeze = true
 
@@ -111,6 +117,7 @@ func passenger_enter(new_passenger: Passenger) -> void:
 	clue_label.visible_characters = 0
 	has_passenger = true
 	passenger_model.visible = true
+	GameVariables.current_timer.start(GameVariables.current_timer.time_left + GameVariables.additional_time)
 	start()
 
 func passenger_exit() -> void:
@@ -125,6 +132,8 @@ func passenger_exit() -> void:
 	passenger_leaving = true
 	passenger_timer.start()
 	GameVariables.drop_off_passenger.emit()
+	GameVariables.score += 1
+	print(GameVariables.score)
 
 
 func _on_passenger_timer_timeout() -> void:

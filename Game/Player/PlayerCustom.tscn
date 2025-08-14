@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=15 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://de6afhegvlrr8" path="res://Player/camera_pivot.gd" id="5_rg7h5"]
 [ext_resource type="PackedScene" uid="uid://dkiu76pv8ty4m" path="res://Player/car_passenger.tscn" id="6_qympc"]
 [ext_resource type="PackedScene" uid="uid://dkashjgsuj6rv" path="res://Menus/Settings.tscn" id="9_d8ik7"]
+[ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="9_qt6rh"]
 [ext_resource type="AudioStream" uid="uid://bqbfilaegltks" path="res://Player/Sounds/Engine.wav" id="9_xfvo5"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="10_d8ik7"]
 
@@ -15,17 +16,17 @@ _limits = [0.0, 1.0, -1.0, 1.0]
 _data = [Vector2(-0.0106382, 0.629214), 0.0, 0.0, 0, 0, Vector2(0.362319, 0.889865), 0.0, 0.0, 0, 0, Vector2(0.630435, 0.777691), 0.0, 0.0, 0, 0, Vector2(0.991037, 0.272677), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_rg7h5"]
-font = ExtResource("4_q1h0l")
-font_size = 12
-shadow_size = 5
-shadow_color = Color(0.0392157, 0.105882, 0.298039, 0.807843)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1h0l"]
 size = Vector3(1.5, 2.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qympc"]
 size = Vector3(1.8, 1, 3.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rg7h5"]
+font = ExtResource("4_q1h0l")
+font_size = 12
+shadow_size = 5
+shadow_color = Color(0.0392157, 0.105882, 0.298039, 0.807843)
 
 [node name="PlayerCustom" type="RigidBody3D" node_paths=PackedStringArray("tires")]
 collision_layer = 3
@@ -114,25 +115,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478131, 0.666104)
 enabled = false
 target_position = Vector3(0, 3.55, 6.1)
 
-[node name="Clue" type="Label" parent="."]
-unique_name_in_owner = true
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 310.0
-offset_bottom = 55.0
-label_settings = SubResource("LabelSettings_rg7h5")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-justification_flags = 0
-text_overrun_behavior = 1
-
-[node name="GearshiftIcon" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(260, 200)
-texture = ExtResource("5_qympc")
-hframes = 2
-
 [node name="GetInPoint" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950482, -0.389581, 0.319734)
@@ -155,6 +137,7 @@ autoplay = true
 
 [node name="TheCar" parent="." instance=ExtResource("10_d8ik7")]
 unique_name_in_owner = true
+process_mode = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.116376, 0.993205, 0, -0.993205, 0.116376, 0, 0.408625, 0.659276)
@@ -176,6 +159,45 @@ one_shot = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.356953, 0.625349, 0.223648)
 cull_mask = 1048573
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Clue" type="Label" parent="UI"]
+unique_name_in_owner = true
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 310.0
+offset_bottom = 55.0
+label_settings = SubResource("LabelSettings_rg7h5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 0
+text_overrun_behavior = 1
+
+[node name="GearshiftIcon" type="Sprite2D" parent="UI"]
+unique_name_in_owner = true
+position = Vector2(260, 200)
+texture = ExtResource("5_qympc")
+hframes = 2
+
+[node name="TimeLabel" type="Label" parent="UI"]
+offset_left = 158.0
+offset_top = 189.0
+offset_right = 198.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("9_qt6rh")
+text = "Time:"
+
+[node name="TimeTicker" type="Label" parent="UI/TimeLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 42.0
+offset_top = -2.0
+offset_right = 73.0
+offset_bottom = 21.0
+text = "000"
+horizontal_alignment = 2
 
 [node name="SettingsLayer" type="CanvasLayer" parent="."]
 layer = 2

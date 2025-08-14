@@ -5,9 +5,14 @@ signal drop_off_passenger
 signal start_music
 signal stop_music
 
+const initial_time: float = 3.0 ## Seconds left on timer at start of game
+const additional_time: float = 17.0 ## Seconds added when you pick up a passenger
+
 var current_player: Player = null
 var destinations: Array[Destination] = []
 var game_started: bool = false
+var current_timer: Timer = null
+var score: int = 0
 
 @onready var game_volume: float = AudioServer.get_bus_volume_linear(0) :
 	set(new_volume):

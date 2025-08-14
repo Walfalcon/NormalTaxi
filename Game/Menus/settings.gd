@@ -40,7 +40,7 @@ func _on_settings_open() -> void:
 
 
 func _on_inputs_button_pressed() -> void:
-	audio_button.grab_focus()
+	audio_button.grab_focus.call_deferred()
 	audio_tab.visible = false
 	input_tab.visible = true
 
@@ -74,7 +74,7 @@ func _on_other_volume_slider_value_changed(value: float) -> void:
 
 
 func _on_audio_button_pressed() -> void:
-	inputs_button.grab_focus()
+	inputs_button.grab_focus.call_deferred()
 	audio_tab.visible = true
 	input_tab.visible = false
 	
