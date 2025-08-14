@@ -23,6 +23,8 @@ reflected_light_source = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_w0hos"]
 font = ExtResource("3_5ncg0")
+font_size = 45
+shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.713726)
 
 [node name="MainMenu" type="Node3D"]
@@ -38,7 +40,7 @@ transform = Transform3D(0.515367, 0.742157, -0.428485, 0, 0.5, 0.866025, 0.85696
 sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.957, 1.606)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.639346, 1.16726, 0.658906)
 
 [node name="TheCar" parent="." instance=ExtResource("2_n6o36")]
 unique_name_in_owner = true
@@ -58,10 +60,10 @@ stretch_mode = 1
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
-offset_left = 120.0
-offset_top = 48.0
-offset_right = 199.0
-offset_bottom = 86.0
+offset_left = 25.0
+offset_top = 156.0
+offset_right = 104.0
+offset_bottom = 194.0
 focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../ScoresButton")
 focus_next = NodePath("../ScoresButton")
@@ -75,10 +77,10 @@ icon_alignment = 1
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
-offset_left = 133.0
-offset_top = 95.0
-offset_right = 187.0
-offset_bottom = 114.0
+offset_left = 38.0
+offset_top = 97.0
+offset_right = 92.0
+offset_bottom = 116.0
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
 focus_next = NodePath("../SettingsButton")
@@ -91,10 +93,10 @@ icon_alignment = 1
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
-offset_left = 128.0
-offset_top = 123.0
-offset_right = 192.0
-offset_bottom = 142.0
+offset_left = 33.0
+offset_top = 125.0
+offset_right = 97.0
+offset_bottom = 144.0
 focus_neighbor_top = NodePath("../ScoresButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 focus_next = NodePath("../StartButton")
@@ -104,8 +106,9 @@ text = "Settings"
 icon_alignment = 1
 
 [node name="Title" type="Label" parent="MainMenu"]
+offset_top = 17.0
 offset_right = 320.0
-offset_bottom = 40.0
+offset_bottom = 70.0
 text = "Normal Taxi"
 label_settings = SubResource("LabelSettings_w0hos")
 horizontal_alignment = 1

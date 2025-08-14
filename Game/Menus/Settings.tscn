@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkashjgsuj6rv"]
+[gd_scene load_steps=5 format=3 uid="uid://dkashjgsuj6rv"]
 
 [ext_resource type="Theme" uid="uid://c7yqk7py056vj" path="res://Menus/MainTheme.tres" id="1_eklo8"]
 [ext_resource type="Script" uid="uid://x8cowyt2yw4b" path="res://Menus/settings.gd" id="2_bktsr"]
 [ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="3_y3pb0"]
+[ext_resource type="Script" uid="uid://ccitsasdmdwq4" path="res://Menus/input_setting_button.gd" id="4_y3pb0"]
 
 [node name="Settings" type="Control"]
 process_mode = 3
@@ -19,6 +20,7 @@ offset_bottom = 240.0
 
 [node name="Audio" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 23.0
@@ -33,6 +35,15 @@ vertical_alignment = 1
 anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 240.0
+
+[node name="InputsButton" type="Button" parent="Audio/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 263.0
+offset_top = 5.0
+offset_right = 313.0
+offset_bottom = 24.0
+text = "Inputs"
 
 [node name="MainVolumeSlider" type="HSlider" parent="Audio/Control"]
 unique_name_in_owner = true
@@ -105,15 +116,215 @@ text = "Other Sounds Volume"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 140.0
-offset_top = 200.0
+offset_top = 215.0
 offset_right = 180.0
-offset_bottom = 219.0
+offset_bottom = 234.0
 focus_neighbor_top = NodePath("../OtherVolumeSlider")
 focus_previous = NodePath("../OtherVolumeSlider")
 theme = ExtResource("1_eklo8")
 text = "Back"
 
+[node name="Input" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 23.0
+theme = ExtResource("1_eklo8")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.729412)
+theme_override_fonts/font = ExtResource("3_y3pb0")
+text = "Input Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputButtons" type="Control" parent="Input"]
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="AudioButton" type="Button" parent="Input/InputButtons"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 263.0
+offset_top = 5.0
+offset_right = 309.0
+offset_bottom = 24.0
+focus_neighbor_bottom = NodePath("../GasInput")
+focus_next = NodePath("../GasInput")
+text = "Audio"
+
+[node name="GasInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 28.0
+offset_right = 41.0
+offset_bottom = 47.0
+focus_neighbor_top = NodePath("../AudioButton")
+focus_neighbor_bottom = NodePath("../BrakeInput")
+focus_next = NodePath("../BrakeInput")
+focus_previous = NodePath("../AudioButton")
+text = "Gas"
+script = ExtResource("4_y3pb0")
+action = &"Gas"
+
+[node name="GasLabel" type="Label" parent="Input/InputButtons/GasInput"]
+layout_mode = 0
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="BrakeInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 51.0
+offset_right = 55.0
+offset_bottom = 70.0
+focus_neighbor_top = NodePath("../GasInput")
+focus_neighbor_bottom = NodePath("../LeftInput")
+focus_next = NodePath("../LeftInput")
+focus_previous = NodePath("../GasInput")
+text = "Brake"
+script = ExtResource("4_y3pb0")
+action = &"Brake"
+
+[node name="BrakeLabel" type="Label" parent="Input/InputButtons/BrakeInput"]
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="LeftInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 74.0
+offset_right = 85.0
+offset_bottom = 93.0
+focus_neighbor_top = NodePath("../BrakeInput")
+focus_neighbor_bottom = NodePath("../RightInput")
+focus_next = NodePath("../RightInput")
+focus_previous = NodePath("../BrakeInput")
+text = "Steer Left"
+script = ExtResource("4_y3pb0")
+action = &"Left"
+
+[node name="LeftLabel" type="Label" parent="Input/InputButtons/LeftInput"]
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="RightInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 97.0
+offset_right = 94.0
+offset_bottom = 116.0
+focus_neighbor_top = NodePath("../LeftInput")
+focus_neighbor_bottom = NodePath("../ShiftInput")
+focus_next = NodePath("../ShiftInput")
+focus_previous = NodePath("../LeftInput")
+text = "Steer Right"
+script = ExtResource("4_y3pb0")
+action = &"Right"
+
+[node name="RightLabel" type="Label" parent="Input/InputButtons/RightInput"]
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="ShiftInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 94.0
+offset_bottom = 139.0
+focus_neighbor_top = NodePath("../RightInput")
+focus_neighbor_bottom = NodePath("../RestartInput")
+focus_next = NodePath("../RestartInput")
+focus_previous = NodePath("../RightInput")
+text = "Shift Gears"
+script = ExtResource("4_y3pb0")
+action = &"Shift"
+
+[node name="ShiftLabel" type="Label" parent="Input/InputButtons/ShiftInput"]
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="RestartInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 143.0
+offset_right = 79.0
+offset_bottom = 162.0
+focus_neighbor_top = NodePath("../ShiftInput")
+focus_neighbor_bottom = NodePath("../CameraInput")
+focus_next = NodePath("../CameraInput")
+focus_previous = NodePath("../ShiftInput")
+text = "Respawn"
+script = ExtResource("4_y3pb0")
+action = &"Restart"
+
+[node name="RestartLabel" type="Label" parent="Input/InputButtons/RestartInput"]
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="CameraInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 166.0
+offset_right = 69.0
+offset_bottom = 185.0
+focus_neighbor_top = NodePath("../RestartInput")
+focus_neighbor_bottom = NodePath("../RestartInput")
+focus_next = NodePath("../PauseInput")
+focus_previous = NodePath("../RestartInput")
+text = "Camera
+"
+script = ExtResource("4_y3pb0")
+action = &"Camera"
+
+[node name="CameraLabel" type="Label" parent="Input/InputButtons/CameraInput"]
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="PauseInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 189.0
+offset_right = 58.0
+offset_bottom = 208.0
+focus_neighbor_top = NodePath("../CameraInput")
+focus_neighbor_bottom = NodePath("../BackButtonInput")
+focus_next = NodePath("../BackButtonInput")
+focus_previous = NodePath("../CameraInput")
+text = "Pause"
+script = ExtResource("4_y3pb0")
+action = &"Pause"
+
+[node name="PauseLabel" type="Label" parent="Input/InputButtons/PauseInput"]
+offset_left = 90.0
+offset_right = 290.0
+offset_bottom = 19.0
+
+[node name="BackButtonInput" type="Button" parent="Input/InputButtons"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 215.0
+offset_right = 180.0
+offset_bottom = 234.0
+focus_neighbor_top = NodePath("../PauseInput")
+focus_previous = NodePath("../PauseInput")
+theme = ExtResource("1_eklo8")
+text = "Back"
+
+[node name="Timer" type="Timer" parent="Input"]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="pressed" from="Audio/Control/InputsButton" to="." method="_on_inputs_button_pressed"]
 [connection signal="value_changed" from="Audio/Control/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
 [connection signal="value_changed" from="Audio/Control/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="Audio/Control/OtherVolumeSlider" to="." method="_on_other_volume_slider_value_changed"]
 [connection signal="pressed" from="Audio/Control/BackButtonAudio" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Input/InputButtons/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="Input/InputButtons/BackButtonInput" to="." method="_on_back_button_pressed"]

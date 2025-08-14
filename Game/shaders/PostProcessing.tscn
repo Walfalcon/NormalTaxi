@@ -117,6 +117,7 @@ label_settings = SubResource("LabelSettings_rjnl7")
 autowrap_mode = 2
 
 [node name="SoundtrackPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
 bus = &"Music"
 script = ExtResource("6_747aq")
 songs = Array[String](["How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube", "I Feel Fantastic", "I Wanna Do A Kickflip (Yeah, Yeah)", "Logan's Run"])

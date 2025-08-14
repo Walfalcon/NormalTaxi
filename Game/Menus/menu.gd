@@ -12,7 +12,7 @@ extends MainScene
 @onready var settings_menu: Settings = %Settings
 
 func _ready() -> void:
-	settings_button.grab_focus()
+	start_button.grab_focus()
 	settings_menu.close_settings.connect(_on_settings_close)
 	
 
