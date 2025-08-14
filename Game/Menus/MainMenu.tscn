@@ -40,7 +40,7 @@ transform = Transform3D(0.911604, -0.355996, 0.205535, 7.59124e-09, 0.5, 0.86602
 sky_mode = 1
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83317, 0.878409, 0.172316)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20059, 0.878409, -0.356947)
 
 [node name="TheCar" parent="." instance=ExtResource("2_n6o36")]
 unique_name_in_owner = true

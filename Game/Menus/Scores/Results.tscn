@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpsl66k4kjdkq"]
+[gd_scene load_steps=13 format=3 uid="uid://bpsl66k4kjdkq"]
 
 [ext_resource type="Script" uid="uid://bp5i1h2dra51a" path="res://Menus/Scores/results.gd" id="1_urevl"]
+[ext_resource type="Material" uid="uid://dxy0frhg2rvss" path="res://Player/Materials/gus frown.tres" id="2_2ofbd"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="2_6h1uq"]
 [ext_resource type="PackedScene" uid="uid://vdupx1vcodhw" path="res://Menus/Scores/leaderboards.tscn" id="3_hfonq"]
 [ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="4_wjio6"]
@@ -26,6 +27,7 @@ reflected_light_source = 1
 process_mode = 1
 script = ExtResource("1_urevl")
 letter_labels = [NodePath("NameInputLayer/NameInput/Letter1"), NodePath("NameInputLayer/NameInput/Letter2"), NodePath("NameInputLayer/NameInput/Letter3"), NodePath("NameInputLayer/NameInput/SaveButton")]
+frown_mat = ExtResource("2_2ofbd")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x3lp8")

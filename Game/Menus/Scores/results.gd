@@ -4,13 +4,16 @@ extends MainScene
 const alphabet: String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 @export var letter_labels: Array[Control]
+@export var frown_mat: Material
 
 @onready var player_animator: AnimationPlayer = %TheCar.find_child("AnimationPlayer")
 @onready var leaderboards: Leaderboards = %Leaderboards
 @onready var name_input: Control = %NameInput
+@onready var head_mesh: MeshInstance3D = %TheCar.find_child("Armature").find_child("Skeleton3D").find_child("Head_2").find_child("Head_2")
 
 var selected_letter: int = 0
-var inputting_name = false
+var inputting_name: bool = false
+
 
 func _ready() -> void:
 	leaderboards.load_scores()
@@ -21,6 +24,8 @@ func _ready() -> void:
 		inputting_name = true
 		letter_labels[0].grab_focus.call_deferred()
 	else:
+		player_animator.play("Sad_Idle")
+		head_mesh.material_override = frown_mat
 		%LeaderboardsLayer.visible = true
 		name_input.visible = false
 		leaderboards.display_scores()
@@ -72,6 +77,5 @@ func _on_save_button_pressed() -> void:
 	inputting_name = false
 
 func _on_done_button_pressed() -> void:
-	print("press")
 	GameVariables.stop_music.emit()
 	change_scene.emit(0)

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://clr0dpks7koal"]
 
-[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_eow8g"]
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_eow8g"]
 [ext_resource type="Texture2D" uid="uid://1e0qin61wkc0" path="res://Player/models/TheCar_GusHat.png" id="2_eow8g"]
 
 [resource]

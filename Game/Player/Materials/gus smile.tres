@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cxrmwocv5b2k4"]
 
-[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_vn283"]
+[ext_resource type="Shader" uid="uid://dnep6whwrvihk" path="res://shaders/psx_unlit.gdshader" id="1_6ln5e"]
 [ext_resource type="Texture2D" uid="uid://d2nfinwbeuc5n" path="res://Player/models/TheCar_GusSmile.png" id="2_6ln5e"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_vn283")
+shader = ExtResource("1_6ln5e")
 shader_parameter/modulate_color = Color(1, 1, 1, 1)
 shader_parameter/albedoTex = ExtResource("2_6ln5e")
 shader_parameter/uv_scale = Vector2(1, 1)
