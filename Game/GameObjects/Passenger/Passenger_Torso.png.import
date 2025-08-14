@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bgo7usy6s1foh"
-path.s3tc="res://.godot/imported/Passenger_Torso.png-a0cc5636fd37def6340bec1f51fe728d.s3tc.ctex"
+path="res://.godot/imported/Passenger_Torso.png-a0cc5636fd37def6340bec1f51fe728d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "d071e64f0ab93ee75e09f641f29a82d0"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://GameObjects/Passenger/Passenger_Torso.png"
-dest_files=["res://.godot/imported/Passenger_Torso.png-a0cc5636fd37def6340bec1f51fe728d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Passenger_Torso.png-a0cc5636fd37def6340bec1f51fe728d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -54,11 +54,11 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://bhyf5wlpq2qsf"
 },
-"Monkey": {
+"PizzaBuilding": {
 "use_external/enabled": true,
 "use_external/path": "uid://pfwj2tfd76s1"
 },
-"PizzaBuilding": {
+"PizzaRoof": {
 "use_external/enabled": true,
 "use_external/path": "uid://wilmh4jigokf"
 },

@@ -2,21 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coi648c53ra08"
-path.s3tc="res://.godot/imported/metal.png-766ba67e45e6f286cf3b7f52a015f027.s3tc.ctex"
+uid="uid://dwui6kjw2hr03"
+path="res://.godot/imported/Map_pizza wall.png-7aa39e9bddf53ca5c4cf05468c755888.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "b830c500700362ba154e71fd40f64a7d"
 }
 
 [deps]
 
-source_file="res://Player/Materials/Textures/metal.png"
-dest_files=["res://.godot/imported/metal.png-766ba67e45e6f286cf3b7f52a015f027.s3tc.ctex"]
+source_file="res://Level/Map/Map_pizza wall.png"
+dest_files=["res://.godot/imported/Map_pizza wall.png-7aa39e9bddf53ca5c4cf05468c755888.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

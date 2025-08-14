@@ -127,3 +127,5 @@ song_files = Dictionary[String, AudioStream]({
 "I Wanna Do A Kickflip (Yeah, Yeah)": ExtResource("8_rjnl7"),
 "Logan's Run": ExtResource("10_ac03j")
 })
+
+[connection signal="finished" from="SoundtrackPlayer" to="SoundtrackPlayer" method="_on_start_music"]

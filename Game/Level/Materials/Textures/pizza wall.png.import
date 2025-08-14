@@ -2,19 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dckxq21hspxuw"
-path="res://.godot/imported/Map_marquee.png-95043c4c088fd88e84d5d62c4d27fbd7.ctex"
+uid="uid://dsmgtite8xdq6"
+path="res://.godot/imported/pizza wall.png-484794d3da728e8c0a56a7608be29861.ctex"
 metadata={
 "vram_texture": false
-}
-generator_parameters={
-"md5": "48e80d4592d5e5ecf8de4997c507c464"
 }
 
 [deps]
 
-source_file="res://Level/Map/Map_marquee.png"
-dest_files=["res://.godot/imported/Map_marquee.png-95043c4c088fd88e84d5d62c4d27fbd7.ctex"]
+source_file="res://Level/Materials/Textures/pizza wall.png"
+dest_files=["res://.godot/imported/pizza wall.png-484794d3da728e8c0a56a7608be29861.ctex"]
 
 [params]
 

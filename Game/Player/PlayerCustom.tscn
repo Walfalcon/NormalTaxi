@@ -150,7 +150,7 @@ visible = false
 [node name="EngineSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("9_xfvo5")
-volume_db = -3.0
+volume_db = -5.0
 autoplay = true
 
 [node name="TheCar" parent="." instance=ExtResource("10_d8ik7")]

@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://wilmh4jigokf"]
 
-[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_8db36"]
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_swl3a"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1_8db36")
-shader_parameter/modulate_color = Color(0.800822, 0.462502, 3.85046e-07, 1)
+shader = ExtResource("1_swl3a")
+shader_parameter/modulate_color = Color(0.65, 0.444167, 0.325, 1)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)

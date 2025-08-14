@@ -10,10 +10,6 @@ extends AudioStreamPlayer
 var song_counter: int = 0
 
 func _ready() -> void:
-	for i in get_children():
-		if i is AudioStreamPlayer:
-			songs.push_back(i)
-			i.finished.connect(_on_start_music)
 	songs.shuffle()
 	GameVariables.start_music.connect(_on_start_music)
 	GameVariables.stop_music.connect(_on_stop_music)

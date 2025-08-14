@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://pfwj2tfd76s1"]
+
+[ext_resource type="Shader" uid="uid://bomfwiepuo4fg" path="res://shaders/psx_lit.gdshader" id="1_lpwu7"]
+[ext_resource type="Texture2D" uid="uid://dwui6kjw2hr03" path="res://Level/Map/Map_pizza wall.png" id="2_qhp3f"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lpwu7")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_qhp3f")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2nfinwbeuc5n"
-path.s3tc="res://.godot/imported/TheCar_GusSmile.png-d07fa072f94604c4547aa46e9e316759.s3tc.ctex"
+path="res://.godot/imported/TheCar_GusSmile.png-d07fa072f94604c4547aa46e9e316759.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "892decbe4e4518757f9e9604a2758826"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Player/models/TheCar_GusSmile.png"
-dest_files=["res://.godot/imported/TheCar_GusSmile.png-d07fa072f94604c4547aa46e9e316759.s3tc.ctex"]
+dest_files=["res://.godot/imported/TheCar_GusSmile.png-d07fa072f94604c4547aa46e9e316759.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -27,7 +26,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
