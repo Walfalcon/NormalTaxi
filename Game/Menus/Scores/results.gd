@@ -27,6 +27,8 @@ func _ready() -> void:
 		%DoneButton.grab_focus()
 
 func _process(delta: float) -> void:
+	if not inputting_name:
+		return
 	for i in letter_labels.size():
 		if i == 3:
 			if letter_labels[i].has_focus():
@@ -40,7 +42,7 @@ func _process(delta: float) -> void:
 			selected_letter = i
 			break
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if (not inputting_name) or selected_letter == 3:
 		return
 	if event is InputEventKey and event.unicode:

@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://ex223yycxufa"]
+[gd_scene load_steps=12 format=3 uid="uid://ex223yycxufa"]
 
 [ext_resource type="Script" uid="uid://brd4lwxf7jjc2" path="res://Menus/menu.gd" id="1_7ihqj"]
-[ext_resource type="PackedScene" uid="uid://bwwch08u1fki0" path="res://Level/level.tscn" id="2_0xbyl"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="2_n6o36"]
 [ext_resource type="PackedScene" uid="uid://dkashjgsuj6rv" path="res://Menus/Settings.tscn" id="3_1txdl"]
 [ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="3_5ncg0"]
@@ -31,7 +30,6 @@ shadow_color = Color(0, 0, 0, 0.713726)
 [node name="MainMenu" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_7ihqj")
-level = ExtResource("2_0xbyl")
 settings_scene = ExtResource("3_1txdl")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -46,6 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.83317, 0.878409, 0.172316)
 
 [node name="TheCar" parent="." instance=ExtResource("2_n6o36")]
 unique_name_in_owner = true
+process_mode = 3
 transform = Transform3D(-0.257032, 0, 0.966403, 0, 1, 0, -0.966403, 0, -0.257032, 2.21, 0, -3.986)
 
 [node name="MainMenu" type="CanvasLayer" parent="."]

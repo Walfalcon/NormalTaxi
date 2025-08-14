@@ -5,8 +5,8 @@ signal drop_off_passenger
 signal start_music
 signal stop_music
 
-const initial_time: float = 3.0 ## Seconds left on timer at start of game
-const additional_time: float = 17.0 ## Seconds added when you pick up a passenger
+const initial_time: float = 75.0 ## Seconds left on timer at start of game
+const additional_time: float = 16.5 ## Seconds added when you pick up a passenger
 
 var current_player: Player = null
 var destinations: Array[Destination] = []
