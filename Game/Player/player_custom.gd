@@ -26,6 +26,7 @@ const passenger_leave_speed: float = 15.
 @onready var gus_animator: AnimationPlayer = car_model.find_child("AnimationPlayer")
 @onready var settings_menu: Settings = %Settings
 @onready var time_ticker: Label = %TimeTicker
+@onready var collision_sound: AudioStreamPlayer = %CollisionSound
 
 var current_destination: Destination = null
 var has_passenger: bool = false
@@ -158,3 +159,9 @@ func _on_normal_boost_timer_timeout() -> void:
 	if boosting:
 		boosting = false
 		%Afterimage.visible = false
+
+
+func _on_body_entered(body: Node) -> void:
+	if abs(linear_velocity.length() - last_process_speed) > 1.0:
+		collision_sound.volume_linear = min(0.75, abs(linear_velocity.length() - last_process_speed) / 20.0) + 0.25
+		collision_sound.play()

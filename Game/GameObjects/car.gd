@@ -17,10 +17,12 @@ var gas: float = 0.0 ## From 0 to 1
 var brake: float = 0.0
 var steering: float = 0.0 ## Should be from -max_steering_angle to +max_steering_angle
 var speed: float = 0.0
+var last_process_speed: float = 0.0
 var gear_forward: bool = true
 var airborne: bool = false
 
 func _physics_process(delta: float) -> void:
+	last_process_speed = speed
 	speed = linear_velocity.length()
 	airborne = true
 	for tire in tires:
