@@ -33,10 +33,10 @@ func _ready() -> void:
 		target_model.mesh.bottom_radius = radius
 		var area_shape = area.find_child("CollisionShape3D")
 		area_shape.shape.radius = radius
-		position = placement_raycast.get_collision_point()
+		global_position = placement_raycast.get_collision_point()
 		normal = placement_raycast.get_collision_normal()
 		var look_at_vector = Vector3.BACK.slide(normal)
-		area.look_at(look_at_vector + position, normal)
+		area.look_at(look_at_vector + global_position, normal)
 	else:
 		print("WHOOPS the passenger couldn't find solid ground")
 	anim_player.play("Idle")

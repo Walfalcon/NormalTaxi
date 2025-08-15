@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://46b1abgh8efc" path="res://Level/Skybox/panorama_image 640x360.png" id="1_iincs"]
 [ext_resource type="PackedScene" uid="uid://5q31wcq4y5kc" path="res://Level/Map/Map.glb" id="1_nk1il"]
 [ext_resource type="Script" uid="uid://baqoxvhro2ngn" path="res://Level/level.gd" id="1_q47le"]
-[ext_resource type="PackedScene" uid="uid://bpsl66k4kjdkq" path="res://Menus/Scores/Results.tscn" id="2_dx36h"]
 [ext_resource type="PackedScene" uid="uid://ctbwpsdaaii1i" path="res://Player/PlayerCustom.tscn" id="2_qmtf6"]
 [ext_resource type="PackedScene" uid="uid://bmmlolxoi3a7r" path="res://GameObjects/Passenger/Passenger.tscn" id="6_d6qko"]
 [ext_resource type="PackedScene" uid="uid://cxaiw6np38ld7" path="res://Level/Destination/destination.tscn" id="7_22cqp"]
@@ -57,7 +56,10 @@ size = Vector3(15, 1, 25)
 size = Vector3(15, 6, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i5g78"]
-size = Vector3(60, 10, 60)
+size = Vector3(50, 10, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q47le"]
+size = Vector3(30, 10, 50)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i5g78"]
 render_priority = 0
@@ -86,7 +88,6 @@ size = Vector2(2.5, 3)
 [node name="Level" type="Node3D"]
 process_mode = 1
 script = ExtResource("1_q47le")
-results_screen = ExtResource("2_dx36h")
 
 [node name="Map" parent="." instance=ExtResource("1_nk1il")]
 
@@ -267,7 +268,6 @@ shape = SubResource("BoxShape3D_22cqp")
 [node name="RestartPoints" type="Node" parent="."]
 
 [node name="RestartPoint1" type="Area3D" parent="RestartPoints"]
-visible = false
 collision_layer = 0
 collision_mask = 2
 monitorable = false
@@ -279,6 +279,148 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81949e-08, 1.25, -17.0525)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint2" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4731, -61.7178)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1008, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint2"]
+transform = Transform3D(1, 0, 0, 0, 0.997638, 0.0686944, 0, -0.0686944, 0.997638, 0, 5, 0)
+shape = SubResource("BoxShape3D_q47le")
+
+[node name="RestartPoint3" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.77765, -146.704)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1008, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint3"]
+transform = Transform3D(1, 0, 0, 0, 0.997638, 0.0686944, 0, -0.0686944, 0.997638, 0, 5, 0)
+shape = SubResource("BoxShape3D_q47le")
+
+[node name="RestartPoint5" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(0.104615, 0, 0.994513, 0, 1, 0, -0.994513, 0, 0.104615, -10.3592, -6.52306, -208.414)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788603, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint5"]
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint6" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.6134, -6.52306, -208.414)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788603, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint6"]
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint7" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4109, -6.52306, -157.331)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788603, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint7"]
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint8" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.372, -2.49952, -107.957)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788603, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint8"]
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint9" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.1773, -1.05445, -73.9259)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788603, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint9"]
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint10" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.07828, -1.05445, 56.6743)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint10"]
+transform = Transform3D(0.173648, 0, 0.984808, 0, 1, 0, -0.984808, 0, 0.173648, 0, 1.68677, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint10"]
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint11" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8956, -1.46631, 52.525)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68677, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint11"]
+shape = SubResource("BoxShape3D_i5g78")
+
+[node name="RestartPoint12" type="Area3D" parent="RestartPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.7314, -1.46631, -52.8162)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_wqlfs")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="RestartPoints/RestartPoint12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68677, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RestartPoints/RestartPoint12"]
 shape = SubResource("BoxShape3D_i5g78")
 
 [node name="PizzaSprite" type="Sprite3D" parent="."]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cba4x0tqvgmcd"]
+
+[ext_resource type="Script" uid="uid://crid18n6bckca" path="res://Level/RestartPoints/restart_point.gd" id="1_2uja2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5g78"]
+size = Vector3(60, 10, 60)
+
+[node name="RestartPoint1" type="Area3D"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_2uja2")
+metadata/_custom_type_script = "uid://crid18n6bckca"
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.81949e-08, 1.25, -17.0525)
+
+[node name="RayCast3D" type="RayCast3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81949e-08, -1.25, 17.0525)
+target_position = Vector3(0, -5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("BoxShape3D_i5g78")

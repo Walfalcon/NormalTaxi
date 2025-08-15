@@ -50,7 +50,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			%MainCamera.current = true
 	if Input.is_action_just_pressed("Restart"):
+		var flip: bool = restart_node.to_local(global_position).z > 0.0
 		global_transform = restart_node.global_transform
+		if flip:
+			basis = basis.rotated(Vector3.UP, PI)
 		angular_velocity = Vector3.ZERO
 		linear_velocity = Vector3.ZERO
 		return
