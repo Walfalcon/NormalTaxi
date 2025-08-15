@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d12lflx4x6ehn"]
+[gd_scene load_steps=24 format=3 uid="uid://d12lflx4x6ehn"]
 
 [ext_resource type="Material" uid="uid://bxadek7ymxxlr" path="res://shaders/Materials/blur-post-process_mat.tres" id="1_2vdtb"]
 [ext_resource type="Shader" uid="uid://c0bhglnpoeguq" path="res://shaders/pp_band-dither.gdshader" id="2_bf40q"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bebrr77dfsj6g" path="res://Songs/I Wanna Do A Kickflip (Yeah Yeah).mp3" id="8_rjnl7"]
 [ext_resource type="AudioStream" uid="uid://cnqm6h04v4nts" path="res://Songs/I Feel Fantastic.mp3" id="9_qn8fn"]
 [ext_resource type="AudioStream" uid="uid://c6chqwkyx2v0l" path="res://Songs/Logan's Run.mp3" id="10_ac03j"]
+[ext_resource type="AudioStream" uid="uid://bs4rfha3nq8hu" path="res://Songs/Normal Taxi.mp3" id="14_iwxad"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tfw45"]
 shader = ExtResource("2_bf40q")
@@ -20,28 +21,28 @@ shader_parameter/dither_tex = ExtResource("3_747aq")
 shader_parameter/col_depth = 15.0
 shader_parameter/dither_banding = true
 
-[sub_resource type="Animation" id="Animation_07c7w"]
-resource_name = "FadeOut"
-length = 0.4
+[sub_resource type="Animation" id="Animation_iwxad"]
+resource_name = "Fade"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../RetroLayer/Blur/SubViewport/DitherBanding/SubViewport/CanvasLayer/ColorRect:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_enrgn"]
+[sub_resource type="Animation" id="Animation_mytfh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../RetroLayer/Blur/SubViewport/DitherBanding/SubViewport/CanvasLayer/ColorRect:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,6 +51,15 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2bmjd"]
+_data = {
+&"Fade": SubResource("Animation_iwxad"),
+&"RESET": SubResource("Animation_mytfh")
+}
+
+[sub_resource type="Animation" id="Animation_enrgn"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_ac03j"]
 resource_name = "Show"
@@ -69,7 +79,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_07c7w"]
 _data = {
-&"FadeOut": SubResource("Animation_07c7w"),
 &"RESET": SubResource("Animation_enrgn"),
 &"Show": SubResource("Animation_ac03j")
 }
@@ -127,6 +136,12 @@ offset_bottom = 240.0
 mouse_filter = 2
 color = Color(0.854902, 0.152941, 0.152941, 1)
 
+[node name="SceneFadeAnimation" type="AnimationPlayer" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport/CanvasLayer"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_2bmjd")
+}
+
 [node name="SceneLoader" type="Node" parent="RetroLayer/Blur/SubViewport/DitherBanding/SubViewport"]
 script = ExtResource("2_dt8i1")
 scenes = Array[PackedScene]([ExtResource("5_ac03j"), ExtResource("6_07c7w"), ExtResource("7_iwxad")])
@@ -161,12 +176,13 @@ autowrap_mode = 2
 volume_db = -4.0
 bus = &"Music"
 script = ExtResource("6_747aq")
-songs = Array[String](["How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube", "I Feel Fantastic", "I Wanna Do A Kickflip (Yeah, Yeah)", "Logan's Run"])
+songs = Array[String](["How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube", "I Feel Fantastic", "I Wanna Do A Kickflip (Yeah, Yeah)", "Logan's Run", "Normal Taxi"])
 song_files = Dictionary[String, AudioStream]({
 "How Much Do You Think I Can Get For This Copy Of Over The Hedge For The GameCube": ExtResource("7_pugex"),
 "I Feel Fantastic": ExtResource("9_qn8fn"),
 "I Wanna Do A Kickflip (Yeah, Yeah)": ExtResource("8_rjnl7"),
-"Logan's Run": ExtResource("10_ac03j")
+"Logan's Run": ExtResource("10_ac03j"),
+"Normal Taxi": ExtResource("14_iwxad")
 })
 
 [connection signal="finished" from="SoundtrackPlayer" to="SoundtrackPlayer" method="_on_start_music"]

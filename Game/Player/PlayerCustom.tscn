@@ -177,14 +177,14 @@ text_overrun_behavior = 1
 
 [node name="GearshiftIcon" type="Sprite2D" parent="UI"]
 unique_name_in_owner = true
-position = Vector2(260, 200)
+position = Vector2(285, 175)
 texture = ExtResource("5_qympc")
 hframes = 2
 
 [node name="TimeLabel" type="Label" parent="UI"]
-offset_left = 158.0
+offset_left = 221.0
 offset_top = 189.0
-offset_right = 198.0
+offset_right = 261.0
 offset_bottom = 212.0
 theme_override_fonts/font = ExtResource("9_qt6rh")
 text = "Time:"

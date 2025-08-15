@@ -146,7 +146,6 @@ text = "Exit"
 stream = ExtResource("8_ju15h")
 volume_db = -1.0
 autoplay = true
-stream_paused = true
 bus = &"Music"
 
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]

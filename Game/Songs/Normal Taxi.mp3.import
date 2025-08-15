@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bs4rfha3nq8hu"
+path="res://.godot/imported/Normal Taxi.mp3-e3701198d8f6d65486c29732ffce91f6.mp3str"
+
+[deps]
+
+source_file="res://Songs/Normal Taxi.mp3"
+dest_files=["res://.godot/imported/Normal Taxi.mp3-e3701198d8f6d65486c29732ffce91f6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
