@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ex223yycxufa"]
+[gd_scene load_steps=13 format=3 uid="uid://ex223yycxufa"]
 
 [ext_resource type="Script" uid="uid://brd4lwxf7jjc2" path="res://Menus/menu.gd" id="1_7ihqj"]
 [ext_resource type="PackedScene" uid="uid://bag6tk8fbc21m" path="res://Player/models/TheCar.glb" id="2_n6o36"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bmorm6k68wepk" path="res://Fonts/Roboto-BlackItalic.ttf" id="3_5ncg0"]
 [ext_resource type="Texture2D" uid="uid://jn8lmaq13ofq" path="res://Level/Map/Map_bricks.png" id="4_n6o36"]
 [ext_resource type="Theme" uid="uid://c7yqk7py056vj" path="res://Menus/MainTheme.tres" id="5_5ncg0"]
+[ext_resource type="AudioStream" uid="uid://vbmh8j7hi30" path="res://Menus/Normal Taxi (quiet).mp3" id="8_ju15h"]
 [ext_resource type="PackedScene" uid="uid://vdupx1vcodhw" path="res://Menus/Scores/leaderboards.tscn" id="8_m16r1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ncg0"]
@@ -140,6 +141,13 @@ offset_right = 307.0
 offset_bottom = 34.0
 theme = ExtResource("5_5ncg0")
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ju15h")
+volume_db = -1.0
+autoplay = true
+stream_paused = true
+bus = &"Music"
 
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/ScoresButton" to="." method="_on_scores_button_pressed"]
