@@ -2,7 +2,8 @@ class_name Player
 extends Car
 
 const boost_force: float = 500.0
-const boost_wait_time: float = 0.2
+const boost_wait_time: float = 0.15
+const boost_time: float = 0.4
 const engine_pitch_scale: float = 1.2
 const engine_pitch_base: float = 1.0
 const airborne_engine_pitch_scale: float = 3.0
@@ -29,6 +30,7 @@ const passenger_leave_speed: float = 15.
 var current_destination: Destination = null
 var has_passenger: bool = false
 var passenger_leaving: bool = false
+var boosting: bool = false
 
 func _ready() -> void:
 	time_ticker.text = str(int(GameVariables.initial_time))
@@ -65,13 +67,16 @@ func _physics_process(delta: float) -> void:
 	gas = Input.get_action_strength("Gas")
 	brake = Input.get_action_strength("Brake")
 	
-	if (not airborne) and (not boost_timer.is_stopped()) and Input.is_action_just_pressed("Gas"):
+	if (not airborne) and (not boost_timer.is_stopped()) and (not boosting) and Input.is_action_just_pressed("Gas"):
 		apply_central_impulse(basis.z * (-boost_force if gear_forward else boost_force))
+		boosting = true
+		%Afterimage.visible = true
+		boost_timer.start(boost_time)
 	
 	if Input.is_action_just_pressed("Shift"):
 		gear_forward = !gear_forward
 		gearshift_icon.frame = 0 if gear_forward else 1
-		if not Input.is_action_pressed("Gas"):
+		if (not Input.is_action_pressed("Gas")) and (not boosting):
 			boost_timer.start(boost_wait_time)
 	
 	super(delta)
@@ -147,3 +152,9 @@ func _on_settings_exit() -> void:
 	get_tree().paused = false
 	settings_menu.visible = false
 	
+
+
+func _on_normal_boost_timer_timeout() -> void:
+	if boosting:
+		boosting = false
+		%Afterimage.visible = false

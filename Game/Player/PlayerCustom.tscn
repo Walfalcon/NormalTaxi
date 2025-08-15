@@ -1,6 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctbwpsdaaii1i"]
+[gd_scene load_steps=17 format=3 uid="uid://ctbwpsdaaii1i"]
 
 [ext_resource type="Script" uid="uid://dbb2qrtkyf7xp" path="res://Player/player_custom.gd" id="1_7i5uh"]
+[ext_resource type="PackedScene" uid="uid://cat0vqyuqjfh3" path="res://Player/afterimage.glb" id="2_itjvj"]
+[ext_resource type="Script" uid="uid://cy37bsi2im4qg" path="res://Player/TrailBehind.gd" id="3_gwwyy"]
 [ext_resource type="Script" uid="uid://dc6udx47lfiq0" path="res://Player/tire.gd" id="3_rg7h5"]
 [ext_resource type="FontFile" uid="uid://iq7ddevcbf0d" path="res://Fonts/Roboto-Medium.ttf" id="4_q1h0l"]
 [ext_resource type="Texture2D" uid="uid://cocoiqjv1bj3g" path="res://Player/gearshift icon.png" id="5_qympc"]
@@ -43,6 +45,15 @@ max_reverse_speed = -20.0
 accel_curve = SubResource("Curve_rg7h5")
 max_steering_angle = 0.35
 tires = [NodePath("TireFrontLeft"), NodePath("TireFrontRight"), NodePath("TireBackLeft"), NodePath("TireBackRight")]
+
+[node name="Afterimage" parent="." instance=ExtResource("2_itjvj")]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("3_gwwyy")
+
+[node name="Afterimage2" parent="Afterimage" instance=ExtResource("2_itjvj")]
+unique_name_in_owner = true
+script = ExtResource("3_gwwyy")
 
 [node name="TireFrontLeft" type="RayCast3D" parent="."]
 unique_name_in_owner = true
@@ -206,4 +217,5 @@ layer = 2
 unique_name_in_owner = true
 visible = false
 
+[connection signal="timeout" from="NormalBoostTimer" to="." method="_on_normal_boost_timer_timeout"]
 [connection signal="timeout" from="PassengerTimer" to="." method="_on_passenger_timer_timeout"]
