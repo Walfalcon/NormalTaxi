@@ -22,6 +22,14 @@ func _ready() -> void:
 	music_volume_slider.value = GameVariables.music_volume
 	other_volume_slider.value = GameVariables.other_volume
 
+func _input(event: InputEvent) -> void:
+	if not settings_open:
+		return
+	if get_viewport().gui_get_focus_owner() == null:
+		if (event.is_action_released("ui_accept") or event.is_action_released("ui_up") or event.is_action_released("ui_down") or event.is_action_released("ui_left") or event.is_action_released("ui_right")):
+			_on_grab_focus()
+
+
 func _process(delta: float) -> void:
 	if !settings_open:
 		return
@@ -38,6 +46,13 @@ func _on_settings_open() -> void:
 	settings_open = true
 	_on_audio_button_pressed()
 
+func _on_grab_focus() -> void:
+	if audio_tab.visible:
+		print("inputs button")
+		inputs_button.grab_focus.call_deferred()
+	else:
+		print("audio button")
+		audio_button.grab_focus.call_deferred()
 
 func _on_inputs_button_pressed() -> void:
 	audio_button.grab_focus.call_deferred()

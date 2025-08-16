@@ -27,6 +27,17 @@ func _on_scores_button_pressed() -> void:
 	%MainMenu.visible = false
 	%ExitButton.grab_focus()
 
+func _input(event: InputEvent) -> void:
+	if get_viewport().gui_get_focus_owner() == null:
+		if (event.is_action_released("ui_accept") or event.is_action_released("ui_up") or event.is_action_released("ui_down") or event.is_action_released("ui_left") or event.is_action_released("ui_right")):
+			if settings_layer.visible == true:
+				pass
+#				settings_menu._on_grab_focus()
+			elif %ScoresLayer.visible == true:
+				%ExitButton.grab_focus.call_deferred()
+			else:
+				start_button.grab_focus.call_deferred()
+		
 
 func _on_settings_button_pressed() -> void:
 	settings_layer.visible = true
