@@ -51,7 +51,7 @@ void vertex()
 	}
 #endif
 
-	POSITION = get_snapped_pos(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0));  // snap position to grid
+	POSITION = PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0); //get_snapped_pos(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0));  // snap position to grid
 	POSITION /= abs(POSITION.w);  // discard depth for affine mapping
 
 #ifdef ALPHA_SCISSOR
