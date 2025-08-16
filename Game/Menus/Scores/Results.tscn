@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpsl66k4kjdkq"]
+[gd_scene load_steps=14 format=3 uid="uid://bpsl66k4kjdkq"]
 
 [ext_resource type="Script" uid="uid://bp5i1h2dra51a" path="res://Menus/Scores/results.gd" id="1_urevl"]
 [ext_resource type="Material" uid="uid://dxy0frhg2rvss" path="res://Player/Materials/gus frown.tres" id="2_2ofbd"]
@@ -22,6 +22,11 @@ background_mode = 3
 sky = SubResource("Sky_0xbyl")
 ambient_light_source = 1
 reflected_light_source = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ofbd"]
+font = ExtResource("4_wjio6")
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Results" type="Node3D" node_paths=PackedStringArray("letter_labels")]
 process_mode = 1
@@ -70,6 +75,24 @@ offset_right = 292.0
 offset_bottom = 34.0
 theme = ExtResource("7_by621")
 text = "Done"
+
+[node name="YouGot" type="Label" parent="LeaderboardsLayer"]
+offset_left = 210.0
+offset_top = 43.0
+offset_right = 276.0
+offset_bottom = 66.0
+text = "You Got:"
+label_settings = SubResource("LabelSettings_2ofbd")
+
+[node name="Passengers" type="Label" parent="LeaderboardsLayer"]
+unique_name_in_owner = true
+offset_left = 208.0
+offset_top = 64.0
+offset_right = 318.0
+offset_bottom = 88.0
+text = "Passengers"
+label_settings = SubResource("LabelSettings_2ofbd")
+horizontal_alignment = 2
 
 [node name="NameInputLayer" type="CanvasLayer" parent="."]
 layer = 5

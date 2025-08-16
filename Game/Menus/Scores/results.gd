@@ -16,6 +16,7 @@ var inputting_name: bool = false
 
 
 func _ready() -> void:
+	%Passengers.text = str(GameVariables.score) + " Passengers"
 	leaderboards.load_scores()
 	if leaderboards.check_new_score(GameVariables.score):
 		player_animator.play("Stand_Idle")
