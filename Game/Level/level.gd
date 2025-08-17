@@ -1,6 +1,10 @@
 class_name Level
 extends MainScene
 
+signal pick_up_passenger
+signal drop_off_passenger
+
+var destinations: Array[Destination] = []
 
 func _ready() -> void:
 	GameVariables.start_music.emit()

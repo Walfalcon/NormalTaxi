@@ -11,6 +11,7 @@ extends Node3D
 @onready var passenger_model: Node3D = %PassengerModel
 @onready var area: Area3D = %Area
 @onready var anim_player: AnimationPlayer = passenger_model.find_child("AnimationPlayer")
+@onready var level: Level = get_parent().get_parent()
 
 
 const walk_speed: float = 6.0
@@ -25,8 +26,8 @@ var dodge_target: Vector3 = Vector3.ZERO
 var normal: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
-	GameVariables.pick_up_passenger.connect(_disable_passenger_ready)
-	GameVariables.drop_off_passenger.connect(_enable_passenger_ready)
+	level.pick_up_passenger.connect(_disable_passenger_ready)
+	level.drop_off_passenger.connect(_enable_passenger_ready)
 	placement_raycast.force_raycast_update()
 	if placement_raycast.is_colliding():
 		target_model.mesh.top_radius = radius
@@ -92,7 +93,7 @@ func _physics_process(delta: float) -> void:
 				passenger_model.position = passenger_model.position.move_toward(Vector3.ZERO, walk_speed * delta)
 				anim_player.play("Walk")
 		elif passenger_ready and GameVariables.current_player.speed < 0.1 and area.overlaps_body(GameVariables.current_player):
-			GameVariables.pick_up_passenger.emit()
+			level.pick_up_passenger.emit()
 			GameVariables.current_player.stop()
 			boarding = true
 			anim_player.play("Dive")

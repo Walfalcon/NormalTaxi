@@ -27,6 +27,7 @@ const passenger_leave_speed: float = 15.
 @onready var settings_menu: Settings = %Settings
 @onready var time_ticker: Label = %TimeTicker
 @onready var collision_sound: AudioStreamPlayer = %CollisionSound
+@onready var level: Level = get_parent()
 
 var current_destination: Destination = null
 var has_passenger: bool = false
@@ -115,7 +116,7 @@ func passenger_enter(new_passenger: Passenger) -> void:
 	passenger_model.top_level = false
 	passenger_model.transform = seated_position
 	passenger_animator.play("Sit")
-	for i in GameVariables.destinations:
+	for i in level.destinations:
 		if i.name == new_passenger.take_me_to:
 			current_destination = i
 			current_destination.is_active = true
@@ -140,9 +141,8 @@ func passenger_exit() -> void:
 	passenger_model.look_at(passenger_model.position + Vector3.UP)
 	passenger_leaving = true
 	passenger_timer.start()
-	GameVariables.drop_off_passenger.emit()
+	level.drop_off_passenger.emit()
 	GameVariables.score += 1
-	print(GameVariables.score)
 
 
 func _on_passenger_timer_timeout() -> void:
