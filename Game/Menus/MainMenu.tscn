@@ -57,30 +57,13 @@ transform = Transform3D(-0.257032, 0, 0.966403, 0, 1, 0, -0.966403, 0, -0.257032
 [node name="MainMenu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="StartButton" type="Button" parent="MainMenu"]
-unique_name_in_owner = true
-texture_filter = 1
-texture_repeat = 1
-offset_left = 25.0
-offset_top = 156.0
-offset_right = 104.0
-offset_bottom = 194.0
-focus_neighbor_top = NodePath("../SettingsButton")
-focus_neighbor_bottom = NodePath("../ScoresButton")
-focus_next = NodePath("../ScoresButton")
-focus_previous = NodePath("../SettingsButton")
-theme = ExtResource("5_5ncg0")
-theme_override_font_sizes/font_size = 30
-text = "Start"
-icon_alignment = 1
-
 [node name="ScoresButton" type="Button" parent="MainMenu"]
 unique_name_in_owner = true
 texture_filter = 1
 texture_repeat = 1
 offset_left = 38.0
 offset_top = 97.0
-offset_right = 92.0
+offset_right = 96.0
 offset_bottom = 116.0
 focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
@@ -96,14 +79,44 @@ texture_filter = 1
 texture_repeat = 1
 offset_left = 33.0
 offset_top = 125.0
-offset_right = 97.0
+offset_right = 101.0
 offset_bottom = 144.0
 focus_neighbor_top = NodePath("../ScoresButton")
-focus_neighbor_bottom = NodePath("../StartButton")
-focus_next = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../InstructionsButton")
+focus_next = NodePath("../InstructionsButton")
 focus_previous = NodePath("../ScoresButton")
 theme = ExtResource("5_5ncg0")
 text = "Settings"
+icon_alignment = 1
+
+[node name="InstructionsButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+offset_left = 23.0
+offset_top = 154.0
+offset_right = 114.0
+offset_bottom = 173.0
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../SettingsButton")
+theme = ExtResource("5_5ncg0")
+text = "Instructions"
+
+[node name="StartButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 1
+offset_left = 30.0
+offset_top = 183.0
+offset_right = 109.0
+offset_bottom = 221.0
+focus_neighbor_top = NodePath("../InstructionsButton")
+focus_neighbor_bottom = NodePath("../ScoresButton")
+focus_next = NodePath("../ScoresButton")
+focus_previous = NodePath("../InstructionsButton")
+theme = ExtResource("5_5ncg0")
+theme_override_font_sizes/font_size = 30
+text = "Start"
 icon_alignment = 1
 
 [node name="Title" type="Label" parent="MainMenu"]
@@ -124,12 +137,68 @@ text = "Don't forget the boost mechanic!"
 label_settings = SubResource("LabelSettings_m16r1")
 horizontal_alignment = 1
 
+[node name="ScoresLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Leaderboards" parent="ScoresLayer" instance=ExtResource("8_m16r1")]
+unique_name_in_owner = true
+
+[node name="ExitScoresButton" type="Button" parent="ScoresLayer"]
+unique_name_in_owner = true
+offset_left = 276.0
+offset_top = 15.0
+offset_right = 311.0
+offset_bottom = 34.0
+theme = ExtResource("5_5ncg0")
+text = "Exit"
+
 [node name="SettingsLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 visible = false
 
 [node name="Settings" parent="SettingsLayer" instance=ExtResource("3_1txdl")]
 unique_name_in_owner = true
+
+[node name="InstructionsLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="InstructionsLayer"]
+offset_right = 320.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 0.65098)
+
+[node name="ExitInstructionsButton" type="Button" parent="InstructionsLayer"]
+unique_name_in_owner = true
+offset_left = 276.0
+offset_top = 211.0
+offset_right = 311.0
+offset_bottom = 230.0
+theme = ExtResource("5_5ncg0")
+text = "Exit"
+
+[node name="InstructionsLabel" type="Label" parent="InstructionsLayer"]
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 310.0
+offset_bottom = 239.0
+theme = ExtResource("5_5ncg0")
+theme_override_font_sizes/font_size = 10
+text = "Pick up passengers by stopping next to them, then take them where they want to go!
+
+Steer with the left analog stick or the d-pad!
+
+Accelerate with the bottom face button, the right trigger/shoulder button, or the J key!
+
+Brake with the right face button, the left trigger/shoulder button, or the K key!
+
+Change gears with the left face button or the Shift key!
+
+Step on the gas immediately after changing gears to get a Normal Boost!
+
+Press Select or the R key if you get stuck!"
+autowrap_mode = 2
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -141,29 +210,15 @@ offset_bottom = 240.0
 texture = ExtResource("4_n6o36")
 stretch_mode = 1
 
-[node name="ScoresLayer" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="Leaderboards" parent="ScoresLayer" instance=ExtResource("8_m16r1")]
-unique_name_in_owner = true
-
-[node name="ExitButton" type="Button" parent="ScoresLayer"]
-unique_name_in_owner = true
-offset_left = 276.0
-offset_top = 15.0
-offset_right = 307.0
-offset_bottom = 34.0
-theme = ExtResource("5_5ncg0")
-text = "Exit"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ju15h")
 volume_db = -1.0
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/ScoresButton" to="." method="_on_scores_button_pressed"]
 [connection signal="pressed" from="MainMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ScoresLayer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/InstructionsButton" to="." method="_on_instructions_button_pressed"]
+[connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ScoresLayer/ExitScoresButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="InstructionsLayer/ExitInstructionsButton" to="." method="_on_exit_button_pressed"]

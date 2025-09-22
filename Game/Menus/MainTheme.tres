@@ -16,6 +16,7 @@ bg_color = Color(0.433909, 0.04823, 0.0514742, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxn03"]
 bg_color = Color(0.854902, 0.152941, 0.152941, 1)
+border_color = Color(0.854902, 0.152941, 0.152941, 1)
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)

@@ -25,7 +25,7 @@ func _on_scores_button_pressed() -> void:
 	%Leaderboards.display_scores()
 	%ScoresLayer.visible = true
 	%MainMenu.visible = false
-	%ExitButton.grab_focus()
+	%ExitScoresButton.grab_focus()
 
 func _input(event: InputEvent) -> void:
 	if get_viewport().gui_get_focus_owner() == null:
@@ -34,7 +34,9 @@ func _input(event: InputEvent) -> void:
 				pass
 #				settings_menu._on_grab_focus()
 			elif %ScoresLayer.visible == true:
-				%ExitButton.grab_focus.call_deferred()
+				%ExitScoresButton.grab_focus.call_deferred()
+			elif %InstructionsLayer.visible == true:
+				%ExitInstructionsButton.grab_focus.call_deferred()
 			else:
 				start_button.grab_focus.call_deferred()
 		
@@ -52,5 +54,12 @@ func _on_settings_close() -> void:
 
 func _on_exit_button_pressed() -> void:
 	%ScoresLayer.visible = false
+	%InstructionsLayer.visible = false
 	%MainMenu.visible = true
 	start_button.grab_focus()
+
+
+func _on_instructions_button_pressed() -> void:
+	%InstructionsLayer.visible = true
+	%MainMenu.visible = false
+	%ExitInstructionsButton.grab_focus()

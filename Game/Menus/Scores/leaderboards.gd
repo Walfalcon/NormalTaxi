@@ -3,9 +3,11 @@ extends ColorRect
 
 @export var score_tag_scene: PackedScene
 
-var scores: Array[int] = [19,18,17,16,15,14,13,12,11,10]
+var scores: Array[int] = [0,0,0,0,0,0,0,0,0,0]
 var names: Array[String] = ["AAA","AAA","AAA","AAA","AAA","AAA","AAA","AAA","AAA","AAA"]
 var tags: Array[ScoreTag]
+
+var scores_displayed: bool = false
 
 func load_scores() -> void:
 	if not FileAccess.file_exists("user://scores.save"):
@@ -22,6 +24,8 @@ func load_scores() -> void:
 	
 
 func display_scores():
+	if scores_displayed:
+		return
 	for i in range(10):
 		tags.push_back(score_tag_scene.instantiate())
 		tags[i].rank_string = "#" + str(i+1)
@@ -29,6 +33,7 @@ func display_scores():
 		tags[i].score_string = str(scores[i])
 		%Box.add_child(tags[i])
 		tags[i].position.y += i * 20
+	scores_displayed = true
 
 func check_new_score(new_score: int) -> bool:
 	return new_score > scores[9]
