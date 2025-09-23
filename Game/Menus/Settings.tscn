@@ -20,7 +20,6 @@ offset_bottom = 240.0
 
 [node name="Audio" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 23.0
@@ -49,9 +48,9 @@ text = "Inputs"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 60.0
-offset_top = 80.0
+offset_top = 53.0
 offset_right = 260.0
-offset_bottom = 96.0
+offset_bottom = 69.0
 focus_neighbor_bottom = NodePath("../MusicVolumeSlider")
 focus_next = NodePath("../MusicVolumeSlider")
 theme = ExtResource("1_eklo8")
@@ -70,9 +69,9 @@ text = "Master Volume"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 60.0
-offset_top = 120.0
+offset_top = 93.0
 offset_right = 260.0
-offset_bottom = 136.0
+offset_bottom = 109.0
 focus_neighbor_top = NodePath("../MainVolumeSlider")
 focus_neighbor_bottom = NodePath("../OtherVolumeSlider")
 focus_next = NodePath("../OtherVolumeSlider")
@@ -93,12 +92,12 @@ text = "Music Volume"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 60.0
-offset_top = 160.0
+offset_top = 133.0
 offset_right = 260.0
-offset_bottom = 176.0
+offset_bottom = 149.0
 focus_neighbor_top = NodePath("../MusicVolumeSlider")
-focus_neighbor_bottom = NodePath("../BackButtonAudio")
-focus_next = NodePath("../BackButtonAudio")
+focus_neighbor_bottom = NodePath("../FullscreenButton")
+focus_next = NodePath("../FullscreenButton")
 focus_previous = NodePath("../MusicVolumeSlider")
 theme = ExtResource("1_eklo8")
 max_value = 1.0
@@ -112,6 +111,20 @@ offset_bottom = -2.0
 theme = ExtResource("1_eklo8")
 text = "Other Sounds Volume"
 
+[node name="FullscreenButton" type="Button" parent="Audio/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_top = 173.0
+offset_right = 226.0
+offset_bottom = 192.0
+focus_neighbor_top = NodePath("../OtherVolumeSlider")
+focus_neighbor_bottom = NodePath("../BackButtonAudio")
+focus_next = NodePath("../BackButtonAudio")
+focus_previous = NodePath("../OtherVolumeSlider")
+theme = ExtResource("1_eklo8")
+text = "Toggle Fullscreen"
+
 [node name="BackButtonAudio" type="Button" parent="Audio/Control"]
 unique_name_in_owner = true
 layout_mode = 0
@@ -119,13 +132,14 @@ offset_left = 140.0
 offset_top = 215.0
 offset_right = 180.0
 offset_bottom = 234.0
-focus_neighbor_top = NodePath("../OtherVolumeSlider")
-focus_previous = NodePath("../OtherVolumeSlider")
+focus_neighbor_top = NodePath("../FullscreenButton")
+focus_previous = NodePath("../FullscreenButton")
 theme = ExtResource("1_eklo8")
 text = "Back"
 
 [node name="Input" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 23.0
@@ -332,6 +346,7 @@ one_shot = true
 [connection signal="value_changed" from="Audio/Control/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
 [connection signal="value_changed" from="Audio/Control/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="Audio/Control/OtherVolumeSlider" to="." method="_on_other_volume_slider_value_changed"]
+[connection signal="pressed" from="Audio/Control/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
 [connection signal="pressed" from="Audio/Control/BackButtonAudio" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Input/InputButtons/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="Input/InputButtons/BackButtonInput" to="." method="_on_back_button_pressed"]

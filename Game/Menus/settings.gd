@@ -93,3 +93,10 @@ func _on_audio_button_pressed() -> void:
 	audio_tab.visible = true
 	input_tab.visible = false
 	
+
+
+func _on_fullscreen_button_pressed() -> void:
+	if DisplayServer.window_get_mode() == DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
